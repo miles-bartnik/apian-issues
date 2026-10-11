@@ -1,0 +1,1011 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html"><link rel="search" title="Search" href="../../search.html">
+        <link rel="prefetch" href="../../_static/apian_terrain_logo_light.png" as="image">
+        <link rel="prefetch" href="../../_static/apian_terrain_logo.png" as="image">
+
+    <link rel="shortcut icon" href="../../_static/apian_terrain.ico"><!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
+        <title>apian_terrain.custombuild - Apian 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=5d073521" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  --color-brand-primary: #16181d;
+  --color-brand-content: #16181d;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #e9e9ec;
+  --color-brand-content: #c9ccd2;
+  --color-background-primary: #0b0b0c;
+  --color-background-secondary: #101012;
+  --color-background-hover: #16161a;
+  --color-api-background: #101012;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #e9e9ec;
+  --color-brand-content: #c9ccd2;
+  --color-background-primary: #0b0b0c;
+  --color-background-secondary: #101012;
+  --color-background-hover: #16161a;
+  --color-api-background: #101012;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Apian 1.0.0</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="../../_static/apian_terrain_logo_light.png" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="../../_static/apian_terrain_logo.png" alt="Dark Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Apian 1.0.0</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Values</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../values.html">Values</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Apian</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../companion_app.html">Companion app (desktop GUI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../blender_addon.html">Blender add-on</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cli.html">Command-line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../custom_data.html">Custom data</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How it works</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pipeline.html">How the pipeline works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data_format.html">The unified dataset format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design_decisions.html">Design decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../layers.html">Data Layers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../licenses.html">Data licensing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API reference</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <h1>Source code for apian_terrain.custombuild</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;custombuild.py -- merge custom data into the unified per-cell format.</span>
+
+<span class="sd">The download pipeline (process_area) is the DEFAULT source for every cells.csv</span>
+<span class="sd">column. This module lets custom data OVERRIDE individual columns: bring a CSV</span>
+<span class="sd">keyed by lat/lon OR by H3 id (at any resolution), and its values are mapped onto</span>
+<span class="sd">the area&#39;s H3 grid (at the build resolution) and written into the chosen column.</span>
+
+<span class="sd">Grid geometry (h3_id, lon, lat, rot_z, radius_eq) is NEVER overridden -- it is</span>
+<span class="sd">derived from the bbox + resolution. Pure stdlib + h3; no bpy, so the CLI and the</span>
+<span class="sd">GUI can both use it.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statistics</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">h3</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># cells.csv columns custom data may override, and which are numeric.</span>
+<span class="n">OVERRIDABLE_COLUMNS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ele_m&quot;</span><span class="p">,</span> <span class="s2">&quot;water_depth_m&quot;</span><span class="p">,</span> <span class="s2">&quot;water_type&quot;</span><span class="p">,</span> <span class="s2">&quot;veg_type&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">]</span>
+<span class="n">_INT_COLS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">}</span>
+<span class="n">_FLOAT_COLS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ele_m&quot;</span><span class="p">,</span> <span class="s2">&quot;water_depth_m&quot;</span><span class="p">}</span>
+<span class="n">_NUMERIC</span> <span class="o">=</span> <span class="n">_INT_COLS</span> <span class="o">|</span> <span class="n">_FLOAT_COLS</span>
+
+<span class="c1"># per-type feature layers a custom GeoJSON may replace wholesale.</span>
+<span class="n">OVERRIDABLE_LAYERS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;structures&quot;</span><span class="p">,</span> <span class="s2">&quot;bridges&quot;</span><span class="p">,</span> <span class="s2">&quot;streets&quot;</span><span class="p">,</span> <span class="s2">&quot;landmarks&quot;</span><span class="p">,</span> <span class="s2">&quot;water_bodies&quot;</span><span class="p">,</span> <span class="s2">&quot;sea&quot;</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_coerce</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">_INT_COLS</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
+    <span class="k">if</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">_FLOAT_COLS</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_aggregate</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Combine multiple custom values landing on one build cell.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">_INT_COLS</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">statistics</span><span class="o">.</span><span class="n">fmean</span><span class="p">(</span><span class="n">values</span><span class="p">)))</span>
+    <span class="k">if</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">_FLOAT_COLS</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">statistics</span><span class="o">.</span><span class="n">fmean</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">statistics</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>            <span class="c1"># categorical -&gt; most common</span>
+
+
+<div class="viewcode-block" id="read_custom_rows">
+<a class="viewcode-back" href="../../api.html#apian_terrain.custombuild.read_custom_rows">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_custom_rows</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read a custom CSV into a list of dict rows.&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">f</span><span class="p">))</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_collapse</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">buckets</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">cell</span><span class="p">:</span> <span class="p">(</span><span class="n">_aggregate</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">vals</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">vals</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">cell</span><span class="p">,</span> <span class="n">vals</span> <span class="ow">in</span> <span class="n">buckets</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_remap_to_build</span><span class="p">(</span><span class="n">cid</span><span class="p">,</span> <span class="n">build_res</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Map one H3 id to the build-res cell(s) it covers.&quot;&quot;&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">h3</span><span class="o">.</span><span class="n">get_resolution</span><span class="p">(</span><span class="n">cid</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="n">build_res</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">cid</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="n">build_res</span><span class="p">:</span>                      <span class="c1"># coarser -&gt; broadcast to children</span>
+        <span class="k">return</span> <span class="n">h3</span><span class="o">.</span><span class="n">cell_to_children</span><span class="p">(</span><span class="n">cid</span><span class="p">,</span> <span class="n">build_res</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">h3</span><span class="o">.</span><span class="n">cell_to_parent</span><span class="p">(</span><span class="n">cid</span><span class="p">,</span> <span class="n">build_res</span><span class="p">)]</span>   <span class="c1"># finer -&gt; aggregate to parent</span>
+
+
+<div class="viewcode-block" id="build_override_map">
+<a class="viewcode-back" href="../../api.html#apian_terrain.custombuild.build_override_map">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">build_override_map</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">value_col</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">build_res</span><span class="p">,</span>
+                       <span class="n">lat_col</span><span class="o">=</span><span class="s2">&quot;lat&quot;</span><span class="p">,</span> <span class="n">lon_col</span><span class="o">=</span><span class="s2">&quot;lon&quot;</span><span class="p">,</span> <span class="n">h3_col</span><span class="o">=</span><span class="s2">&quot;h3_id&quot;</span><span class="p">,</span> <span class="n">native_res</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Map custom rows -&gt; {build_res h3_id: coerced value}, in two stages.</span>
+
+<span class="sd">    1. Bin each row to a NATIVE H3 cell:</span>
+
+<span class="sd">       - ``key=&#39;latlon&#39;`` -&gt; latlng_to_cell at native_res (default build_res);</span>
+<span class="sd">         the editor&#39;s resolution field is this binning granularity.</span>
+<span class="sd">       - ``key=&#39;h3&#39;`` -&gt; the row&#39;s own h3 id (its resolution is intrinsic).</span>
+
+<span class="sd">    2. Remap native cells to build_res: coarser broadcast to children, finer</span>
+<span class="sd">       aggregate to parent, equal pass through.</span>
+
+<span class="sd">    Rows sharing a cell at any stage are aggregated (mean for numbers, mode for</span>
+<span class="sd">    categories).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">native</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+        <span class="n">raw</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">value_col</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">raw</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">raw</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">_coerce</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">raw</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;latlon&quot;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">cell</span> <span class="o">=</span> <span class="n">h3</span><span class="o">.</span><span class="n">latlng_to_cell</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">lat_col</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">lon_col</span><span class="p">]),</span>
+                                         <span class="n">native_res</span> <span class="k">if</span> <span class="n">native_res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">build_res</span><span class="p">)</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+                <span class="k">continue</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># key == &quot;h3&quot;</span>
+            <span class="n">cell</span> <span class="o">=</span> <span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">h3_col</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">cell</span><span class="p">:</span>
+                <span class="k">continue</span>
+        <span class="n">native</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">cell</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">cid</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">_collapse</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">native</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">_remap_to_build</span><span class="p">(</span><span class="n">cid</span><span class="p">,</span> <span class="n">build_res</span><span class="p">):</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_collapse</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="apply_overrides">
+<a class="viewcode-back" href="../../api.html#apian_terrain.custombuild.apply_overrides">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">apply_overrides</span><span class="p">(</span><span class="n">cell_rows</span><span class="p">,</span> <span class="n">overrides</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Apply {column: {h3_id: value}} onto cells.csv rows (list of dict), in place.</span>
+
+<span class="sd">    Returns (n_cells_changed, {column: n_changed}).&quot;&quot;&quot;</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">changed</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">column</span><span class="p">,</span> <span class="n">cell_map</span> <span class="ow">in</span> <span class="n">overrides</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cell_rows</span><span class="p">:</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="n">cell_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;h3_id&quot;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">row</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+                <span class="n">changed</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;h3_id&quot;</span><span class="p">])</span>
+                <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">counts</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">changed</span><span class="p">),</span> <span class="n">counts</span></div>
+
+
+
+<div class="viewcode-block" id="apply_feature_override">
+<a class="viewcode-back" href="../../api.html#apian_terrain.custombuild.apply_feature_override">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">apply_feature_override</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">area_id</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">custom_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Replace a per-type feature GeoJSON with a custom FeatureCollection.</span>
+<span class="sd">    Returns the feature count. Raises ValueError if the file is not a FC.&quot;&quot;&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">custom_path</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;FeatureCollection&quot;</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">custom_path</span><span class="si">}</span><span class="s2">: custom feature file must be a GeoJSON FeatureCollection&quot;</span><span class="p">)</span>
+    <span class="n">dst</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">area_id</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">layer</span><span class="si">}</span><span class="s2">.geojson&quot;</span>
+    <span class="n">dst</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">separators</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">)),</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;features&quot;</span><span class="p">,</span> <span class="p">[]))</span></div>
+
+
+
+<span class="c1"># ── Data layer: additive custom fields (not column overrides) ──────────────────</span>
+<span class="c1"># The override path above rewrites existing cells.csv columns. This path ADDS</span>
+<span class="c1"># arbitrary named numeric fields on a side channel (&lt;area&gt;_celldata.csv keyed by</span>
+<span class="c1"># h3_id) + a manifest block, so the importer can bake them as data_&lt;field&gt; point</span>
+<span class="c1"># attributes without bloating the append-only CELL_COLUMNS contract.</span>
+<span class="n">AGGREGATIONS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;sum&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">)</span>            <span class="c1"># sum: counts (population); mean: intensive (temp)</span>
+<span class="n">_AGG</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;sum&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">v</span><span class="p">)),</span> <span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="n">statistics</span><span class="o">.</span><span class="n">fmean</span><span class="p">}</span>
+
+
+<div class="viewcode-block" id="slug_field">
+<a class="viewcode-back" href="../../api.html#apian_terrain.custombuild.slug_field">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">slug_field</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sanitise a user field name into a Blender-safe attribute suffix (data_&lt;slug&gt;).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[^0-9a-z]+&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;field&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="build_data_field">
+<a class="viewcode-back" href="../../api.html#apian_terrain.custombuild.build_data_field">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">build_data_field</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">value_col</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">aggregation</span><span class="p">,</span> <span class="n">build_res</span><span class="p">,</span>
+                     <span class="n">lat_col</span><span class="o">=</span><span class="s2">&quot;lat&quot;</span><span class="p">,</span> <span class="n">lon_col</span><span class="o">=</span><span class="s2">&quot;lon&quot;</span><span class="p">,</span> <span class="n">h3_col</span><span class="o">=</span><span class="s2">&quot;h3_id&quot;</span><span class="p">,</span> <span class="n">native_res</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Map custom rows -&gt; {build_res h3_id: float} for one data field, using the</span>
+<span class="sd">    same two-stage binning as build_override_map but combining values by</span>
+<span class="sd">    `aggregation` (&#39;sum&#39; or &#39;mean&#39;). A coarser-than-build cell broadcasts to its</span>
+<span class="sd">    children (mean: same value each; sum: value split evenly, so totals hold);</span>
+<span class="sd">    finer cells aggregate to their parent.&quot;&quot;&quot;</span>
+    <span class="n">agg</span> <span class="o">=</span> <span class="n">_AGG</span><span class="p">[</span><span class="n">aggregation</span><span class="p">]</span>
+    <span class="n">native</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+        <span class="n">raw</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">value_col</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">raw</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">raw</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;latlon&quot;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">cell</span> <span class="o">=</span> <span class="n">h3</span><span class="o">.</span><span class="n">latlng_to_cell</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">lat_col</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">lon_col</span><span class="p">]),</span>
+                                         <span class="n">native_res</span> <span class="k">if</span> <span class="n">native_res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">build_res</span><span class="p">)</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+                <span class="k">continue</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># key == &quot;h3&quot;</span>
+            <span class="n">cell</span> <span class="o">=</span> <span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">h3_col</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">cell</span><span class="p">:</span>
+                <span class="k">continue</span>
+        <span class="n">native</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">cell</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">cid</span><span class="p">,</span> <span class="n">vals</span> <span class="ow">in</span> <span class="n">native</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">agg</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
+        <span class="n">targets</span> <span class="o">=</span> <span class="n">_remap_to_build</span><span class="p">(</span><span class="n">cid</span><span class="p">,</span> <span class="n">build_res</span><span class="p">)</span>
+        <span class="n">share</span> <span class="o">=</span> <span class="n">v</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">targets</span><span class="p">)</span> <span class="k">if</span> <span class="n">aggregation</span> <span class="o">==</span> <span class="s2">&quot;sum&quot;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">targets</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">v</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">share</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">agg</span><span class="p">(</span><span class="n">vs</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">vs</span> <span class="ow">in</span> <span class="n">out</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span></div>
+
+
+
+<span class="c1"># ── Interpolation: fill/spread cells from nearby measured cells ───────────────</span>
+<span class="c1"># Baked at build time (the importer stays read-only). All three methods treat</span>
+<span class="c1"># the area as a 2D top-down plane: distances are METRIC (equirectangular meters</span>
+<span class="c1"># between cell centres), never H3 grid steps -- hex-ring distance produced</span>
+<span class="c1"># hexagon-shaped reach and hexagonally-biased contours. Every method is</span>
+<span class="c1"># restricted to a domain (all / land / water) and a `radius_m` reach:</span>
+<span class="c1">#   idw      -- inverse-distance AVERAGE onto empty cells; sources kept. For</span>
+<span class="c1">#               INTENSIVE fields (temperature, density); totals NOT conserved.</span>
+<span class="c1">#   voronoi  -- Voronoi Distribution: spread each source&#39;s value across its</span>
+<span class="c1">#               metric-nearest region weighted by distance-to-region-edge,</span>
+<span class="c1">#               conserving the total. For EXTENSIVE fields (counts).</span>
+<span class="c1">#   diffusion-- 2D heat-map fill: the closed-form heat equation on the plane.</span>
+<span class="c1">#               Each empty cell gets the Gaussian-kernel-weighted average of the</span>
+<span class="c1">#               sources within radius (sigma = radius/2, so the kernel tapers</span>
+<span class="c1">#               smoothly to the reach edge). `anchor=True` holds measured cells</span>
+<span class="c1">#               exact and fills the gaps; `anchor=False` additionally rescales</span>
+<span class="c1">#               the field to conserve the measured total (melt).</span>
+<span class="n">INTERP_METHODS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;idw&quot;</span><span class="p">,</span> <span class="s2">&quot;voronoi&quot;</span><span class="p">,</span> <span class="s2">&quot;diffusion&quot;</span><span class="p">)</span>
+<span class="n">INTERP_LABELS</span>  <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;none&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;idw&quot;</span><span class="p">:</span> <span class="s2">&quot;IDW&quot;</span><span class="p">,</span> <span class="s2">&quot;voronoi&quot;</span><span class="p">:</span> <span class="s2">&quot;Voronoi Distribution&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;diffusion&quot;</span><span class="p">:</span> <span class="s2">&quot;Diffusion&quot;</span><span class="p">}</span>
+<span class="n">_INTERP_KEY</span>    <span class="o">=</span> <span class="p">{</span><span class="n">label</span><span class="p">:</span> <span class="n">key</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">INTERP_LABELS</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">DATA_DOMAINS</span>   <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="s2">&quot;land&quot;</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="interp_method_key">
+<a class="viewcode-back" href="../../api.html#apian_terrain.custombuild.interp_method_key">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">interp_method_key</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;GUI label (&#39;IDW&#39;, &#39;Voronoi Distribution&#39;) -&gt; engine key. An engine key</span>
+<span class="sd">    passes through unchanged; anything unrecognised -&gt; &#39;none&#39;.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">INTERP_METHODS</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">label</span>
+    <span class="k">return</span> <span class="n">_INTERP_KEY</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="s2">&quot;none&quot;</span><span class="p">)</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_is_water</span><span class="p">(</span><span class="n">cell</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A cells.csv row is water if it carries a positive water column or a</span>
+<span class="sd">    water_type classification; else land.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">wet</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;water_depth_m&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">wet</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="n">wet</span> <span class="ow">or</span> <span class="nb">bool</span><span class="p">((</span><span class="n">cell</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;water_type&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+
+
+<div class="viewcode-block" id="domain_ids">
+<a class="viewcode-back" href="../../api.html#apian_terrain.custombuild.domain_ids">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">domain_ids</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="n">domain</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The h3_id set eligible for a given interpolation domain.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">domain</span> <span class="o">==</span> <span class="s2">&quot;land&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;h3_id&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cells</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">_is_water</span><span class="p">(</span><span class="n">c</span><span class="p">)}</span>
+    <span class="k">if</span> <span class="n">domain</span> <span class="o">==</span> <span class="s2">&quot;water&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;h3_id&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cells</span> <span class="k">if</span> <span class="n">_is_water</span><span class="p">(</span><span class="n">c</span><span class="p">)}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;h3_id&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cells</span><span class="p">}</span>       <span class="c1"># &quot;all&quot;</span></div>
+
+
+
+<span class="n">_METRES_PER_DEGREE</span> <span class="o">=</span> <span class="mf">111_320.0</span>
+
+
+<div class="viewcode-block" id="metric_coords">
+<a class="viewcode-back" href="../../api.html#apian_terrain.custombuild.metric_coords">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">metric_coords</span><span class="p">(</span><span class="n">cells</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;cells.csv rows -&gt; {h3_id: (x, y)} in local metric coordinates</span>
+<span class="sd">    (equirectangular about the centroid, x east / y north, meters). All</span>
+<span class="sd">    spatial methods measure distance in this plane -- the data is treated</span>
+<span class="sd">    as a 2D top-down view, never as hex-grid topology.&quot;&quot;&quot;</span>
+    <span class="n">lats</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;lat&quot;</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cells</span><span class="p">]</span>
+    <span class="n">lons</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;lon&quot;</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cells</span><span class="p">]</span>
+    <span class="n">lat0</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">lats</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">lats</span><span class="p">)</span>
+    <span class="n">lon0</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">lons</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">lons</span><span class="p">)</span>
+    <span class="n">cos0</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat0</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;h3_id&quot;</span><span class="p">]:</span> <span class="p">((</span><span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;lon&quot;</span><span class="p">])</span> <span class="o">-</span> <span class="n">lon0</span><span class="p">)</span> <span class="o">*</span> <span class="n">cos0</span> <span class="o">*</span> <span class="n">_METRES_PER_DEGREE</span><span class="p">,</span>
+                         <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;lat&quot;</span><span class="p">])</span> <span class="o">-</span> <span class="n">lat0</span><span class="p">)</span> <span class="o">*</span> <span class="n">_METRES_PER_DEGREE</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cells</span><span class="p">}</span></div>
+
+
+
+<div class="viewcode-block" id="grid_spacing_m">
+<a class="viewcode-back" href="../../api.html#apian_terrain.custombuild.grid_spacing_m">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">grid_spacing_m</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">sample</span><span class="o">=</span><span class="mi">500</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mean nearest-neighbour spacing of the grid in meters (legacy</span>
+<span class="sd">    max_ring -&gt; radius conversion; also a sanity scale for UIs).&quot;&quot;&quot;</span>
+    <span class="n">ids</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">sample</span><span class="p">:</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="n">ids</span><span class="p">[::</span> <span class="nb">len</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span> <span class="o">//</span> <span class="n">sample</span><span class="p">]</span>
+    <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">coords</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ids</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">1.0</span>
+    <span class="n">best</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pts</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pts</span><span class="p">)):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">pts</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">pts</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">pts</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pts</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+        <span class="n">best</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">best</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_pairs_within</span><span class="p">(</span><span class="n">tpts</span><span class="p">,</span> <span class="n">spts</span><span class="p">,</span> <span class="n">radius_m</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;All (target, source) index pairs whose metric distance is within</span>
+<span class="sd">    radius_m. tpts (n,2), spts (m,2) float64. Returns (ti, si, dist) arrays.</span>
+<span class="sd">    Pure-numpy uniform bucket grid (bucket size = radius): scipy is not a</span>
+<span class="sd">    pipeline dependency, and per-(slice, column) pair queries at region scale</span>
+<span class="sd">    need more than a brute-force O(n*m) matrix.&quot;&quot;&quot;</span>
+    <span class="n">ti</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+    <span class="n">si</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tpts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">spts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ti</span><span class="p">,</span> <span class="n">si</span><span class="p">,</span> <span class="n">dist</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">radius_m</span><span class="p">),</span> <span class="mf">1e-6</span><span class="p">)</span>
+    <span class="n">mins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">tpts</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">spts</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">tb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">((</span><span class="n">tpts</span> <span class="o">-</span> <span class="n">mins</span><span class="p">)</span> <span class="o">/</span> <span class="n">r</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+    <span class="n">sb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">((</span><span class="n">spts</span> <span class="o">-</span> <span class="n">mins</span><span class="p">)</span> <span class="o">/</span> <span class="n">r</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">spts</span><span class="p">)):</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">setdefault</span><span class="p">((</span><span class="nb">int</span><span class="p">(</span><span class="n">sb</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">sb</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">])),</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tpts</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+    <span class="n">flat_si</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tpts</span><span class="p">)):</span>
+        <span class="n">bx</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tb</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">tb</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">dx</span> <span class="ow">in</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">dy</span> <span class="ow">in</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">hit</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="n">bx</span> <span class="o">+</span> <span class="n">dx</span><span class="p">,</span> <span class="n">by</span> <span class="o">+</span> <span class="n">dy</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">hit</span><span class="p">:</span>
+                    <span class="n">counts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">hit</span><span class="p">)</span>
+                    <span class="n">flat_si</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">hit</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">flat_si</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ti</span><span class="p">,</span> <span class="n">si</span><span class="p">,</span> <span class="n">dist</span>
+    <span class="n">ti</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tpts</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span> <span class="n">counts</span><span class="p">)</span>
+    <span class="n">si</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">flat_si</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">tpts</span><span class="p">[</span><span class="n">ti</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">spts</span><span class="p">[</span><span class="n">si</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">tpts</span><span class="p">[</span><span class="n">ti</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">spts</span><span class="p">[</span><span class="n">si</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">keep</span> <span class="o">=</span> <span class="n">dist</span> <span class="o">&lt;=</span> <span class="n">r</span>
+    <span class="k">return</span> <span class="n">ti</span><span class="p">[</span><span class="n">keep</span><span class="p">],</span> <span class="n">si</span><span class="p">[</span><span class="n">keep</span><span class="p">],</span> <span class="n">dist</span><span class="p">[</span><span class="n">keep</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_scatter_sources</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="n">coords</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(ordered ids, (m,2) points, values array) for a source map.&quot;&quot;&quot;</span>
+    <span class="n">ids</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
+    <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">coords</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ids</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">sources</span><span class="p">[</span><span class="n">c</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ids</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ids</span><span class="p">,</span> <span class="n">pts</span><span class="p">,</span> <span class="n">vals</span>
+
+
+<div class="viewcode-block" id="interpolate_field">
+<a class="viewcode-back" href="../../api.html#apian_terrain.custombuild.interpolate_field">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">interpolate_field</span><span class="p">(</span><span class="n">cell_map</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">radius_m</span><span class="p">,</span> <span class="n">power</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
+                      <span class="n">method</span><span class="o">=</span><span class="s2">&quot;idw&quot;</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fill/spread in-domain cells from the measured source cells on the 2D</span>
+<span class="sd">    metric plane, restricted to `domain` (an h3_id set) and `radius_m` of a</span>
+<span class="sd">    source. `coords` maps h3_id -&gt; (x, y) meters (metric_coords).</span>
+
+<span class="sd">    method=&#39;idw&#39;      -- inverse-distance^power-weighted AVERAGE of the sources</span>
+<span class="sd">                         within radius onto each empty cell; sources keep their</span>
+<span class="sd">                         value. For INTENSIVE fields; the grand total is NOT</span>
+<span class="sd">                         conserved.</span>
+<span class="sd">    method=&#39;voronoi&#39;  -- Voronoi Distribution: each source&#39;s value is spread</span>
+<span class="sd">                         across the in-domain cells metric-nearest it within</span>
+<span class="sd">                         radius, weighted by each cell&#39;s distance to the region</span>
+<span class="sd">                         boundary (half the gap to the nearest competing</span>
+<span class="sd">                         source), normalised so the region sum equals the</span>
+<span class="sd">                         source value (grand total conserved). The source cell</span>
+<span class="sd">                         is redistributed too -- it keeps only its share.</span>
+<span class="sd">    method=&#39;diffusion&#39;-- 2D heat-map fill: Gaussian-kernel-weighted average,</span>
+<span class="sd">                         kernel sigma = radius_m / 2 (smooth taper to the reach</span>
+<span class="sd">                         edge). anchor=True holds measured cells exact (gaps</span>
+<span class="sd">                         add mass); anchor=False rescales the whole field to</span>
+<span class="sd">                         the measured total (melt, sources change).</span>
+
+<span class="sd">    Returns (filled_map, interp_ids): filled_map is cell_map with the computed</span>
+<span class="sd">    cells added/overwritten; interp_ids is the set of previously-empty cells</span>
+<span class="sd">    that received a value (the importer&#39;s `&lt;field&gt;__i` mask).&quot;&quot;&quot;</span>
+    <span class="n">domain</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span>
+    <span class="n">sources</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cell_map</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">domain</span><span class="p">}</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">sources</span> <span class="ow">or</span> <span class="n">radius_m</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">cell_map</span><span class="p">),</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;idw&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_idw_fill</span><span class="p">(</span><span class="n">cell_map</span><span class="p">,</span> <span class="n">sources</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">radius_m</span><span class="p">,</span> <span class="n">power</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;voronoi&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_voronoi_distribute</span><span class="p">(</span><span class="n">cell_map</span><span class="p">,</span> <span class="n">sources</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">radius_m</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;diffusion&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_heat_fill</span><span class="p">(</span><span class="n">cell_map</span><span class="p">,</span> <span class="n">sources</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">radius_m</span><span class="p">,</span>
+                          <span class="n">anchor</span><span class="o">=</span><span class="n">anchor</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;unknown interpolation method: </span><span class="si">{</span><span class="n">method</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_idw_fill</span><span class="p">(</span><span class="n">cell_map</span><span class="p">,</span> <span class="n">sources</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">radius_m</span><span class="p">,</span> <span class="n">power</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Inverse-distance-weighted average of the sources within radius onto each</span>
+<span class="sd">    empty in-domain cell. Metric distances; sources are left untouched.&quot;&quot;&quot;</span>
+    <span class="n">targets</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">domain</span> <span class="o">-</span> <span class="n">sources</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">targets</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">cell_map</span><span class="p">),</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">tpts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">coords</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">spts</span><span class="p">,</span> <span class="n">svals</span> <span class="o">=</span> <span class="n">_scatter_sources</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="n">coords</span><span class="p">)</span>
+    <span class="n">ti</span><span class="p">,</span> <span class="n">si</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">_pairs_within</span><span class="p">(</span><span class="n">tpts</span><span class="p">,</span> <span class="n">spts</span><span class="p">,</span> <span class="n">radius_m</span><span class="p">)</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">d</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="nb">float</span><span class="p">(</span><span class="n">power</span><span class="p">))</span>               <span class="c1"># d &gt; 0: targets exclude sources</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">targets</span><span class="p">))</span>
+    <span class="n">den</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">targets</span><span class="p">))</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">ti</span><span class="p">,</span> <span class="n">w</span> <span class="o">*</span> <span class="n">svals</span><span class="p">[</span><span class="n">si</span><span class="p">])</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="n">den</span><span class="p">,</span> <span class="n">ti</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+    <span class="n">filled</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">cell_map</span><span class="p">)</span>
+    <span class="n">interp_ids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">cell</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">targets</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">den</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="n">filled</span><span class="p">[</span><span class="n">cell</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">/</span> <span class="n">den</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">interp_ids</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">filled</span><span class="p">,</span> <span class="n">interp_ids</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_heat_fill</span><span class="p">(</span><span class="n">cell_map</span><span class="p">,</span> <span class="n">sources</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">radius_m</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">anchor</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;2D heat-map fill: closed-form heat equation on the metric plane. Each</span>
+<span class="sd">    empty in-domain cell gets the Gaussian-kernel-weighted average of sources</span>
+<span class="sd">    within radius (sigma = radius/2). anchor=True keeps sources exact;</span>
+<span class="sd">    anchor=False rescales the whole field to conserve the measured total.&quot;&quot;&quot;</span>
+    <span class="n">targets</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">domain</span> <span class="o">-</span> <span class="n">sources</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">targets</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">cell_map</span><span class="p">),</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">tpts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">coords</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">spts</span><span class="p">,</span> <span class="n">svals</span> <span class="o">=</span> <span class="n">_scatter_sources</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="n">coords</span><span class="p">)</span>
+    <span class="n">ti</span><span class="p">,</span> <span class="n">si</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">_pairs_within</span><span class="p">(</span><span class="n">tpts</span><span class="p">,</span> <span class="n">spts</span><span class="p">,</span> <span class="n">radius_m</span><span class="p">)</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">radius_m</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">d</span> <span class="o">*</span> <span class="n">d</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">))</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">targets</span><span class="p">))</span>
+    <span class="n">den</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">targets</span><span class="p">))</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">ti</span><span class="p">,</span> <span class="n">k</span> <span class="o">*</span> <span class="n">svals</span><span class="p">[</span><span class="n">si</span><span class="p">])</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="n">den</span><span class="p">,</span> <span class="n">ti</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="n">filled</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">cell_map</span><span class="p">)</span>
+    <span class="n">interp_ids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">cell</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">targets</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">den</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="n">filled</span><span class="p">[</span><span class="n">cell</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">/</span> <span class="n">den</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">interp_ids</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">anchor</span><span class="p">:</span>
+        <span class="c1"># Melt: rescale (sources included) so the domain total matches the</span>
+        <span class="c1"># measured total -- peaks flatten, mass is conserved.</span>
+        <span class="n">total0</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">sources</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">v</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">filled</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">domain</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">s</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="n">scale</span> <span class="o">=</span> <span class="n">total0</span> <span class="o">/</span> <span class="n">s</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">filled</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">domain</span><span class="p">:</span>
+                    <span class="n">filled</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">filled</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">*</span> <span class="n">scale</span>
+    <span class="k">return</span> <span class="n">filled</span><span class="p">,</span> <span class="n">interp_ids</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_voronoi_distribute</span><span class="p">(</span><span class="n">cell_map</span><span class="p">,</span> <span class="n">sources</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">radius_m</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Radial Voronoi Distribution: each in-domain cell within radius of a</span>
+<span class="sd">    source belongs to its metric-NEAREST source; the source&#39;s value is spread</span>
+<span class="sd">    across its region (source cell included) weighted by each cell&#39;s distance</span>
+<span class="sd">    to the region boundary -- half the gap to the nearest competing source --</span>
+<span class="sd">    normalised so the region sum equals the source value (total conserved).&quot;&quot;&quot;</span>
+    <span class="n">s_ids</span><span class="p">,</span> <span class="n">spts</span><span class="p">,</span> <span class="n">svals</span> <span class="o">=</span> <span class="n">_scatter_sources</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="n">coords</span><span class="p">)</span>
+    <span class="n">members</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span>
+    <span class="n">mpts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">coords</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">members</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">ti</span><span class="p">,</span> <span class="n">si</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">_pairs_within</span><span class="p">(</span><span class="n">mpts</span><span class="p">,</span> <span class="n">spts</span><span class="p">,</span> <span class="n">radius_m</span><span class="p">)</span>
+
+    <span class="c1"># Per member: nearest source, and the margin to the second-nearest (half</span>
+    <span class="c1"># the gap to the region boundary; lone-source cells taper to the reach).</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">lexsort</span><span class="p">((</span><span class="n">d</span><span class="p">,</span> <span class="n">ti</span><span class="p">))</span>
+    <span class="n">ti_s</span><span class="p">,</span> <span class="n">si_s</span><span class="p">,</span> <span class="n">d_s</span> <span class="o">=</span> <span class="n">ti</span><span class="p">[</span><span class="n">order</span><span class="p">],</span> <span class="n">si</span><span class="p">[</span><span class="n">order</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>
+    <span class="n">owner</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">margin</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">pos</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">ti_s</span><span class="p">):</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">pos</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">end</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">ti_s</span><span class="p">)</span> <span class="ow">and</span> <span class="n">ti_s</span><span class="p">[</span><span class="n">end</span><span class="p">]</span> <span class="o">==</span> <span class="n">ti_s</span><span class="p">[</span><span class="n">pos</span><span class="p">]:</span>
+            <span class="n">end</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">cell</span> <span class="o">=</span> <span class="n">members</span><span class="p">[</span><span class="n">ti_s</span><span class="p">[</span><span class="n">pos</span><span class="p">]]</span>
+        <span class="n">owner</span><span class="p">[</span><span class="n">cell</span><span class="p">]</span> <span class="o">=</span> <span class="n">si_s</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">end</span> <span class="o">-</span> <span class="n">pos</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">margin</span><span class="p">[</span><span class="n">cell</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">d_s</span><span class="p">[</span><span class="n">pos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">d_s</span><span class="p">[</span><span class="n">pos</span><span class="p">])</span> <span class="o">/</span> <span class="mf">2.0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">margin</span><span class="p">[</span><span class="n">cell</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">radius_m</span> <span class="o">-</span> <span class="n">d_s</span><span class="p">[</span><span class="n">pos</span><span class="p">])</span> <span class="o">/</span> <span class="mf">2.0</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">end</span>
+
+    <span class="n">regions</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">members</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">owner</span><span class="p">:</span>
+            <span class="n">regions</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">owner</span><span class="p">[</span><span class="n">cell</span><span class="p">],</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span>
+    <span class="n">filled</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">cell_map</span><span class="p">)</span>
+    <span class="n">interp_ids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">oi</span><span class="p">,</span> <span class="n">region</span> <span class="ow">in</span> <span class="n">regions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">max</span><span class="p">(</span><span class="n">margin</span><span class="p">[</span><span class="n">c</span><span class="p">],</span> <span class="mf">1e-9</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">region</span><span class="p">])</span>
+        <span class="n">total_w</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">weights</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+        <span class="n">budget</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">svals</span><span class="p">[</span><span class="n">oi</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">cell</span><span class="p">,</span> <span class="n">wgt</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
+            <span class="n">filled</span><span class="p">[</span><span class="n">cell</span><span class="p">]</span> <span class="o">=</span> <span class="n">budget</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">wgt</span><span class="p">)</span> <span class="o">/</span> <span class="n">total_w</span>
+            <span class="k">if</span> <span class="n">cell</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">:</span>
+                <span class="n">interp_ids</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">filled</span><span class="p">,</span> <span class="n">interp_ids</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_data_field_meta</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">cell_map</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">aggregation</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                     <span class="n">interp</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">radius_km</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">interp_count</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manifest metadata for one built field (min/max let the GN normalise;</span>
+<span class="sd">    interp settings are recorded so a reloaded manifest restores the controls).&quot;&quot;&quot;</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">cell_map</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span>         <span class="n">name</span><span class="p">,</span>
+        <span class="s2">&quot;key&quot;</span><span class="p">:</span>          <span class="n">key</span><span class="p">,</span>
+        <span class="s2">&quot;aggregation&quot;</span><span class="p">:</span>  <span class="n">aggregation</span><span class="p">,</span>
+        <span class="s2">&quot;units&quot;</span><span class="p">:</span>        <span class="n">units</span><span class="p">,</span>
+        <span class="s2">&quot;min&quot;</span><span class="p">:</span>          <span class="nb">round</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">vals</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span> <span class="k">if</span> <span class="n">vals</span> <span class="k">else</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="s2">&quot;max&quot;</span><span class="p">:</span>          <span class="nb">round</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">vals</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span> <span class="k">if</span> <span class="n">vals</span> <span class="k">else</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="s2">&quot;count&quot;</span><span class="p">:</span>        <span class="nb">len</span><span class="p">(</span><span class="n">vals</span><span class="p">),</span>
+        <span class="s2">&quot;interp&quot;</span><span class="p">:</span>       <span class="n">interp</span><span class="p">,</span>
+        <span class="s2">&quot;radius_km&quot;</span><span class="p">:</span>    <span class="n">radius_km</span><span class="p">,</span>
+        <span class="s2">&quot;domain&quot;</span><span class="p">:</span>       <span class="n">domain</span><span class="p">,</span>
+        <span class="s2">&quot;interp_count&quot;</span><span class="p">:</span> <span class="n">interp_count</span><span class="p">,</span>
+    <span class="p">}</span>
+
+
+<div class="viewcode-block" id="write_celldata">
+<a class="viewcode-back" href="../../api.html#apian_terrain.custombuild.write_celldata">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">write_celldata</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">area_id</span><span class="p">,</span> <span class="n">field_maps</span><span class="p">,</span> <span class="n">interp_maps</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">measured_maps</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Write &lt;area&gt;_celldata.csv: h3_id + one value column per field. Sparse -- a</span>
+<span class="sd">    cell absent from a field&#39;s map is left blank (the importer reads blank as</span>
+<span class="sd">    no-data). A field with interpolated cells also gets a `&lt;field&gt;__i` flag</span>
+<span class="sd">    column (&quot;1&quot; for interpolated cells) so the importer can tell filled cells from</span>
+<span class="sd">    measured ones. A field whose measured values were altered by a conserving method</span>
+<span class="sd">    (Voronoi / diffusion-melt) also gets a `&lt;field&gt;__m` column holding the ORIGINAL</span>
+<span class="sd">    measured value, so re-interpolation can reset to truth (the importer ignores it).</span>
+<span class="sd">    Returns the csv filename.&quot;&quot;&quot;</span>
+    <span class="n">interp_maps</span> <span class="o">=</span> <span class="n">interp_maps</span> <span class="ow">or</span> <span class="p">{}</span>
+    <span class="n">measured_maps</span> <span class="o">=</span> <span class="n">measured_maps</span> <span class="ow">or</span> <span class="p">{}</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">field_maps</span><span class="p">)</span>
+    <span class="n">flag</span>  <span class="o">=</span> <span class="p">{</span><span class="n">fn</span> <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">fields</span> <span class="k">if</span> <span class="n">interp_maps</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">fn</span><span class="p">)}</span>       <span class="c1"># fields with interp cells</span>
+    <span class="n">meas</span>  <span class="o">=</span> <span class="p">{</span><span class="n">fn</span> <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">fields</span> <span class="k">if</span> <span class="n">measured_maps</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">fn</span><span class="p">)}</span>     <span class="c1"># fields with a measured snapshot</span>
+    <span class="n">ids</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">()</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">field_maps</span><span class="o">.</span><span class="n">values</span><span class="p">())))</span> <span class="k">if</span> <span class="n">field_maps</span> <span class="k">else</span> <span class="p">[]</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;h3_id&quot;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+        <span class="n">header</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">flag</span><span class="p">:</span>
+            <span class="n">header</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fn</span> <span class="o">+</span> <span class="s2">&quot;__i&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">meas</span><span class="p">:</span>
+            <span class="n">header</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fn</span> <span class="o">+</span> <span class="s2">&quot;__m&quot;</span><span class="p">)</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">area_id</span><span class="si">}</span><span class="s2">_celldata.csv&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">w</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">header</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">cid</span> <span class="ow">in</span> <span class="n">ids</span><span class="p">:</span>
+            <span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="n">cid</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+                <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">field_maps</span><span class="p">[</span><span class="n">fn</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cid</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">flag</span><span class="p">:</span>
+                    <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;1&quot;</span> <span class="k">if</span> <span class="n">cid</span> <span class="ow">in</span> <span class="n">interp_maps</span><span class="p">[</span><span class="n">fn</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">meas</span><span class="p">:</span>
+                    <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measured_maps</span><span class="p">[</span><span class="n">fn</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cid</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
+            <span class="n">w</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">path</span><span class="o">.</span><span class="n">name</span></div>
+
+
+
+<div class="viewcode-block" id="apply_data_fields">
+<a class="viewcode-back" href="../../api.html#apian_terrain.custombuild.apply_data_fields">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">apply_data_fields</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">area_id</span><span class="p">,</span> <span class="n">specs</span><span class="p">,</span> <span class="n">build_res</span><span class="p">,</span> <span class="n">native_res</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cells</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bin each data-field spec into build-res cells, optionally interpolate the</span>
+<span class="sd">    gaps, write &lt;area&gt;_celldata.csv, and return (celldata_filename, [field_meta,</span>
+<span class="sd">    ...]) for the manifest. `specs` items:</span>
+<span class="sd">    {name, path, value_col, key, aggregation, units?, lat_col?, lon_col?, h3_col?,</span>
+<span class="sd">     interp?, radius_km?, domain?}.</span>
+<span class="sd">    The optional *_col names let a CSV use its own headers (default lat/lon/h3_id).</span>
+<span class="sd">    Interpolation (`interp` in INTERP_METHODS, `radius_km`&gt;0, `domain` in</span>
+<span class="sd">    DATA_DOMAINS) needs `cells` -- the full cells.csv rows -- for the grid, the</span>
+<span class="sd">    land/water split, and the metric coordinate plane. A legacy `max_ring` spec</span>
+<span class="sd">    key (H3 grid steps) is accepted and converted approximately via the grid&#39;s</span>
+<span class="sd">    mean cell spacing. Field names are slugged so each maps to a unique</span>
+<span class="sd">    data_&lt;slug&gt; attribute.&quot;&quot;&quot;</span>
+    <span class="n">field_maps</span><span class="p">,</span> <span class="n">interp_maps</span><span class="p">,</span> <span class="n">metas</span><span class="p">,</span> <span class="n">seen</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{},</span> <span class="p">[],</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">coords</span> <span class="o">=</span> <span class="n">metric_coords</span><span class="p">(</span><span class="n">cells</span><span class="p">)</span> <span class="k">if</span> <span class="n">cells</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="n">spacing</span> <span class="o">=</span> <span class="n">grid_spacing_m</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span> <span class="k">if</span> <span class="n">coords</span> <span class="k">else</span> <span class="mf">1.0</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">specs</span><span class="p">:</span>
+        <span class="n">slug</span> <span class="o">=</span> <span class="n">slug_field</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+        <span class="k">while</span> <span class="n">slug</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>                       <span class="c1"># keep every field distinct</span>
+            <span class="n">slug</span> <span class="o">+=</span> <span class="s2">&quot;_&quot;</span>
+        <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">slug</span><span class="p">)</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="n">read_custom_rows</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">])</span>
+        <span class="n">cell_map</span> <span class="o">=</span> <span class="n">build_data_field</span><span class="p">(</span>
+            <span class="n">rows</span><span class="p">,</span> <span class="n">value_col</span><span class="o">=</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;value_col&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">s</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]),</span> <span class="n">key</span><span class="o">=</span><span class="n">s</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">],</span>
+            <span class="n">aggregation</span><span class="o">=</span><span class="n">s</span><span class="p">[</span><span class="s2">&quot;aggregation&quot;</span><span class="p">],</span> <span class="n">build_res</span><span class="o">=</span><span class="n">build_res</span><span class="p">,</span> <span class="n">native_res</span><span class="o">=</span><span class="n">native_res</span><span class="p">,</span>
+            <span class="n">lat_col</span><span class="o">=</span><span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;lat_col&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;lat&quot;</span><span class="p">,</span> <span class="n">lon_col</span><span class="o">=</span><span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;lon_col&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;lon&quot;</span><span class="p">,</span>
+            <span class="n">h3_col</span><span class="o">=</span><span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;h3_col&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;h3_id&quot;</span><span class="p">)</span>
+
+        <span class="n">method</span>    <span class="o">=</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;interp&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;none&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">domain</span>    <span class="o">=</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;domain&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;all&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">radius_km</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;radius_km&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="mf">0.0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">radius_km</span> <span class="ow">and</span> <span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;max_ring&quot;</span><span class="p">):</span>
+            <span class="n">radius_km</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="s2">&quot;max_ring&quot;</span><span class="p">])</span> <span class="o">*</span> <span class="n">spacing</span> <span class="o">/</span> <span class="mf">1000.0</span>   <span class="c1"># legacy ring spec</span>
+        <span class="n">interp_ids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">method</span> <span class="o">!=</span> <span class="s2">&quot;none&quot;</span> <span class="ow">and</span> <span class="n">radius_km</span> <span class="o">&gt;</span> <span class="mf">0.0</span> <span class="ow">and</span> <span class="n">cells</span><span class="p">:</span>
+            <span class="n">cell_map</span><span class="p">,</span> <span class="n">interp_ids</span> <span class="o">=</span> <span class="n">interpolate_field</span><span class="p">(</span>
+                <span class="n">cell_map</span><span class="p">,</span> <span class="n">domain_ids</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="n">domain</span><span class="p">),</span> <span class="n">coords</span><span class="o">=</span><span class="n">coords</span><span class="p">,</span>
+                <span class="n">radius_m</span><span class="o">=</span><span class="n">radius_km</span> <span class="o">*</span> <span class="mf">1000.0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">)</span>
+
+        <span class="n">field_maps</span><span class="p">[</span><span class="n">slug</span><span class="p">]</span>  <span class="o">=</span> <span class="n">cell_map</span>
+        <span class="n">interp_maps</span><span class="p">[</span><span class="n">slug</span><span class="p">]</span> <span class="o">=</span> <span class="n">interp_ids</span>
+        <span class="n">metas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_data_field_meta</span><span class="p">(</span>
+            <span class="n">slug</span><span class="p">,</span> <span class="n">cell_map</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">s</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">],</span> <span class="n">aggregation</span><span class="o">=</span><span class="n">s</span><span class="p">[</span><span class="s2">&quot;aggregation&quot;</span><span class="p">],</span>
+            <span class="n">units</span><span class="o">=</span><span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;units&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span> <span class="n">interp</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">radius_km</span><span class="o">=</span><span class="n">radius_km</span><span class="p">,</span>
+            <span class="n">domain</span><span class="o">=</span><span class="n">domain</span><span class="p">,</span> <span class="n">interp_count</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">interp_ids</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">write_celldata</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">area_id</span><span class="p">,</span> <span class="n">field_maps</span><span class="p">,</span> <span class="n">interp_maps</span><span class="p">),</span> <span class="n">metas</span></div>
+
+
+
+<div class="viewcode-block" id="read_celldata">
+<a class="viewcode-back" href="../../api.html#apian_terrain.custombuild.read_celldata">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_celldata</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Inverse of write_celldata: read &lt;area&gt;_celldata.csv back into</span>
+<span class="sd">    ({field: {h3_id: float}}, {field: {interpolated h3_id}},</span>
+<span class="sd">     {field: {h3_id: original measured value}}). Value columns are every header</span>
+<span class="sd">    except h3_id and the `&lt;field&gt;__i` (interp flag) / `&lt;field&gt;__m` (measured</span>
+<span class="sd">    snapshot) companion columns.&quot;&quot;&quot;</span>
+    <span class="n">field_maps</span><span class="p">,</span> <span class="n">interp_maps</span><span class="p">,</span> <span class="n">measured_maps</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{},</span> <span class="p">{}</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">fieldnames</span> <span class="ow">or</span> <span class="p">[])</span>
+                  <span class="k">if</span> <span class="n">c</span> <span class="o">!=</span> <span class="s2">&quot;h3_id&quot;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">c</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;__i&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">c</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;__m&quot;</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+            <span class="n">field_maps</span><span class="p">[</span><span class="n">fn</span><span class="p">],</span> <span class="n">interp_maps</span><span class="p">[</span><span class="n">fn</span><span class="p">],</span> <span class="n">measured_maps</span><span class="p">[</span><span class="n">fn</span><span class="p">]</span> <span class="o">=</span> <span class="p">{},</span> <span class="nb">set</span><span class="p">(),</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">r</span><span class="p">:</span>
+            <span class="n">hid</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;h3_id&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">hid</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+                <span class="n">raw</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">raw</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">field_maps</span><span class="p">[</span><span class="n">fn</span><span class="p">][</span><span class="n">hid</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">fn</span> <span class="o">+</span> <span class="s2">&quot;__i&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>
+                            <span class="n">interp_maps</span><span class="p">[</span><span class="n">fn</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">hid</span><span class="p">)</span>
+                    <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+                        <span class="k">pass</span>
+                <span class="n">msnap</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">fn</span> <span class="o">+</span> <span class="s2">&quot;__m&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">msnap</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">measured_maps</span><span class="p">[</span><span class="n">fn</span><span class="p">][</span><span class="n">hid</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">msnap</span><span class="p">)</span>
+                    <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+                        <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">field_maps</span><span class="p">,</span> <span class="n">interp_maps</span><span class="p">,</span> <span class="p">{</span><span class="n">fn</span><span class="p">:</span> <span class="n">m</span> <span class="k">for</span> <span class="n">fn</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">measured_maps</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">m</span><span class="p">}</span></div>
+
+
+
+<div class="viewcode-block" id="reinterpolate">
+<a class="viewcode-back" href="../../api.html#apian_terrain.custombuild.reinterpolate">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">reinterpolate</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">area_id</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">metas</span><span class="p">,</span> <span class="n">cells</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+                  <span class="n">method</span><span class="o">=</span><span class="s2">&quot;idw&quot;</span><span class="p">,</span> <span class="n">radius_km</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(Re)interpolate one already-written field in &lt;area&gt;_celldata.csv in place.</span>
+<span class="sd">    Previously interpolated cells are dropped first (so measured cells are the only</span>
+<span class="sd">    sources and re-runs are idempotent), then in-domain gaps are filled by `method`</span>
+<span class="sd">    on the 2D metric plane (idw / voronoi / diffusion; `anchor` only affects</span>
+<span class="sd">    diffusion -- see interpolate_field). `method=&#39;none&#39;` (or radius_km&lt;=0) just</span>
+<span class="sd">    clears any existing fill. Other fields are preserved. `metas` (the manifest</span>
+<span class="sd">    field-meta list) is updated in place for this field. Returns (celldata_filename,</span>
+<span class="sd">    interp_count). Raises KeyError if the field is unknown.&quot;&quot;&quot;</span>
+    <span class="n">field_maps</span><span class="p">,</span> <span class="n">interp_maps</span><span class="p">,</span> <span class="n">measured_maps</span> <span class="o">=</span> <span class="n">read_celldata</span><span class="p">(</span>
+        <span class="n">Path</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">area_id</span><span class="si">}</span><span class="s2">_celldata.csv&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">field</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">field_maps</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;field </span><span class="si">{</span><span class="n">field</span><span class="si">!r}</span><span class="s2"> not in celldata (have </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">field_maps</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="c1"># Reset to the ORIGINAL measured cells: the `__m` snapshot if a prior conserving</span>
+    <span class="c1"># run altered the sources, else the non-interpolated cells (sources untouched).</span>
+    <span class="n">measured</span> <span class="o">=</span> <span class="n">measured_maps</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">field</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{</span>
+        <span class="n">c</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">field_maps</span><span class="p">[</span><span class="n">field</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">interp_maps</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="nb">set</span><span class="p">())}</span>
+    <span class="n">measured</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">measured</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;none&quot;</span> <span class="ow">or</span> <span class="n">radius_km</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">filled</span><span class="p">,</span> <span class="n">interp_ids</span> <span class="o">=</span> <span class="n">measured</span><span class="p">,</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">filled</span><span class="p">,</span> <span class="n">interp_ids</span> <span class="o">=</span> <span class="n">interpolate_field</span><span class="p">(</span>
+            <span class="n">measured</span><span class="p">,</span> <span class="n">domain_ids</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="n">domain</span><span class="p">),</span> <span class="n">coords</span><span class="o">=</span><span class="n">metric_coords</span><span class="p">(</span><span class="n">cells</span><span class="p">),</span>
+            <span class="n">radius_m</span><span class="o">=</span><span class="n">radius_km</span> <span class="o">*</span> <span class="mf">1000.0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="n">anchor</span><span class="p">)</span>
+    <span class="n">field_maps</span><span class="p">[</span><span class="n">field</span><span class="p">],</span> <span class="n">interp_maps</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="o">=</span> <span class="n">filled</span><span class="p">,</span> <span class="n">interp_ids</span>
+    <span class="c1"># Snapshot the measured baseline only when this method rewrites source values</span>
+    <span class="c1"># (so display != measured); otherwise the plain column already holds truth.</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;voronoi&quot;</span> <span class="ow">or</span> <span class="p">(</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;diffusion&quot;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">anchor</span><span class="p">):</span>
+        <span class="n">measured_maps</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="o">=</span> <span class="n">measured</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">measured_maps</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">fname</span> <span class="o">=</span> <span class="n">write_celldata</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">area_id</span><span class="p">,</span> <span class="n">field_maps</span><span class="p">,</span> <span class="n">interp_maps</span><span class="p">,</span> <span class="n">measured_maps</span><span class="p">)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">metas</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">field</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">m</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">vals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">filled</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">vals</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span> <span class="k">if</span> <span class="n">vals</span> <span class="k">else</span> <span class="mf">0.0</span><span class="p">,</span>
+                 <span class="nb">max</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">vals</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span> <span class="k">if</span> <span class="n">vals</span> <span class="k">else</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">vals</span><span class="p">),</span>
+                 <span class="n">interp</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">radius_km</span><span class="o">=</span><span class="n">radius_km</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">domain</span><span class="p">,</span>
+                 <span class="n">interp_count</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">interp_ids</span><span class="p">),</span> <span class="n">anchor</span><span class="o">=</span><span class="nb">bool</span><span class="p">(</span><span class="n">anchor</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">fname</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">interp_ids</span><span class="p">)</span></div>
+
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, Apian
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=46bd48cc"></script>
+    </body>
+</html>

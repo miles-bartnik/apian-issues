@@ -1,0 +1,695 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Data Layers" href="layers.html"><link rel="prev" title="The unified dataset format" href="data_format.html">
+        <link rel="prefetch" href="_static/apian_terrain_logo_light.png" as="image">
+        <link rel="prefetch" href="_static/apian_terrain_logo.png" as="image">
+
+    <link rel="shortcut icon" href="_static/apian_terrain.ico"><!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
+        <title>Design decisions - Apian 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=5d073521" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  --color-brand-primary: #16181d;
+  --color-brand-content: #16181d;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #e9e9ec;
+  --color-brand-content: #c9ccd2;
+  --color-background-primary: #0b0b0c;
+  --color-background-secondary: #101012;
+  --color-background-hover: #16161a;
+  --color-api-background: #101012;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #e9e9ec;
+  --color-brand-content: #c9ccd2;
+  --color-background-primary: #0b0b0c;
+  --color-background-secondary: #101012;
+  --color-background-hover: #16161a;
+  --color-api-background: #101012;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Apian 1.0.0</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="_static/apian_terrain_logo_light.png" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="_static/apian_terrain_logo.png" alt="Dark Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Apian 1.0.0</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Values</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="values.html">Values</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Apian</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="companion_app.html">Companion app (desktop GUI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blender_addon.html">Blender add-on</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_data.html">Custom data</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How it works</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="pipeline.html">How the pipeline works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_format.html">The unified dataset format</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Design decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="layers.html">Data Layers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="licenses.html">Data licensing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API reference</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/design_decisions.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="design-decisions">
+<h1>Design decisions<a class="headerlink" href="#design-decisions" title="Link to this heading">¶</a></h1>
+<p>Why Apian is built the way it is. Each decision below is paired with the
+concrete constraint that forced it – not just what was chosen, but why the
+obvious alternative was worse. A handful of these are load-bearing (the
+two-halves split, the unified-format seam, the H3 grid); most other choices
+fall out of them. They are all applications of the project’s <a class="reference internal" href="values.html"><span class="doc">Values</span></a>.</p>
+<section id="two-halves-a-pure-python-pipeline-and-a-pure-importer-add-on">
+<h2>Two halves: a pure-Python pipeline and a pure-importer add-on<a class="headerlink" href="#two-halves-a-pure-python-pipeline-and-a-pure-importer-add-on" title="Link to this heading">¶</a></h2>
+<p>All fetching, fusing and geometry work lives in <code class="docutils literal notranslate"><span class="pre">apian_terrain/</span></code> (plain
+Python). The Blender add-on under <code class="docutils literal notranslate"><span class="pre">apian_terrain/blender/</span></code> only <em>reads</em> a
+finished dataset and builds objects – no downloads, no computation.</p>
+<ul class="simple">
+<li><p><strong>Blender’s bundled Python is a hostile place to do geospatial work.</strong> The
+heavy stack (<code class="docutils literal notranslate"><span class="pre">rasterio</span></code>, <code class="docutils literal notranslate"><span class="pre">shapely</span></code>, <code class="docutils literal notranslate"><span class="pre">h3</span></code>, <code class="docutils literal notranslate"><span class="pre">osmium</span></code>, <code class="docutils literal notranslate"><span class="pre">boto3</span></code>,
+<code class="docutils literal notranslate"><span class="pre">pyproj</span></code>) is painful to install into Blender’s version-locked interpreter.
+Keeping compute out means the add-on ships tiny – just the importer plus
+<code class="docutils literal notranslate"><span class="pre">version.py</span></code> and <code class="docutils literal notranslate"><span class="pre">unified.py</span></code> – and its only in-Blender dependencies are
+<code class="docutils literal notranslate"><span class="pre">numpy</span></code>/<code class="docutils literal notranslate"><span class="pre">scipy</span></code>.</p></li>
+<li><p><strong>It makes the logic testable without Blender.</strong> The tests are forbidden from
+importing <code class="docutils literal notranslate"><span class="pre">bpy</span></code>; because all the real geometry lives in pure modules,
+<code class="docutils literal notranslate"><span class="pre">pytest</span></code> can cover it directly. If computation lived in the importer, none
+of it would be reachable by CI.</p></li>
+<li><p><strong>“Importer is read-only” is an enforced invariant, not a style preference.</strong>
+The moment the add-on starts computing values, you get two divergent code
+paths (Blender vs. CLI) that silently disagree. A pure consumer means exactly
+one source of truth for every value.</p></li>
+</ul>
+</section>
+<section id="a-stable-unified-format-as-the-seam">
+<h2>A stable unified format as the seam<a class="headerlink" href="#a-stable-unified-format-as-the-seam" title="Link to this heading">¶</a></h2>
+<p>The pipeline emits a manifest + one per-cell <code class="docutils literal notranslate"><span class="pre">cells.csv</span></code> + one GeoJSON per
+feature type. The contract is <strong>Raw Data -&gt; Unified Format -&gt; Import</strong> (see
+<a class="reference internal" href="data_format.html"><span class="doc">The unified dataset format</span></a>).</p>
+<ul class="simple">
+<li><p><strong>It decouples producer from consumer.</strong> Anything that can write the format
+can feed the add-on – which is exactly what makes <a class="reference internal" href="custom_data.html"><span class="doc">Custom data</span></a>
+(population, temperature, curated buildings) possible without touching the
+importer.</p></li>
+<li><p><strong>The CSV column order is an append-only contract.</strong> New attributes are added
+as trailing columns, so an older reader keeps working and a newer one picks up
+the new column. The data model can evolve without migration code scattered
+through every reader.</p></li>
+<li><p><strong>One GeoJSON per feature type means a single layer can be swapped in
+isolation</strong> – replace <code class="docutils literal notranslate"><span class="pre">structures.geojson</span></code> without disturbing streets or
+water.</p></li>
+</ul>
+</section>
+<section id="modular-data-layers-dispatched-by-kind">
+<h2>Modular data layers dispatched by kind<a class="headerlink" href="#modular-data-layers-dispatched-by-kind" title="Link to this heading">¶</a></h2>
+<p>Attributes beyond the fixed per-cell spine – interpolated fields, time series,
+future edge or label layers – are carried as <strong>data layers</strong>, each declaring a
+<code class="docutils literal notranslate"><span class="pre">kind</span></code>. The exporter, the import-contract validator and the importer all
+<em>dispatch</em> on that kind (see <a class="reference internal" href="api.html#module-apian_terrain.layers" title="apian_terrain.layers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">apian_terrain.layers</span></code></a>).</p>
+<ul class="simple">
+<li><p><strong>Adding a new kind of layer touches no core loop.</strong> A new kind is a validator
+plus a baker; the manifest <code class="docutils literal notranslate"><span class="pre">layers</span></code> list is walked generically. The alternative
+– a growing <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">kind</span> <span class="pre">==</span> <span class="pre">...</span></code> in every reader – would couple every stage to
+every layer type.</p></li>
+<li><p><strong>The list is append-only, so the format stays forward- and backward-compatible.</strong>
+An older importer skips a kind it does not recognise; a newer one still reads an
+older manifest. No migration code – the same spirit as the <code class="docutils literal notranslate"><span class="pre">cells.csv</span></code> contract.</p></li>
+</ul>
+</section>
+<section id="one-output-table-enforced-by-construction">
+<h2>One output table, enforced by construction<a class="headerlink" href="#one-output-table-enforced-by-construction" title="Link to this heading">¶</a></h2>
+<p>The region database holds three schemas – <code class="docutils literal notranslate"><span class="pre">source</span></code> (raw file reads),
+<code class="docutils literal notranslate"><span class="pre">staging</span></code> (typed tables from the Data Manager’s metadata) and <code class="docutils literal notranslate"><span class="pre">output</span></code>,
+which contains exactly one table, <code class="docutils literal notranslate"><span class="pre">data</span></code>: an <code class="docutils literal notranslate"><span class="pre">h3_id</span></code> key, an <code class="docutils literal notranslate"><span class="pre">event_ts</span></code>
+time axis (a constant for a static snapshot), then one or more aggregate value
+columns.</p>
+<ul class="simple">
+<li><p><strong>The contract is enforced by construction, not inspection.</strong> The Output
+tab’s builder grid only <em>generates</em> the SELECT – value columns come from an
+aggregate dropdown, the key and axis from column pickers – so a malformed
+<code class="docutils literal notranslate"><span class="pre">output.data</span></code> cannot be authored through the app. Freehand SQL stays in the
+Query Engine console, which is read-only exploration. The one deliberate
+valve is a value column’s <strong>Custom SQL</strong> entry: a raw expression spliced into
+the generated GROUP BY query verbatim – outside the dropdowns’ enforcement,
+but inside the query’s shape (and it’s the user’s own database).</p></li>
+<li><p><strong>Interpolation happens in database-land, and honesty survives it.</strong> The
+Interpolation tab transforms an output table (time resample onto a shared
+grid and/or per-slice spatial fill) into a NEW output table – the source is
+never mutated, and every synthesised record carries a parallel
+<code class="docutils literal notranslate"><span class="pre">__interp_&lt;col&gt;</span></code> boolean that export turns into the series <code class="docutils literal notranslate"><span class="pre">.interp</span></code>
+handler / celldata <code class="docutils literal notranslate"><span class="pre">__i</span></code> flag. The measured-vs-filled distinction the
+format promises is preserved end to end.</p></li>
+<li><p><strong>The shape routes the export, not metadata flags.</strong> One distinct
+<code class="docutils literal notranslate"><span class="pre">event_ts</span></code> means a static dataset (the constant axis is dropped and the
+value columns become <code class="docutils literal notranslate"><span class="pre">cell_field</span></code> layers); more than one means a time
+series, exported as one <code class="docutils literal notranslate"><span class="pre">cell_series</span></code> per value column. The earlier routing
+keyed off a Data Manager checkbox whose name had to agree with the query’s
+output name – the same fact declared in two places is a drift trap.</p></li>
+<li><p><strong>Static is the degenerate case of series.</strong> Requiring <code class="docutils literal notranslate"><span class="pre">event_ts</span></code> even for
+a snapshot keeps one table shape for both kinds: “a series with one step”
+needs no schema of its own.</p></li>
+<li><p><strong>The grid’s resolution comes from the manifest, never from the user.</strong> The
+key is either binned from lat/lon at the manifest’s <code class="docutils literal notranslate"><span class="pre">h3_resolution</span></code> or an
+existing H3 column reconciled to it automatically: finer data rolls up via
+<code class="docutils literal notranslate"><span class="pre">h3_cell_to_parent</span></code>, coarser data spreads down over <code class="docutils literal notranslate"><span class="pre">h3_cell_to_children</span></code>
+– with SUM/COUNT split by child count so extensive totals conserve, and
+intensive aggregates broadcasting (the same convention the celldata remap
+uses). A free resolution picker would only ever author validation failures.</p></li>
+</ul>
+</section>
+<section id="time-series-sparse-storage-step-only-null-means-absent">
+<h2>Time series: sparse storage, step-only, null means absent<a class="headerlink" href="#time-series-sparse-storage-step-only-null-means-absent" title="Link to this heading">¶</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">cell_series</span></code> layer stores one value per cell per timestep for animated
+playback, built to scale to millions of cells over tens of thousands of steps.</p>
+<ul class="simple">
+<li><p><strong>Storage is sparse (CSR), not a dense grid.</strong> A dense <code class="docutils literal notranslate"><span class="pre">(cells</span> <span class="pre">x</span> <span class="pre">steps)</span></code> array
+reaches hundreds of gigabytes at the top end and spends most of that on empty
+cells. Storing only the records that exist makes the data load proportional to the
+actual data – the constraint that ruled dense storage out.</p></li>
+<li><p><strong>Playback steps; it never interpolates.</strong> Any smoothing between timesteps is done
+upstream, so the consumer only reads the current step – keeping it a pure consumer
+and the per-frame cost O(1) via the row pointer.</p></li>
+<li><p><strong>A gap means null, not zero.</strong> A missing (or explicitly null) record displays
+nothing at that step, kept distinct from a real <code class="docutils literal notranslate"><span class="pre">0</span></code> by a companion <code class="docutils literal notranslate"><span class="pre">_present</span></code>
+flag. Conflating the two would silently turn “no data” into a real measurement –
+the kind of quiet transform the project refuses to make. Interpolation reads this
+from the other side: the measured cells at any one step are the <strong>generators</strong> of a
+filled mask over the surface, and an omitted cell is a fill <em>target</em>, so a cell meant
+to read a true <code class="docutils literal notranslate"><span class="pre">0</span></code> must store an explicit <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+<li><p><strong>Resampling along the time axis is an upstream, opt-in exception – and it is
+flagged.</strong> <code class="docutils literal notranslate"><span class="pre">resample_series</span></code> may synthesise a cell’s <em>interior</em> gaps (never its
+ends, never a lone observation), which is the one case that overrides “a gap displays
+nothing”; playback itself still only steps. Every synthesised record is marked in a
+<code class="docutils literal notranslate"><span class="pre">.interp</span></code> handler so it stays distinct from measured data, and the source series is
+never mutated – the resampled series is a new layer, so re-runs are idempotent.</p></li>
+</ul>
+</section>
+<section id="h3-hexagonal-grid-as-the-spine">
+<h2>H3 hexagonal grid as the spine<a class="headerlink" href="#h3-hexagonal-grid-as-the-spine" title="Link to this heading">¶</a></h2>
+<p>Everything bins onto an <a class="reference external" href="https://h3geo.org">H3</a> grid; each terrain cell is an
+H3 id carrying attributes.</p>
+<ul class="simple">
+<li><p><strong>The hierarchy makes multi-resolution trivial.</strong> Custom-data remapping is
+just “coarser cells broadcast to children, finer cells aggregate to parent.”
+A raw lat/lon grid would need hand-rolled resampling; H3 gives it for free.</p></li>
+<li><p><strong>Cell ids are radius-independent</strong>, which keeps the door open to Moon/Mars/
+fictional worlds – the body radius collapses to a single import constant
+rather than being baked through the whole pipeline.</p></li>
+<li><p><strong>Bulk classification runs in C.</strong> Sea and water-body fills use centroid
+polyfill (<code class="docutils literal notranslate"><span class="pre">h3shape_to_cells</span></code>) instead of per-cell point-in-polygon. At
+res 11+ over tens of km that is the difference between seconds and a wedged
+run.</p></li>
+<li><p>Hexagons also sidestep the adjacency/orientation ambiguity of square grids –
+there is no diagonal-neighbour question.</p></li>
+</ul>
+</section>
+<section id="the-orthogonal-water-model">
+<h2>The orthogonal water model<a class="headerlink" href="#the-orthogonal-water-model" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ele_m</span></code> is <em>always</em> the bed (real ground or seabed), <code class="docutils literal notranslate"><span class="pre">water_depth_m</span></code> is the
+positive column on top, and <code class="docutils literal notranslate"><span class="pre">water_type</span></code> is an independent label. Surface
+elevation is <code class="docutils literal notranslate"><span class="pre">ele_m</span> <span class="pre">+</span> <span class="pre">water_depth_m</span></code>.</p>
+<p>“Where is the ground” and “how much water sits on it” are genuinely independent
+quantities, and the earlier design that tangled them together caused recurring
+bugs – which is why this was a deliberate redesign. Keeping them orthogonal
+means flattening standing water, tapering depth, or reclassifying a cell each
+touch exactly one field and cannot corrupt the others.</p>
+</section>
+<section id="metres-in-the-pipeline-blender-units-derived-once-at-import">
+<h2>Metres in the pipeline; Blender units derived once at import<a class="headerlink" href="#metres-in-the-pipeline-blender-units-derived-once-at-import" title="Link to this heading">¶</a></h2>
+<p>The pipeline is metres-only (<code class="docutils literal notranslate"><span class="pre">_m</span></code> suffix). <code class="docutils literal notranslate"><span class="pre">_bu</span></code> (Blender-unit) values are
+produced <em>at import</em> from one field, <strong>Longest Edge (m)</strong>.</p>
+<p>Physical units are the honest representation for data; render scale is a
+<em>presentation</em> choice that should not leak into fusion logic. Deriving scale
+once from the bbox’s longest edge means areas of wildly different real-world
+size all arrive at a comparable on-screen size, controlled by a single number –
+and elevation can stay absolute for the multi-body case.</p>
+</section>
+<section id="h3-cell-set-selection-replacing-the-rectangular-bbox">
+<h2>H3 cell-set selection replacing the rectangular bbox<a class="headerlink" href="#h3-cell-set-selection-replacing-the-rectangular-bbox" title="Link to this heading">¶</a></h2>
+<p>Area selection moved from a lat/lon rectangle to picking a set of H3 cells on an
+orthographic globe.</p>
+<p>The rectangular path carried a persistent rotated/transposed axis-swap bug.
+Pure-index cell-set selection made that entire class of bug disappear, <em>and</em> it
+is projection-correct at the poles and antimeridian where a naive bbox breaks.
+The redesign fixed a bug by deleting the thing that could be buggy.</p>
+</section>
+<section id="offline-local-desktop-app-no-server-no-telemetry">
+<h2>Offline, local desktop app – no server, no telemetry<a class="headerlink" href="#offline-local-desktop-app-no-server-no-telemetry" title="Link to this heading">¶</a></h2>
+<p>The companion app is a local window; only first-time data <em>retrieval</em> hits the
+network, after which tiles are cached on disk.</p>
+<ul class="simple">
+<li><p><strong>There is no product reason to run a server</strong> (single-user, local Blender
+workflow), and not running one removes an entire operational and privacy
+surface.</p></li>
+<li><p><strong>The whole pipeline can run against local data you already have.</strong> Nothing in
+the fusion logic requires a live service – point it at cached tiles and PBFs
+and it runs fully offline.</p></li>
+<li><p><strong>It survives services being shut down or moved to end-of-life.</strong> Because the
+network is only ever a first-fill convenience, no upstream provider going away
+can break an area you have already built, or one you have the source data for.
+If you have the app, it is yours forever.</p></li>
+</ul>
+<p>This section is the sharpest application of the <a class="reference internal" href="values.html"><span class="doc">Perpetual Ownership value</span></a>: the network is a convenience layered over a local alternative, never a
+dependency.</p>
+</section>
+<section id="satellite-texture-detail-is-sentinel-2-s-limit-not-ours">
+<h2>Satellite texture detail is Sentinel-2’s limit, not ours<a class="headerlink" href="#satellite-texture-detail-is-sentinel-2-s-limit-not-ours" title="Link to this heading">¶</a></h2>
+<p>A blurry draped texture over the Vila Franca do Campo islet prompted the
+suspicion that the z17 surface texture was being degraded somewhere between
+the tiles and the UV-mapped PNG. A side-by-side diagnostic
+(<code class="docutils literal notranslate"><span class="pre">tools/_diag_zooms.py</span></code>) stitched the cached z15 tiles, upscaled them 4x,
+and compared them against the z17 texture at the same extent: they are
+identical in information content.</p>
+<p>The conclusion is that past z14 (Sentinel-2’s native 10 m/px at the equator)
+the Planetary Computer tiles are <strong>upsampled, not higher-resolution</strong> – the
+blur is the instrument, not the pipeline. <code class="docutils literal notranslate"><span class="pre">sampling_zoom</span></code> already caps at
+z17 for exactly this reason, and per-face colour alignment was separately
+verified (<code class="docutils literal notranslate"><span class="pre">tools/_diag_faces.py</span></code>). Any real detail gain for small features
+would require a genuinely higher-resolution imagery provider (a separate
+decision), not more zoom levels from the current one.</p>
+</section>
+<section id="decisions-to-not-build-things">
+<h2>Decisions to <em>not</em> build things<a class="headerlink" href="#decisions-to-not-build-things" title="Link to this heading">¶</a></h2>
+<p>Often the most revealing choices are the ones that were deliberately declined.</p>
+<ul class="simple">
+<li><p><strong>No structures-mode enum.</strong> A dropdown to switch building-construction modes
+caused a multi-session regression where structures came out empty. We reverted
+to extruded-only and made “keep it simple” an explicit rule: the added
+flexibility bought nothing a user asked for and cost real correctness.</p></li>
+<li><p><strong>Caves rejected as cells.csv columns / booleans.</strong> Caves break the
+heightfield assumption; the design landed on per-cell interval-stacks with
+per-edge wall deletion, and a boolean-geometry approach was explicitly
+considered and rejected. The grid-of-heights model cannot represent overhangs,
+so bolting it on would corrupt the clean per-cell contract.</p></li>
+<li><p><strong>No localized basemap tiles.</strong> Dropped because there is no free, no-key
+provider – a hard external constraint, not a technical one.</p></li>
+<li><p><strong>Vegetation is a per-cell attribute, not a feature file.</strong> It is areal and
+grid-aligned, so a <code class="docutils literal notranslate"><span class="pre">veg_type</span></code> column is cheaper and simpler than polygons,
+and it lets “water always wins over vegetation” be a trivial precedence rule.</p></li>
+</ul>
+</section>
+<section id="invalid-osm-geometry-repair-don-t-reject-and-don-t-die">
+<h2>Invalid OSM geometry: repair, don’t reject (and don’t die)<a class="headerlink" href="#invalid-osm-geometry-repair-don-t-reject-and-don-t-die" title="Link to this heading">¶</a></h2>
+<p>OSM rings occasionally self-intersect (terrace rows traced through a shared
+corner, stitching artifacts in multipolygon relations). At NYC scale this is a
+certainty: the 2026-09-21 <code class="docutils literal notranslate"><span class="pre">new_york</span></code> run died on exactly one invalid ring in
+1,802,077 structures (relation <code class="docutils literal notranslate"><span class="pre">r16243928</span></code>, a self-touching figure-eight that
+is really two terrace houses). The policy, implemented by
+<code class="docutils literal notranslate"><span class="pre">_safe_intersection</span></code> in <code class="docutils literal notranslate"><span class="pre">apian_terrain/pipeline.py</span></code> and used by every clip
+of raw OSM geometry against the cell union (structure footprints, street
+ways):</p>
+<ul>
+<li><p><strong>Try the raw intersection first.</strong> Nearly every ring is valid; the repair
+path costs nothing unless it is needed.</p></li>
+<li><p><strong>On a GEOS failure, repair with ``make_valid`` and retry.</strong> <code class="docutils literal notranslate"><span class="pre">make_valid</span></code>
+(GEOS MakeValid) returns a valid geometry covering the same point set – for
+the ring above it recovers BOTH terrace houses (70.8 m2 total). This is the
+industry-standard repair (PostGIS <code class="docutils literal notranslate"><span class="pre">ST_MakeValid</span></code>, QGIS “Fix geometries”).</p>
+<p>The older <code class="docutils literal notranslate"><span class="pre">buffer(0)</span></code> idiom – still found in a few water/OBM sites – was
+deliberately NOT used for the guard: on the same ring it silently keeps one
+house and discards the other (37.1 of 70.8 m2 lost, no warning). Where the
+two disagree, <code class="docutils literal notranslate"><span class="pre">make_valid</span></code> preserves the data and <code class="docutils literal notranslate"><span class="pre">buffer(0)</span></code> can eat
+it.</p>
+</li>
+<li><p><strong>On a second failure, skip the feature.</strong> The intersection result comes back
+EMPTY and the caller’s normal “nothing survives” path drops it. One malformed
+footprint can never kill a run again (regression test:
+<code class="docutils literal notranslate"><span class="pre">tests/test_pipeline.py::test_clip_footprint_to_cells_repairs_self_intersecting_ring</span></code>).</p></li>
+</ul>
+<p>Deliberately deferred: user-settable invalid-geometry handling (min footprint
+area, repair-vs-reject, verbosity of repair reporting). The repair-by-default
+policy above is the agreed default; the tolerance knobs would slot in at
+structure-emission time (<code class="docutils literal notranslate"><span class="pre">openbuildingmap._emit_osm</span></code>) and be recorded on the
+structure record, not scattered through downstream stages.</p>
+</section>
+<section id="water-flood-preview-infinite-vs-finite-heads">
+<h2>Water flood preview: infinite vs finite heads<a class="headerlink" href="#water-flood-preview-infinite-vs-finite-heads" title="Link to this heading">¶</a></h2>
+<p>The water overlay preview contour-floods from fixed heads (one BFS, dam-aware
+– the cheap stand-in for the sim’s steady state). That approximation is only
+valid for water that cannot run dry. It treated EVERY fixed head as infinite,
+so a real hilltop pond – NYC’s Highlands have standing water at 50-174m, all
+legitimately mapped, terrain verified – flooded 92% of the region in the
+overlay while the actual sim (a budget fill with losses, which knows a pond
+runs dry) correctly wet ~11%. First exposure: NYC is the first area with
+standing water far above a huge connected lowland.</p>
+<p>The classification is materialised at pipeline time as <cite>water_source_infinite BOOLEAN</cite> on
+<cite>output.water_cell_params</cite> (rules: tagged sea/ocean; sea-level surface AND
+water-connected to the sea through the bodies’ own cells; optionally body area
+&gt;= <code class="docutils literal notranslate"><span class="pre">WATER_INFINITE_MIN_AREA_KM2</span></code>, off by default). The preview
+contour-floods infinite heads only; finite standing water wets exactly the
+cells its body is mapped over. The SIM is deliberately unchanged – its loss
+budget already limits finite sources, and the numbers validated it
+(sea-only flood 13,537 cells vs the sim’s 12,794 on new_york).</p>
+<p>Coast distance was considered and rejected: it is not persisted in the DB,
+it conflates geographic nearness with ocean connectivity (a Great-Lakes-scale
+inland sea fails any distance test), and it adds a per-region magic constant.
+Connectivity + level needs no new data and classifies strictly better.</p>
+<p>Known behaviour change: “dig a pit below a lake’s level and watch it fill”
+no longer previews instantly – it fills on the next sim run (the editor
+re-runs on Save). Infinite-reservoir preview next to the sea still works.</p>
+<p>Companion fix (same incident): path-aware river inflow. The flat
+<code class="docutils literal notranslate"><span class="pre">DEFAULT_RIVER_SOURCE_LPS</span></code> (1000 lps per flowing body) could not pay the
+per-cell loss (5 mm/day over the full cell area) of a channel more than ~1
+cell long at res 10 – 57 of 58 mapped NYC rivers ran dry in the sim. Each
+flowing body’s default inflow is now sized to its channel: path length (in
+cells) from the source to the nearest sea/edge head through the water graph,
+times per-cell loss, times a 1.5 margin, floored at the old flat default so
+short creeks are unchanged. Inland rivers (no water-path to the sea) are
+sized to wet their own channel. A lower bound, not a hydraulic solve.</p>
+</section>
+<section id="rivers-follow-real-terrain-no-course-following-routing">
+<h2>Rivers follow real terrain — no course-following routing<a class="headerlink" href="#rivers-follow-real-terrain-no-course-following-routing" title="Link to this heading">¶</a></h2>
+<p>Mapped rivers can look gappy (2026-09-21 NYC at res 10: dry cells inside
+river polygons) because the budget fill ponds still water against the real
+bed and <code class="docutils literal notranslate"><span class="pre">route_streams</span></code> walks real steepest descent; where the res-10
+terrain bumps or the descent diverges from the mapped course, cells stay
+dry. Two fixes were considered and REJECTED in favour of honest physics:
+a sim-only channel carve (implemented then REVERTED — it barely moved
+the gaps, 735 → 765 gap edges, and worse it second-guesses the user’s own
+elevation edits under mapped rivers, breaking the editor contract at the
+exact spot users are told to hand-carve) and course-following routing (the
+walk sticking to the polygon’s cells), which would hard-code the answer
+and defeat the terrain editor’s purpose.</p>
+<p>The documented position: the water simulation answers “what would water
+do on THIS terrain”. Accurate rivers therefore require accurate inputs —
+supply bathymetry (the pipeline’s custom bathymetry raster wins outright
+over GMRT/GEBCO for depths) or hand-carve the channel with the terrain
+editor’s elevation tools; both compose with the solver, because sim beds
+are the edited terrain (ele_m + offsets). Gappy mapped rivers on coarse
+DEMs are the simulator being truthful, not a bug.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="layers.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Data Layers</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="data_format.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">The unified dataset format</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, Apian
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Design decisions</a><ul>
+<li><a class="reference internal" href="#two-halves-a-pure-python-pipeline-and-a-pure-importer-add-on">Two halves: a pure-Python pipeline and a pure-importer add-on</a></li>
+<li><a class="reference internal" href="#a-stable-unified-format-as-the-seam">A stable unified format as the seam</a></li>
+<li><a class="reference internal" href="#modular-data-layers-dispatched-by-kind">Modular data layers dispatched by kind</a></li>
+<li><a class="reference internal" href="#one-output-table-enforced-by-construction">One output table, enforced by construction</a></li>
+<li><a class="reference internal" href="#time-series-sparse-storage-step-only-null-means-absent">Time series: sparse storage, step-only, null means absent</a></li>
+<li><a class="reference internal" href="#h3-hexagonal-grid-as-the-spine">H3 hexagonal grid as the spine</a></li>
+<li><a class="reference internal" href="#the-orthogonal-water-model">The orthogonal water model</a></li>
+<li><a class="reference internal" href="#metres-in-the-pipeline-blender-units-derived-once-at-import">Metres in the pipeline; Blender units derived once at import</a></li>
+<li><a class="reference internal" href="#h3-cell-set-selection-replacing-the-rectangular-bbox">H3 cell-set selection replacing the rectangular bbox</a></li>
+<li><a class="reference internal" href="#offline-local-desktop-app-no-server-no-telemetry">Offline, local desktop app – no server, no telemetry</a></li>
+<li><a class="reference internal" href="#satellite-texture-detail-is-sentinel-2-s-limit-not-ours">Satellite texture detail is Sentinel-2’s limit, not ours</a></li>
+<li><a class="reference internal" href="#decisions-to-not-build-things">Decisions to <em>not</em> build things</a></li>
+<li><a class="reference internal" href="#invalid-osm-geometry-repair-don-t-reject-and-don-t-die">Invalid OSM geometry: repair, don’t reject (and don’t die)</a></li>
+<li><a class="reference internal" href="#water-flood-preview-infinite-vs-finite-heads">Water flood preview: infinite vs finite heads</a></li>
+<li><a class="reference internal" href="#rivers-follow-real-terrain-no-course-following-routing">Rivers follow real terrain — no course-following routing</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=8d563738"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    </body>
+</html>

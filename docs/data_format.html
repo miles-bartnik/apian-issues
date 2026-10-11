@@ -1,0 +1,1102 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Design decisions" href="design_decisions.html"><link rel="prev" title="How the pipeline works" href="pipeline.html">
+        <link rel="prefetch" href="_static/apian_terrain_logo_light.png" as="image">
+        <link rel="prefetch" href="_static/apian_terrain_logo.png" as="image">
+
+    <link rel="shortcut icon" href="_static/apian_terrain.ico"><!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
+        <title>The unified dataset format - Apian 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=5d073521" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  --color-brand-primary: #16181d;
+  --color-brand-content: #16181d;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #e9e9ec;
+  --color-brand-content: #c9ccd2;
+  --color-background-primary: #0b0b0c;
+  --color-background-secondary: #101012;
+  --color-background-hover: #16161a;
+  --color-api-background: #101012;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #e9e9ec;
+  --color-brand-content: #c9ccd2;
+  --color-background-primary: #0b0b0c;
+  --color-background-secondary: #101012;
+  --color-background-hover: #16161a;
+  --color-api-background: #101012;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Apian 1.0.0</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="_static/apian_terrain_logo_light.png" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="_static/apian_terrain_logo.png" alt="Dark Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Apian 1.0.0</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Values</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="values.html">Values</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Apian</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="companion_app.html">Companion app (desktop GUI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blender_addon.html">Blender add-on</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_data.html">Custom data</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How it works</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="pipeline.html">How the pipeline works</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">The unified dataset format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design_decisions.html">Design decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="layers.html">Data Layers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="licenses.html">Data licensing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API reference</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/data_format.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="the-unified-dataset-format">
+<h1>The unified dataset format<a class="headerlink" href="#the-unified-dataset-format" title="Link to this heading">¶</a></h1>
+<p>The unified format is the stable contract between data sources and the import:
+<strong>Raw Data -&gt; Unified Format -&gt; Import</strong>. Any source that can write these files
+can feed the Blender add-on, which is a pure consumer of them. It is produced by
+<a class="reference internal" href="api.html#module-apian_terrain.unified" title="apian_terrain.unified"><code class="xref py py-mod docutils literal notranslate"><span class="pre">apian_terrain.unified</span></code></a> (and the pipeline stages around it) and currently
+emitted alongside the combined <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;.geojson</span></code>.</p>
+<p>This page is the complete schema reference for <strong>every file the companion app
+writes</strong> – what each file is for, every column/key/property it carries, and
+which files are required versus optional. If you want to bring your own data,
+start with the file inventory below, then the per-file sections for the exact
+shape to match, then <a class="reference internal" href="custom_data.html"><span class="doc">Custom data</span></a> for the supported substitution paths.</p>
+<section id="file-inventory">
+<h2>File inventory<a class="headerlink" href="#file-inventory" title="Link to this heading">¶</a></h2>
+<p>A dataset is a folder named after the area id <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;</span></code> (the <strong>region
+root</strong>). Files marked <em>always</em> exist on every completed build; <em>optional</em>
+files appear only when the feature that writes them is enabled (or the
+layer is non-empty).</p>
+<p>Region-folder layout: the region root holds IDENTITY files only – the
+manifest, cells csv, both metadata TSVs, the DuckDB, and <code class="docutils literal notranslate"><span class="pre">custom_data/</span></code>
+(user imports). Everything derived lives in two subdirs: <code class="docutils literal notranslate"><span class="pre">cache/</span></code>
+(per-region downloads and {area_id}-keyed caches: OSM/elevation/satellite)
+and <code class="docutils literal notranslate"><span class="pre">output/</span></code> (the publishable geojsons/PNGs/color assets listed below).</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Written</p></th>
+<th class="head"><p>Contents</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_manifest.json</span></code></p></td>
+<td><p>always</p></td>
+<td><p>Index + schema version + area metadata.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_cells.csv</span></code></p></td>
+<td><p>always</p></td>
+<td><p>One row per H3 cell (the per-cell spine).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;.geojson</span></code></p></td>
+<td><p>always</p></td>
+<td><p>Combined FeatureCollection (legacy bundle; the
+unified files above are the contract).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_structures.geojson</span></code></p></td>
+<td><p>always</p></td>
+<td><p>Building footprints (one Feature each).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_bridges.geojson</span></code></p></td>
+<td><p>always</p></td>
+<td><p>Bridge decks (split out of structures).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_streets.geojson</span></code></p></td>
+<td><p>always</p></td>
+<td><p>Road/track LineStrings with baked elevation.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_landmarks.geojson</span></code></p></td>
+<td><p>always</p></td>
+<td><p>Named major landmarks (Points).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_water_bodies.geojson</span></code></p></td>
+<td><p>always</p></td>
+<td><p>Lakes, rivers, harbours, … (Polygons).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_sea.geojson</span></code></p></td>
+<td><p>always</p></td>
+<td><p>The sea/ocean polygon(s).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_ne_urban_areas.geojson</span></code></p></td>
+<td><p>always</p></td>
+<td><p>Natural Earth urban footprints – <strong>empty</strong>
+unless the area was built in <em>Major features</em>
+(country-scale) detail mode.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_ne_places.geojson</span></code></p></td>
+<td><p>always</p></td>
+<td><p>Natural Earth city/town label points (same rule).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_ne_major_roads.geojson</span></code></p></td>
+<td><p>always</p></td>
+<td><p>Natural Earth major roads (same rule).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_ne_landmarks.geojson</span></code></p></td>
+<td><p>always</p></td>
+<td><p>Natural Earth landmark points (same rule).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_color.geojson</span></code></p></td>
+<td><p>always</p></td>
+<td><p>Per-cell, per-face colour sample points.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_contour_lines.geojson</span></code></p></td>
+<td><p>optional</p></td>
+<td><p>Hex-aligned contour segments (minor interval &gt; 0).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_image_texture.png</span></code></p></td>
+<td><p>optional</p></td>
+<td><p>Image Texture mosaic (satellite/OSM tiles).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_celldata.csv</span></code></p></td>
+<td><p>optional</p></td>
+<td><p>Custom per-cell data fields (Build tab).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_&lt;field&gt;_series.*</span></code></p></td>
+<td><p>optional</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cell_series</span></code> time series (header JSON + CSR
+binaries; Query Engine / Interpolation).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;_subset.json</span></code></p></td>
+<td><p>optional</p></td>
+<td><p>A subset manifest (Dataset Viewer export).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The add-on’s importer is pointed at the manifest; it reads the identity
+files from the region root and the layer data files from the region’s
+<code class="docutils literal notranslate"><span class="pre">output/</span></code> subdir, guarding each optional file with an existence check.</p>
+</section>
+<section id="subset-manifests">
+<h2>Subset manifests<a class="headerlink" href="#subset-manifests" title="Link to this heading">¶</a></h2>
+<p>A <strong>subset</strong> is a slim manifest (<code class="docutils literal notranslate"><span class="pre">kind:</span> <span class="pre">&quot;subset&quot;</span></code>) that restricts an import to
+a chosen set of cells from a <strong>region</strong> (a full area manifest, which remains the
+sole owner of the data files):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;schema_version&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;subset&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;monaco&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;cell_ids&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;861f1a4d7ffffff&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+  <span class="s2">&quot;area&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="o">...</span> <span class="n">trimmed</span> <span class="n">bbox</span> <span class="o">...</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Think of it as <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">cells</span> <span class="pre">FROM</span> <span class="pre">manifest</span> <span class="pre">WHERE</span> <span class="pre">cell</span> <span class="pre">IN</span> <span class="pre">subset.cell_ids</span></code>: the
+subset names its region and the cells to bring in, nothing more – no data of
+its own. The importer takes the region manifest plus an optional subset and
+clips cells and features to the selection. Subsets are authored in the
+companion app’s Dataset Viewer (<a class="reference internal" href="companion_app.html"><span class="doc">Companion app (desktop GUI)</span></a>) and written by
+<a class="reference internal" href="api.html#apian_terrain.unified.write_subset_manifest" title="apian_terrain.unified.write_subset_manifest"><code class="xref py py-func docutils literal notranslate"><span class="pre">apian_terrain.unified.write_subset_manifest()</span></code></a>; a subset is never a
+standalone dataset and is refused if opened as one.</p>
+</section>
+<section id="manifest">
+<h2>Manifest<a class="headerlink" href="#manifest" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_manifest.json</span></code> (schema version 2):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;schema_version&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="s2">&quot;area_id&quot;</span><span class="p">:</span> <span class="s2">&quot;monaco&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;h3_resolution&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+  <span class="s2">&quot;area&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;lon_centre&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;lat_centre&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span>
+    <span class="s2">&quot;lon_min&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;lat_min&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;lon_max&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;lat_max&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span>
+    <span class="s2">&quot;ele_min_m&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;ele_max_m&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;ele_min_baked_m&quot;</span><span class="p">:</span> <span class="o">...</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;cells_csv&quot;</span><span class="p">:</span> <span class="s2">&quot;monaco_cells.csv&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;n_cells&quot;</span><span class="p">:</span> <span class="mi">123456</span><span class="p">,</span>
+  <span class="s2">&quot;feature_files&quot;</span><span class="p">:</span>  <span class="p">{</span> <span class="s2">&quot;structures&quot;</span><span class="p">:</span> <span class="s2">&quot;monaco_structures.geojson&quot;</span><span class="p">,</span> <span class="o">...</span> <span class="p">},</span>
+  <span class="s2">&quot;feature_counts&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;structures&quot;</span><span class="p">:</span> <span class="mi">4912</span><span class="p">,</span> <span class="o">...</span> <span class="p">},</span>
+  <span class="s2">&quot;attribution&quot;</span><span class="p">:</span>  <span class="p">[</span> <span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;license&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;credit&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">},</span> <span class="o">...</span> <span class="p">],</span>
+  <span class="s2">&quot;image_texture&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="o">...</span> <span class="p">},</span>                <span class="o">//</span> <span class="n">optional</span> <span class="o">--</span> <span class="n">see</span> <span class="n">Image</span> <span class="n">Texture</span>
+  <span class="s2">&quot;data_fields&quot;</span><span class="p">:</span>  <span class="p">[</span> <span class="o">...</span> <span class="p">],</span>                  <span class="o">//</span> <span class="n">optional</span> <span class="n">legacy</span> <span class="n">cell_field</span> <span class="n">block</span>
+  <span class="s2">&quot;celldata_csv&quot;</span><span class="p">:</span> <span class="s2">&quot;monaco_celldata.csv&quot;</span><span class="p">,</span>    <span class="o">//</span> <span class="n">optional</span><span class="p">,</span> <span class="k">with</span> <span class="n">data_fields</span>
+  <span class="s2">&quot;layers&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="o">...</span> <span class="p">]</span>                         <span class="o">//</span> <span class="n">optional</span> <span class="n">data</span> <span class="n">layers</span> <span class="o">--</span> <span class="n">see</span> <span class="n">below</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">area</span></code> block carries everything the import needs that is <em>not</em> per-cell –
+origin, bounding box, and the elevation floor used to derive scale – so the
+import can run from the unified files alone. <code class="docutils literal notranslate"><span class="pre">ele_min_baked_m</span></code> is the padded
+base plane below the lowest terrain (<code class="docutils literal notranslate"><span class="pre">floor</span> <span class="pre">-</span> <span class="pre">pad_factor</span> <span class="pre">x</span> <span class="pre">range</span></code>); the
+importer maps it to the bottom of the scene’s Z range.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">attribution</span></code> block lists every data source the pipeline used, with its
+license and the required credit line, so a redistributed dataset self-documents
+its sources (see <a class="reference internal" href="licenses.html"><span class="doc">Data licensing</span></a>). Entries flagged <code class="docutils literal notranslate"><span class="pre">optional</span></code> were only
+available if configured (GEBCO tiles, fallback elevation keys).</p>
+<p><code class="docutils literal notranslate"><span class="pre">feature_files</span></code> maps each layer name to its file name (all ten feature types
+are always listed and always written, even when empty); <code class="docutils literal notranslate"><span class="pre">feature_counts</span></code> is
+the matching feature count. A layer whose count is <code class="docutils literal notranslate"><span class="pre">0</span></code> is a valid empty
+FeatureCollection (<code class="docutils literal notranslate"><span class="pre">{&quot;type&quot;:</span> <span class="pre">&quot;FeatureCollection&quot;,</span> <span class="pre">&quot;features&quot;:</span> <span class="pre">[]}</span></code>).</p>
+</section>
+<section id="per-cell-csv">
+<h2>Per-cell CSV<a class="headerlink" href="#per-cell-csv" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_cells.csv</span></code> has one row per H3 cell, keyed by <code class="docutils literal notranslate"><span class="pre">h3_id</span></code>. The column
+order <strong>is the contract</strong> – it is append-only and never reordered, so new
+attributes (population, temperature, …) are added as new trailing columns
+without breaking existing readers.</p>
+<div class="table-wrapper colwidths-given docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22.0%" />
+<col style="width: 78.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">h3_id</span></code></p></td>
+<td><p>H3 cell id (the key).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">lon</span></code> / <code class="docutils literal notranslate"><span class="pre">lat</span></code></p></td>
+<td><p>Cell centre, degrees.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ele_m</span></code></p></td>
+<td><p>Terrain/bed elevation, always real ground or seabed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">water_depth_m</span></code></p></td>
+<td><p>Positive water-column thickness; <code class="docutils literal notranslate"><span class="pre">0</span></code> = dry. Surface elevation is
+<code class="docutils literal notranslate"><span class="pre">ele_m</span> <span class="pre">+</span> <span class="pre">water_depth_m</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">water_type</span></code></p></td>
+<td><p>Classification only (<code class="docutils literal notranslate"><span class="pre">''</span></code> = unclassified: land, or water the
+simulation placed without a source-body tag), independent of geometry.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">veg_type</span></code></p></td>
+<td><p>Vegetation class (<code class="docutils literal notranslate"><span class="pre">''</span></code> = none). Water always wins over vegetation.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rot_z</span></code></p></td>
+<td><p>Cell rotation about Z (radians) for hex instancing.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">radius_eq</span></code></p></td>
+<td><p>Cell equivalent radius.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">r</span></code> / <code class="docutils literal notranslate"><span class="pre">g</span></code> / <code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
+<td><p>Per-cell colour, 0-255 (satellite for land, regolith for water).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">coast_dist_m</span></code></p></td>
+<td><p>Distance from the cell centre to the nearest shoreline (metres; static
+shoreline-wave field – see <code class="xref py py-mod docutils literal notranslate"><span class="pre">apian_terrain.coast</span></code>). Scaled to
+Blender units at import (<code class="docutils literal notranslate"><span class="pre">coast_dist_bu</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">coast_dir_x</span></code> / <code class="docutils literal notranslate"><span class="pre">coast_dir_y</span></code></p></td>
+<td><p>Unit vector pointing from the cell toward the shoreline (the direction
+waves travel). With <code class="docutils literal notranslate"><span class="pre">coast_dist_m</span></code> these drive shoreline wave
+animation without any per-frame geometry work.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">is_pentagon</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code> for the 12 H3 pentagons at each resolution (5 edges, not 6);
+only reachable at country/continent scale.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">slope_x</span></code> / <code class="docutils literal notranslate"><span class="pre">slope_y</span></code></p></td>
+<td><p>Bed-slope vector: least-squares gradient of <code class="docutils literal notranslate"><span class="pre">ele_m</span></code> over ring-1 H3
+neighbours, in m/m, pointing uphill (over the seabed, toward shore) –
+see <code class="xref py py-mod docutils literal notranslate"><span class="pre">apian_terrain.coast</span></code>. Written at import as the
+<code class="docutils literal notranslate"><span class="pre">terrain_slope</span></code> vector attribute (dimensionless, so never rescaled).
+With <code class="docutils literal notranslate"><span class="pre">water_depth_m</span></code> it drives shoreline wave shoaling, breaking and
+refraction steering.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The water model is intentionally orthogonal: <code class="docutils literal notranslate"><span class="pre">ele_m</span></code> is always the bed,
+<code class="docutils literal notranslate"><span class="pre">water_depth_m</span></code> is the column on top, and <code class="docutils literal notranslate"><span class="pre">water_type</span></code> is a label that does
+not depend on either. That keeps “where is the ground” and “how much water is
+above it” independent quantities. A cell can carry a <code class="docutils literal notranslate"><span class="pre">water_type</span></code> with
+<code class="docutils literal notranslate"><span class="pre">water_depth_m</span> <span class="pre">==</span> <span class="pre">0</span></code> (classification without resolved depth – wetlands and
+the shallowest shore cells).</p>
+</section>
+<section id="feature-files">
+<h2>Feature files<a class="headerlink" href="#feature-files" title="Link to this heading">¶</a></h2>
+<p>Discrete objects (buildings, bridges, roads, landmarks, water polygons) are one
+<code class="docutils literal notranslate"><span class="pre">FeatureCollection</span></code> per type, so a single layer can be swapped without
+touching the others. Vegetation is intentionally <strong>not</strong> a feature file – it is
+a per-cell attribute (<code class="docutils literal notranslate"><span class="pre">veg_type</span></code>). Every file is GeoJSON in WGS84 degrees
+(<code class="docutils literal notranslate"><span class="pre">[lon,</span> <span class="pre">lat]</span></code>); only streets and the combined terrain cells carry a Z.</p>
+<section id="structures-area-structures-geojson">
+<h3>Structures – <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_structures.geojson</span></code><a class="headerlink" href="#structures-area-structures-geojson" title="Link to this heading">¶</a></h3>
+<p>One Feature per building. Geometry: <code class="docutils literal notranslate"><span class="pre">Polygon</span></code> (CCW exterior ring, plus
+interior rings for courtyard holes; 2D, unclosed). Every property below is a
+top-level column in the output schema; there is no catch-all JSON blob.</p>
+<div class="table-wrapper colwidths-given docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">feature_type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;structure&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">structure_id</span></code></p></td>
+<td><p>Stable id (<code class="docutils literal notranslate"><span class="pre">osm_&lt;id&gt;</span></code> / <code class="docutils literal notranslate"><span class="pre">osm_r&lt;relid&gt;</span></code> when not set).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">osm_id</span></code></p></td>
+<td><p>Source OSM id (string; <code class="docutils literal notranslate"><span class="pre">r&lt;relid&gt;</span></code> for relations).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;obm&quot;</span></code> (OpenBuildingMap) or <code class="docutils literal notranslate"><span class="pre">&quot;osm&quot;</span></code> when the footprint came
+straight from OSM geometry.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">kind</span></code></p></td>
+<td><p>Structure kind (<code class="docutils literal notranslate"><span class="pre">&quot;building&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;bridge&quot;</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notable</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> for landmark/civic buildings (feeds the individual-object
+import path).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">height_m</span></code></p></td>
+<td><p>Building height in metres (tag, levels x storey height, or the default).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">object_name</span></code> / <code class="docutils literal notranslate"><span class="pre">borough</span></code> / <code class="docutils literal notranslate"><span class="pre">suburb</span></code> / <code class="docutils literal notranslate"><span class="pre">usage</span></code></p></td>
+<td><p>Optional user-defined display name and grouping columns.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">primary_osm_tag</span></code> / <code class="docutils literal notranslate"><span class="pre">secondary_osm_tag</span></code></p></td>
+<td><p>Primary/secondary OSM tag keys for this structure (e.g. <code class="docutils literal notranslate"><span class="pre">building</span></code>,
+<code class="docutils literal notranslate"><span class="pre">historic</span></code>, <code class="docutils literal notranslate"><span class="pre">amenity</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">name</span></code> / <code class="docutils literal notranslate"><span class="pre">historic</span></code> / <code class="docutils literal notranslate"><span class="pre">tourism</span></code> / <code class="docutils literal notranslate"><span class="pre">amenity</span></code> / <code class="docutils literal notranslate"><span class="pre">man_made</span></code> / <code class="docutils literal notranslate"><span class="pre">leisure</span></code></p></td>
+<td><p>OSM label tags carried on notable buildings.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">building_type</span></code></p></td>
+<td><p>OSM <code class="docutils literal notranslate"><span class="pre">building=</span></code> value (<code class="docutils literal notranslate"><span class="pre">yes</span></code> omitted; null means generic).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wall_colour</span></code> / <code class="docutils literal notranslate"><span class="pre">roof_colour</span></code></p></td>
+<td><p>Resolved wall/roof colours as <code class="docutils literal notranslate"><span class="pre">#rrggbb</span></code> hex strings (parsed OSM tag or
+the default).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wall_material</span></code> / <code class="docutils literal notranslate"><span class="pre">roof_material</span></code></p></td>
+<td><p>OSM material strings (e.g. <code class="docutils literal notranslate"><span class="pre">brick</span></code>, <code class="docutils literal notranslate"><span class="pre">tile</span></code>). The Blender importer maps
+them to the material enum indices at load time.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">roof_shape</span></code></p></td>
+<td><p>OSM roof shape tag (e.g. <code class="docutils literal notranslate"><span class="pre">flat</span></code>, <code class="docutils literal notranslate"><span class="pre">gabled</span></code>). The Blender importer maps
+it to the roof-shape enum index at load time.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">roof_type</span></code></p></td>
+<td><p>Roof generation mode: <code class="docutils literal notranslate"><span class="pre">generated</span></code>, <code class="docutils literal notranslate"><span class="pre">flat</span></code>, or <code class="docutils literal notranslate"><span class="pre">preserve</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">roof_height_m</span></code></p></td>
+<td><p>Generated roof height in metres (<code class="docutils literal notranslate"><span class="pre">0.0</span></code> when <code class="docutils literal notranslate"><span class="pre">roof_type</span></code> is <code class="docutils literal notranslate"><span class="pre">flat</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">roof_direction_offset</span></code></p></td>
+<td><p>Roof ridge direction offset in degrees from the footprint’s longest edge.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="bridges-area-bridges-geojson">
+<h3>Bridges – <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_bridges.geojson</span></code><a class="headerlink" href="#bridges-area-bridges-geojson" title="Link to this heading">¶</a></h3>
+<p>Same shape as structures, split out for the deck-aware import path. A bridge
+feature additionally carries <code class="docutils literal notranslate"><span class="pre">kind:</span> <span class="pre">&quot;bridge&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">deck:</span> <span class="pre">true</span></code> (a
+<code class="docutils literal notranslate"><span class="pre">man_made=bridge</span></code> outline is the road-bearing deck). <code class="docutils literal notranslate"><span class="pre">roof_shape</span></code> is forced
+to <code class="docutils literal notranslate"><span class="pre">&quot;flat&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">group</span></code> to its own <code class="docutils literal notranslate"><span class="pre">osm_&lt;id&gt;</span></code>.</p>
+</section>
+<section id="streets-area-streets-geojson">
+<h3>Streets – <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_streets.geojson</span></code><a class="headerlink" href="#streets-area-streets-geojson" title="Link to this heading">¶</a></h3>
+<p>One Feature per road/track way. Geometry: <code class="docutils literal notranslate"><span class="pre">LineString</span></code> with <strong>[lon, lat, z]</strong>
+per node – <code class="docutils literal notranslate"><span class="pre">z</span></code> is the terrain elevation in metres, draped from the cell the
+node falls in (tunnels and bridge spans run a straight grade between their span
+endpoints instead of draping). Properties:</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">feature_type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;street&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">street_type</span></code></p></td>
+<td><p>The street class: the OSM <code class="docutils literal notranslate"><span class="pre">highway=</span></code> value (<code class="docutils literal notranslate"><span class="pre">motorway</span></code>,
+<code class="docutils literal notranslate"><span class="pre">residential</span></code>, …) or a custom class (<code class="docutils literal notranslate"><span class="pre">rural</span></code>,
+<code class="docutils literal notranslate"><span class="pre">fire_trail</span></code>, <code class="docutils literal notranslate"><span class="pre">circuit</span></code>, <code class="docutils literal notranslate"><span class="pre">industrial</span></code>). Older files call
+this <code class="docutils literal notranslate"><span class="pre">highway_tag</span></code> – readers fall back to it.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">width_m</span></code></p></td>
+<td><p>Carriageway width in metres (tag-derived or the tag default).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tunnel</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> when the way is a sub-grade tunnel.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bridge</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> when the way is a bridge span/deck.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">osm_id</span></code></p></td>
+<td><p>Source OSM way id (string).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">area_id</span></code></p></td>
+<td><p>Owning area id.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="landmarks-area-landmarks-geojson">
+<h3>Landmarks – <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_landmarks.geojson</span></code><a class="headerlink" href="#landmarks-area-landmarks-geojson" title="Link to this heading">¶</a></h3>
+<p>One Feature per named landmark (hospitals, museums, castles, towers, stadiums,
+named places, …). Geometry: <code class="docutils literal notranslate"><span class="pre">Point</span></code>. Properties: <code class="docutils literal notranslate"><span class="pre">feature_type</span></code>
+(<code class="docutils literal notranslate"><span class="pre">&quot;landmark&quot;</span></code>), <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">category</span></code> (the OSM key group, e.g. <code class="docutils literal notranslate"><span class="pre">historic</span></code>),
+<code class="docutils literal notranslate"><span class="pre">tag</span></code> (the specific value, e.g. <code class="docutils literal notranslate"><span class="pre">castle</span></code>), <code class="docutils literal notranslate"><span class="pre">importance</span></code> (<code class="docutils literal notranslate"><span class="pre">&quot;major&quot;</span></code> /
+<code class="docutils literal notranslate"><span class="pre">&quot;minor&quot;</span></code>), and <code class="docutils literal notranslate"><span class="pre">landmark_type</span></code> (integer class: <code class="docutils literal notranslate"><span class="pre">0</span></code> = major, <code class="docutils literal notranslate"><span class="pre">1</span></code> =
+minor). Both classes are written; the add-on panel filters minor landmarks via
+its Class dropdown.</p>
+</section>
+<section id="water-bodies-area-water-bodies-geojson">
+<h3>Water bodies – <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_water_bodies.geojson</span></code><a class="headerlink" href="#water-bodies-area-water-bodies-geojson" title="Link to this heading">¶</a></h3>
+<p>One Feature per standing/flowing water body (lake, reservoir, river reach,
+harbour, dock, wetland, …). Geometry: <code class="docutils literal notranslate"><span class="pre">Polygon</span></code> (closed exterior ring plus
+interior island rings). Properties:</p>
+<div class="table-wrapper colwidths-given docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22.0%" />
+<col style="width: 78.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">feature_type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;water_body&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">water_tag</span></code></p></td>
+<td><p>The classification (<code class="docutils literal notranslate"><span class="pre">lake</span></code>, <code class="docutils literal notranslate"><span class="pre">reservoir</span></code>, <code class="docutils literal notranslate"><span class="pre">river</span></code>, <code class="docutils literal notranslate"><span class="pre">harbour</span></code>,
+<code class="docutils literal notranslate"><span class="pre">dock</span></code>, <code class="docutils literal notranslate"><span class="pre">wetland</span></code>, …).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ele_m</span></code></p></td>
+<td><p>Water <strong>surface</strong> elevation (metres; mean of the cells for standing
+water, per-cell terrain for flowing water).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">depth_m</span></code></p></td>
+<td><p>Maximum resolved depth inside the body (metres).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">depth_source</span></code></p></td>
+<td><p>Where the depth came from: <code class="docutils literal notranslate"><span class="pre">gmrt</span></code> (multibeam sounding), <code class="docutils literal notranslate"><span class="pre">gmrt-base</span></code>
+(blended grid), <code class="docutils literal notranslate"><span class="pre">gebco+ebp</span></code> (grid + beach profile), or <code class="docutils literal notranslate"><span class="pre">ebp</span></code> (pure
+equilibrium beach profile).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">osm_id</span></code> / <code class="docutils literal notranslate"><span class="pre">osm_type</span></code></p></td>
+<td><p>Source OSM element.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">touches_bbox</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> when the body was clipped by the area bbox.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Name</span></code></p></td>
+<td><p>Display name (<code class="docutils literal notranslate"><span class="pre">&lt;area&gt;</span> <span class="pre">-</span> <span class="pre">&lt;water_tag&gt;</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">area_id</span></code></p></td>
+<td><p>Owning area id.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(The pipeline-internal <code class="docutils literal notranslate"><span class="pre">water_cells</span></code> array is stripped before writing; per-cell
+water is on <code class="docutils literal notranslate"><span class="pre">cells.csv</span></code> instead.)</p>
+</section>
+<section id="sea-area-sea-geojson">
+<h3>Sea – <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_sea.geojson</span></code><a class="headerlink" href="#sea-area-sea-geojson" title="Link to this heading">¶</a></h3>
+<p>The open-sea polygon built from the OSM coastline (bbox minus land). Geometry:
+<code class="docutils literal notranslate"><span class="pre">Polygon</span></code> (exterior plus island holes). Properties: <code class="docutils literal notranslate"><span class="pre">feature_type</span></code>
+(<code class="docutils literal notranslate"><span class="pre">&quot;sea&quot;</span></code>), <code class="docutils literal notranslate"><span class="pre">sea_index</span></code> (<code class="docutils literal notranslate"><span class="pre">0</span></code> – multiple sea polygons are merged into one
+feature at import), <code class="docutils literal notranslate"><span class="pre">depth_m</span></code> (maximum resolved sea depth), plus the standard
+<code class="docutils literal notranslate"><span class="pre">Name</span></code> / <code class="docutils literal notranslate"><span class="pre">area_id</span></code>.</p>
+</section>
+<section id="natural-earth-layers-area-ne-geojson">
+<h3>Natural Earth layers – <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_ne_*.geojson</span></code><a class="headerlink" href="#natural-earth-layers-area-ne-geojson" title="Link to this heading">¶</a></h3>
+<p>Country-scale fallback content, populated <strong>only</strong> when the area was built with
+detail mode <em>Major features</em> (at that scale the OSM structures/streets/landmarks
+layers are replaced by Natural Earth). At city scale these files exist but are
+empty.</p>
+<div class="table-wrapper colwidths-given docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26.0%" />
+<col style="width: 20.0%" />
+<col style="width: 54.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Geometry</p></th>
+<th class="head"><p>Properties</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_ne_urban_areas</span></code></p></td>
+<td><p>(Multi)Polygon</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">feature_type</span></code> (<code class="docutils literal notranslate"><span class="pre">&quot;ne_urban_area&quot;</span></code>), <code class="docutils literal notranslate"><span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">area_sqkm</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_ne_places</span></code></p></td>
+<td><p>Point</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">feature_type</span></code> (<code class="docutils literal notranslate"><span class="pre">&quot;ne_place&quot;</span></code>), <code class="docutils literal notranslate"><span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">scalerank</span></code>, <code class="docutils literal notranslate"><span class="pre">pop_max</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_ne_major_roads</span></code></p></td>
+<td><p>(Multi)LineString</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">feature_type</span></code> (<code class="docutils literal notranslate"><span class="pre">&quot;ne_major_road&quot;</span></code>), <code class="docutils literal notranslate"><span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">road_type</span></code>,
+<code class="docutils literal notranslate"><span class="pre">scalerank</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_ne_landmarks</span></code></p></td>
+<td><p>Point</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">feature_type</span></code> (<code class="docutils literal notranslate"><span class="pre">&quot;ne_landmark&quot;</span></code>), <code class="docutils literal notranslate"><span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">landmark_kind</span></code>
+(<code class="docutils literal notranslate"><span class="pre">airport</span></code> / <code class="docutils literal notranslate"><span class="pre">peak</span></code> / <code class="docutils literal notranslate"><span class="pre">park</span></code>).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="contour-lines-area-contour-lines-geojson">
+<h3>Contour lines – <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_contour_lines.geojson</span></code><a class="headerlink" href="#contour-lines-area-contour-lines-geojson" title="Link to this heading">¶</a></h3>
+<p>Present only when a minor contour interval &gt; 0 was set. One Feature per shared
+hex edge that straddles an elevation band; segments are the cells’ own
+boundaries, so lines align exactly with the hex terrain. Geometry: <code class="docutils literal notranslate"><span class="pre">LineString</span></code>
+(2 points). Properties: <code class="docutils literal notranslate"><span class="pre">feature_type</span></code> (<code class="docutils literal notranslate"><span class="pre">&quot;contour_line&quot;</span></code>), <code class="docutils literal notranslate"><span class="pre">level_m</span></code> (the
+contour elevation), <code class="docutils literal notranslate"><span class="pre">is_major</span></code> (<code class="docutils literal notranslate"><span class="pre">true</span></code> on index contours when a major
+interval was set).</p>
+</section>
+<section id="colour-area-color-geojson">
+<h3>Colour – <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_color.geojson</span></code><a class="headerlink" href="#colour-area-color-geojson" title="Link to this heading">¶</a></h3>
+<p>Per-face colour samples: one <code class="docutils literal notranslate"><span class="pre">Point</span></code> Feature per (cell, face) – face <code class="docutils literal notranslate"><span class="pre">0</span></code> is
+the cell centre, <code class="docutils literal notranslate"><span class="pre">1..N</span></code> the ring sectors (in edge-midpoint order). The point
+geometry is the sample location (handy in QGIS); properties carry <code class="docutils literal notranslate"><span class="pre">h3_id</span></code>,
+<code class="docutils literal notranslate"><span class="pre">face</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code> / <code class="docutils literal notranslate"><span class="pre">g</span></code> / <code class="docutils literal notranslate"><span class="pre">b</span></code> (0-255). The importer bakes these onto the
+Terrain Centres as vectors; face 0 duplicates the cells.csv <code class="docutils literal notranslate"><span class="pre">r</span></code>/<code class="docutils literal notranslate"><span class="pre">g</span></code>/<code class="docutils literal notranslate"><span class="pre">b</span></code>.</p>
+</section>
+</section>
+<section id="the-combined-area-geojson">
+<h2>The combined <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;.geojson</span></code><a class="headerlink" href="#the-combined-area-geojson" title="Link to this heading">¶</a></h2>
+<p>The legacy bundle: one FeatureCollection holding <strong>all</strong> of the above features
+(same per-type shapes) plus a single synthetic <strong>terrain</strong> feature. The unified
+files are the contract; the combined file is written for compatibility and for
+quick inspection. The terrain feature’s geometry is <code class="docutils literal notranslate"><span class="pre">null</span></code> and its properties
+are the area-level block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;feature_type&quot;</span><span class="p">:</span> <span class="s2">&quot;terrain&quot;</span><span class="p">,</span> <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;area&gt; - Terrain&quot;</span><span class="p">,</span> <span class="s2">&quot;area_id&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span>
+  <span class="s2">&quot;extend_km&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;n_lat&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;n_lon&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s2">&quot;lon_centre&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;lat_centre&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span>
+  <span class="s2">&quot;lon_min&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;lat_min&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;lon_max&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;lat_max&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span>
+  <span class="s2">&quot;ele_min_m&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;ele_max_m&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;ele_min_baked_m&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span>
+  <span class="s2">&quot;h3_resolution&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+  <span class="s2">&quot;cells&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">ele_m</span><span class="p">,</span> <span class="n">rot_z</span><span class="p">,</span> <span class="n">radius_eq</span><span class="p">,</span> <span class="n">h3_id</span><span class="p">,</span> <span class="n">water_type</span><span class="p">,</span>
+             <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">veg_type</span><span class="p">,</span> <span class="n">water_depth_m</span><span class="p">,</span> <span class="n">coast_dist_m</span><span class="p">,</span>
+             <span class="n">coast_dir_x</span><span class="p">,</span> <span class="n">coast_dir_y</span><span class="p">,</span> <span class="n">is_pentagon</span><span class="p">,</span> <span class="n">slope_x</span><span class="p">,</span> <span class="n">slope_y</span><span class="p">],</span> <span class="o">...</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="image-texture-area-image-texture-png-the-image-texture-block">
+<h2>Image Texture – <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_image_texture.png</span></code> + the <code class="docutils literal notranslate"><span class="pre">image_texture</span></code> block<a class="headerlink" href="#image-texture-area-image-texture-png-the-image-texture-block" title="Link to this heading">¶</a></h2>
+<p>When <em>Image Texture</em> is on, the raw tiles are stitched into one
+Web-Mercator-aligned PNG mosaic and the manifest records it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;image_texture&quot;</span><span class="p">:</span> <span class="p">{</span>
+  <span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="s2">&quot;monaco_image_texture.png&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;extent&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;zoom&quot;</span><span class="p">:</span> <span class="mi">17</span><span class="p">,</span> <span class="s2">&quot;tx0&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;ty0&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span>
+             <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">5120</span><span class="p">,</span> <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="mi">4864</span><span class="p">,</span>
+             <span class="s2">&quot;lon_min&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;lon_max&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;lat_min&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;lat_max&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">},</span>
+  <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;s2&quot;</span><span class="p">,</span> <span class="s2">&quot;passes&quot;</span><span class="p">:</span> <span class="mi">3</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">extent</span></code> maps pixel coordinates to lon/lat (its <code class="docutils literal notranslate"><span class="pre">lat_max</span></code> is the image’s
+top edge); the add-on UV-maps the PNG onto the Terrain Surface from it. Deleting
+the PNG orphans the block – the importer drops a missing texture silently.</p>
+<p>Legacy manifests (built before the rename) carry the same block under the
+<code class="docutils literal notranslate"><span class="pre">surface_texture</span></code> key with a <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_texture.png</span></code> file; readers accept both
+spellings and always take the file name from the block’s <code class="docutils literal notranslate"><span class="pre">file</span></code> value.</p>
+</section>
+<section id="data-layers">
+<h2>Data layers<a class="headerlink" href="#data-layers" title="Link to this heading">¶</a></h2>
+<p>Beyond the per-cell spine and the feature files, a dataset can carry optional,
+additive <strong>data layers</strong> – extra attributes baked onto the terrain. The manifest
+lists them in a <code class="docutils literal notranslate"><span class="pre">layers</span></code> array, and every stage (exporter, validator, importer)
+<em>dispatches on the layer’s</em> <code class="docutils literal notranslate"><span class="pre">kind</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;layers&quot;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;population&quot;</span><span class="p">,</span> <span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;cell_field&quot;</span><span class="p">,</span>  <span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="s2">&quot;monaco_celldata.csv&quot;</span><span class="p">,</span>         <span class="s2">&quot;spec&quot;</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">}},</span>
+  <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;footfall&quot;</span><span class="p">,</span>   <span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;cell_series&quot;</span><span class="p">,</span> <span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="s2">&quot;monaco_footfall_series.json&quot;</span><span class="p">,</span> <span class="s2">&quot;spec&quot;</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">}}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>The list is <strong>append-only</strong>: an older importer skips a <code class="docutils literal notranslate"><span class="pre">kind</span></code> it does not know,
+and a newer one still reads an older manifest (legacy <code class="docutils literal notranslate"><span class="pre">data_fields</span></code> /
+<code class="docutils literal notranslate"><span class="pre">feature_files</span></code> blocks are normalised into the same shape by
+<a class="reference internal" href="api.html#apian_terrain.layers.manifest_layers" title="apian_terrain.layers.manifest_layers"><code class="xref py py-func docutils literal notranslate"><span class="pre">apian_terrain.layers.manifest_layers()</span></code></a>). Each kind’s import contract is
+checked by its own validator via <a class="reference internal" href="api.html#apian_terrain.layers.validate_layers" title="apian_terrain.layers.validate_layers"><code class="xref py py-func docutils literal notranslate"><span class="pre">apian_terrain.layers.validate_layers()</span></code></a>,
+so adding a kind is a validator plus a baker with no change to the core loop.</p>
+<section id="cell-field-one-scalar-per-cell">
+<h3><code class="docutils literal notranslate"><span class="pre">cell_field</span></code> – one scalar per cell<a class="headerlink" href="#cell-field-one-scalar-per-cell" title="Link to this heading">¶</a></h3>
+<p>A named numeric field carried in <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_celldata.csv</span></code> (an <code class="docutils literal notranslate"><span class="pre">h3_id</span></code> column plus
+one value column per field; sparse – a blank cell is no-data). A field filled by
+<a class="reference internal" href="custom_data.html"><span class="doc">interpolation</span></a> also gets a <code class="docutils literal notranslate"><span class="pre">&lt;field&gt;__i</span></code> flag column (<code class="docutils literal notranslate"><span class="pre">1</span></code>
+where interpolated); a conserving method additionally snapshots the original
+measured values in <code class="docutils literal notranslate"><span class="pre">&lt;field&gt;__m</span></code>. The importer bakes each field onto the
+area’s <strong>Data Carrier</strong> (a 1:1 clone of the Terrain Centres point mesh – point
+index <em>N</em> is cell <em>N</em>) under its bare name – <code class="docutils literal notranslate"><span class="pre">&lt;field&gt;</span></code> float plus a
+<code class="docutils literal notranslate"><span class="pre">&lt;field&gt;_present</span></code> boolean – so a consumer can tell a real value (including
+<code class="docutils literal notranslate"><span class="pre">0</span></code>) from no-data. Nothing carrying a user field name is prefixed. The
+leading underscore is the reserved system prefix for the add-on’s OWN mesh
+attributes: <code class="docutils literal notranslate"><span class="pre">_hex_cell</span></code> (the shared cell index, same value space as the
+Terrain Surface’s <code class="docutils literal notranslate"><span class="pre">_hex_cell</span></code> face attribute), <code class="docutils literal notranslate"><span class="pre">_terrain_color_*</span></code> and
+friends on the Centres/Surface, and every other importer-baked attribute.
+User field names must not start with <code class="docutils literal notranslate"><span class="pre">_</span></code> (the registration contract rejects
+them). The Terrain Surface joins the carrier by <code class="docutils literal notranslate"><span class="pre">_hex_cell</span></code> (Sample Index)
+in Geometry Nodes. The manifest
+<code class="docutils literal notranslate"><span class="pre">data_fields</span></code> array holds each field’s metadata (<code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">key</span></code>,
+<code class="docutils literal notranslate"><span class="pre">aggregation</span></code>, <code class="docutils literal notranslate"><span class="pre">units</span></code>, <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>, <code class="docutils literal notranslate"><span class="pre">count</span></code>), with <code class="docutils literal notranslate"><span class="pre">celldata_csv</span></code>
+naming the file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Shipped:</strong> the Apian Terrain importer builds the area’s <strong>Data Carrier</strong>
+at import time whenever the manifest declares data layers, bakes <em>every</em>
+field found in the celldata as <code class="docutils literal notranslate"><span class="pre">&lt;field&gt;</span></code> (FLOAT) +
+<code class="docutils literal notranslate"><span class="pre">&lt;field&gt;_present</span></code> (BOOLEAN) POINT attributes (no per-field
+special cases), and – when a node group exposes a <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Carrier</span></code> object
+input – sets it per modifier to the area’s own carrier, so one shared
+group stays area-agnostic. A generic consumer group selects the field
+through a <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Field</span></code> string input (Named Attribute lookup; the
+importer defaults it to the first baked field) with <code class="docutils literal notranslate"><span class="pre">Field</span> <span class="pre">Min</span></code> /
+<code class="docutils literal notranslate"><span class="pre">Field</span> <span class="pre">Max</span></code> float inputs fed from the manifest <code class="docutils literal notranslate"><span class="pre">data_fields</span></code> metadata
+for normalisation. On <strong>Blender 5.2</strong> the displayed field is always the
+<strong>first baked field</strong> (<code class="docutils literal notranslate"><span class="pre">data_fields``[0]):</span> <span class="pre">the</span> <span class="pre">5.2</span> <span class="pre">Named</span> <span class="pre">Attribute</span> <span class="pre">node</span>
+<span class="pre">has</span> <span class="pre">no</span> <span class="pre">drivable</span> <span class="pre">Name</span> <span class="pre">socket</span> <span class="pre">(a</span> <span class="pre">linked</span> <span class="pre">string</span> <span class="pre">is</span> <span class="pre">ignored),</span> <span class="pre">so</span> <span class="pre">the</span> <span class="pre">bundled</span>
+<span class="pre">APIAN_TERRAIN_CENTRES/SURFACE</span> <span class="pre">groups</span> <span class="pre">read</span> <span class="pre">the</span> <span class="pre">STATIC</span> <span class="pre">``_data_value</span></code> /
+<code class="docutils literal notranslate"><span class="pre">_data_value_present</span></code> attributes, and the importer mirrors the first
+baked field onto them at bake time. The generic <code class="docutils literal notranslate"><span class="pre">&lt;field&gt;</span></code> attributes
+and the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Field</span></code> string input remain wired for forward
+compatibility. Frame-driven <code class="docutils literal notranslate"><span class="pre">cell_series</span></code> playback ships too (see
+below); its per-frame repaint keeps the <code class="docutils literal notranslate"><span class="pre">_data_value</span></code> mirror in sync.</p>
+</div>
+</section>
+<section id="cell-series-one-scalar-per-cell-per-timestep">
+<h3><code class="docutils literal notranslate"><span class="pre">cell_series</span></code> – one scalar per cell, per timestep<a class="headerlink" href="#cell-series-one-scalar-per-cell-per-timestep" title="Link to this heading">¶</a></h3>
+<p>An animated time series for frame-driven <strong>step</strong> playback, built to scale to
+millions of cells over tens of thousands of steps. Storage is <strong>sparse</strong> (compressed
+sparse row), so the on-disk size is proportional to the records that actually exist,
+not to <code class="docutils literal notranslate"><span class="pre">(cells</span> <span class="pre">x</span> <span class="pre">timesteps)</span></code>:</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Contents</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_&lt;field&gt;_series.json</span></code></p></td>
+<td><p>Header: dtype, <code class="docutils literal notranslate"><span class="pre">n_steps</span></code>, <code class="docutils literal notranslate"><span class="pre">n_cells</span></code>, <code class="docutils literal notranslate"><span class="pre">nnz</span></code>,
+value <code class="docutils literal notranslate"><span class="pre">min</span></code>/<code class="docutils literal notranslate"><span class="pre">max</span></code>, gap policy, per-step
+<code class="docutils literal notranslate"><span class="pre">time_labels</span></code>, discontinuity counts, file names.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_&lt;field&gt;_series.rowptr</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int64[n_steps+1]</span></code> row pointer: step <em>s</em>’s records
+are the slice <code class="docutils literal notranslate"><span class="pre">[rowptr[s]</span> <span class="pre">:</span> <span class="pre">rowptr[s+1]]</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_&lt;field&gt;_series.cols</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int32[nnz]</span></code> – the cell (index into <code class="docutils literal notranslate"><span class="pre">.cells</span></code>) of
+each record.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_&lt;field&gt;_series.vals.*</span></code></p></td>
+<td><p>Each record’s value (<code class="docutils literal notranslate"><span class="pre">float32</span></code> by default;
+<code class="docutils literal notranslate"><span class="pre">float16</span></code> opt-in for known small-range fields).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_&lt;field&gt;_series.cells</span></code></p></td>
+<td><p>Cell order: one <code class="docutils literal notranslate"><span class="pre">h3_id</span></code> per line.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Timesteps are <strong>discrete</strong> – any interpolation between them happens upstream, so a
+consumer only ever steps. A gap means <strong>null</strong>: a cell with no record at a step (or an
+explicit-null record) displays <em>nothing</em> there, kept distinct from a real <code class="docutils literal notranslate"><span class="pre">0</span></code>. Where
+the <code class="docutils literal notranslate"><span class="pre">time_labels</span></code> are real datetimes, the series is meant to drive the sun/sky to each
+step’s instant as well. Produced by <a class="reference internal" href="api.html#apian_terrain.series.write_series" title="apian_terrain.series.write_series"><code class="xref py py-func docutils literal notranslate"><span class="pre">apian_terrain.series.write_series()</span></code></a> (and the
+DuckDB path <a class="reference internal" href="api.html#apian_terrain.tyrbuild.export_cell_series" title="apian_terrain.tyrbuild.export_cell_series"><code class="xref py py-func docutils literal notranslate"><span class="pre">apian_terrain.tyrbuild.export_cell_series()</span></code></a>); see <a class="reference internal" href="custom_data.html"><span class="doc">Custom data</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Shipped (beta):</strong> the series format, its desktop export, AND the Blender
+playback consumer – per-field <code class="docutils literal notranslate"><span class="pre">cell_field</span></code> baking, the Data Carrier
+wiring (see above), and the per-frame <code class="docutils literal notranslate"><span class="pre">cell_series</span></code> repaint from the CSR
+handlers all ship.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">cell_series</span></code> format is stable and produced by the pipeline today;
+the consumer plays it back by repainting a live <code class="docutils literal notranslate"><span class="pre">&lt;field&gt;</span></code> attribute
+from the CSR handlers on every frame change – the series stays off-mesh in
+its mmap’d handlers, so resident memory tracks only the current step. The
+repaint targets only the <strong>Data Carrier</strong> object, never the
+Terrain Centres/Surface render meshes (which sample it by index). A subset
+import (0.9.7) trims the series in memory to the subset’s cells before
+streaming, so a master series over the whole region serves any subset without
+re-export. Sun/sky coupling to datetime-labelled steps is a planned follow-up.</p>
+</div>
+</section>
+</section>
+<section id="companion-app-files">
+<h2>Companion app files<a class="headerlink" href="#companion-app-files" title="Link to this heading">¶</a></h2>
+<p>Outside the dataset folder, the companion app maintains:</p>
+<p>The two metadata TSVs follow the <strong>tyr</strong> schema (the editable data-engine the
+Data Manager wraps); the app reads them back through
+<a class="reference internal" href="api.html#module-apian_terrain.tyrbuild" title="apian_terrain.tyrbuild"><code class="xref py py-mod docutils literal notranslate"><span class="pre">apian_terrain.tyrbuild</span></code></a>, so edits made in the grids and edits made by
+hand round-trip.</p>
+</section>
+<section id="bringing-your-own-files">
+<h2>Bringing your own files<a class="headerlink" href="#bringing-your-own-files" title="Link to this heading">¶</a></h2>
+<p>Three supported substitution paths, in increasing order of commitment:</p>
+<ul class="simple">
+<li><p><strong>Column overrides</strong> – your own CSV mapped onto the grid for an existing
+<code class="docutils literal notranslate"><span class="pre">cells.csv</span></code> column (<code class="docutils literal notranslate"><span class="pre">ele_m</span></code>, <code class="docutils literal notranslate"><span class="pre">water_depth_m</span></code>, <code class="docutils literal notranslate"><span class="pre">water_type</span></code>,
+<code class="docutils literal notranslate"><span class="pre">veg_type</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>/<code class="docutils literal notranslate"><span class="pre">g</span></code>/<code class="docutils literal notranslate"><span class="pre">b</span></code>).</p></li>
+<li><p><strong>Layer overrides</strong> – your own GeoJSON FeatureCollection replacing a whole
+feature file (<code class="docutils literal notranslate"><span class="pre">structures</span></code>, <code class="docutils literal notranslate"><span class="pre">bridges</span></code>, <code class="docutils literal notranslate"><span class="pre">streets</span></code>, <code class="docutils literal notranslate"><span class="pre">landmarks</span></code>,
+<code class="docutils literal notranslate"><span class="pre">water_bodies</span></code>, <code class="docutils literal notranslate"><span class="pre">sea</span></code>), matched against the per-type schema above.</p></li>
+<li><p><strong>Data layers</strong> – arbitrary named fields/series alongside the spine
+(<code class="docutils literal notranslate"><span class="pre">celldata.csv</span></code> / <code class="docutils literal notranslate"><span class="pre">cell_series</span></code>), so the append-only <code class="docutils literal notranslate"><span class="pre">CELL_COLUMNS</span></code>
+contract is never touched.</p></li>
+</ul>
+<p><a class="reference internal" href="custom_data.html"><span class="doc">Custom data</span></a> walks all three with examples. Grid geometry (<code class="docutils literal notranslate"><span class="pre">h3_id</span></code>,
+<code class="docutils literal notranslate"><span class="pre">lon</span></code>, <code class="docutils literal notranslate"><span class="pre">lat</span></code>, <code class="docutils literal notranslate"><span class="pre">rot_z</span></code>, <code class="docutils literal notranslate"><span class="pre">radius_eq</span></code>) is never overridable – it is derived
+from the bbox and resolution.</p>
+</section>
+<section id="reading-a-dataset">
+<h2>Reading a dataset<a class="headerlink" href="#reading-a-dataset" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="api.html#module-apian_terrain.unified" title="apian_terrain.unified"><code class="xref py py-mod docutils literal notranslate"><span class="pre">apian_terrain.unified</span></code></a> provides the readers, including
+<a class="reference internal" href="api.html#apian_terrain.unified.load_for_import" title="apian_terrain.unified.load_for_import"><code class="xref py py-func docutils literal notranslate"><span class="pre">apian_terrain.unified.load_for_import()</span></code></a>, which reconstructs the in-memory
+<code class="docutils literal notranslate"><span class="pre">features_by_type</span></code> structure the Blender importer builds from (a synthesized
+terrain feature carrying the cells, plus structures with bridges folded back in,
+streets and landmarks).</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="design_decisions.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Design decisions</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="pipeline.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">How the pipeline works</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, Apian
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">The unified dataset format</a><ul>
+<li><a class="reference internal" href="#file-inventory">File inventory</a></li>
+<li><a class="reference internal" href="#subset-manifests">Subset manifests</a></li>
+<li><a class="reference internal" href="#manifest">Manifest</a></li>
+<li><a class="reference internal" href="#per-cell-csv">Per-cell CSV</a></li>
+<li><a class="reference internal" href="#feature-files">Feature files</a><ul>
+<li><a class="reference internal" href="#structures-area-structures-geojson">Structures – <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_structures.geojson</span></code></a></li>
+<li><a class="reference internal" href="#bridges-area-bridges-geojson">Bridges – <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_bridges.geojson</span></code></a></li>
+<li><a class="reference internal" href="#streets-area-streets-geojson">Streets – <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_streets.geojson</span></code></a></li>
+<li><a class="reference internal" href="#landmarks-area-landmarks-geojson">Landmarks – <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_landmarks.geojson</span></code></a></li>
+<li><a class="reference internal" href="#water-bodies-area-water-bodies-geojson">Water bodies – <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_water_bodies.geojson</span></code></a></li>
+<li><a class="reference internal" href="#sea-area-sea-geojson">Sea – <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_sea.geojson</span></code></a></li>
+<li><a class="reference internal" href="#natural-earth-layers-area-ne-geojson">Natural Earth layers – <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_ne_*.geojson</span></code></a></li>
+<li><a class="reference internal" href="#contour-lines-area-contour-lines-geojson">Contour lines – <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_contour_lines.geojson</span></code></a></li>
+<li><a class="reference internal" href="#colour-area-color-geojson">Colour – <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_color.geojson</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-combined-area-geojson">The combined <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;.geojson</span></code></a></li>
+<li><a class="reference internal" href="#image-texture-area-image-texture-png-the-image-texture-block">Image Texture – <code class="docutils literal notranslate"><span class="pre">&lt;area&gt;_image_texture.png</span></code> + the <code class="docutils literal notranslate"><span class="pre">image_texture</span></code> block</a></li>
+<li><a class="reference internal" href="#data-layers">Data layers</a><ul>
+<li><a class="reference internal" href="#cell-field-one-scalar-per-cell"><code class="docutils literal notranslate"><span class="pre">cell_field</span></code> – one scalar per cell</a></li>
+<li><a class="reference internal" href="#cell-series-one-scalar-per-cell-per-timestep"><code class="docutils literal notranslate"><span class="pre">cell_series</span></code> – one scalar per cell, per timestep</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#companion-app-files">Companion app files</a></li>
+<li><a class="reference internal" href="#bringing-your-own-files">Bringing your own files</a></li>
+<li><a class="reference internal" href="#reading-a-dataset">Reading a dataset</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=8d563738"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    </body>
+</html>

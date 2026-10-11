@@ -1,0 +1,27 @@
+/* Apian docs -- dark, minimal, geometric to match the mark. */
+
+/* Sidebar logo: the black-tile hexagon mark, sized to sit cleanly above the
+   project name. */
+.sidebar-logo {
+    max-width: 120px;
+    margin: 0.7rem auto 0.3rem;
+}
+
+/* Technical, slightly tracked headings. */
+h1, h2, h3 {
+    letter-spacing: 0.01em;
+    font-weight: 650;
+}
+
+/* Landing-page hero mark. */
+img.hx-hero {
+    display: block;
+    margin: 0.4rem auto 1.6rem;
+    width: 168px;
+    filter: drop-shadow(0 0 22px rgba(255, 255, 255, 0.07));
+}
+
+/* Tighter inline literals. */
+code.literal {
+    font-size: 0.92em;
+}

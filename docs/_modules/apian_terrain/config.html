@@ -1,0 +1,798 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html"><link rel="search" title="Search" href="../../search.html">
+        <link rel="prefetch" href="../../_static/apian_terrain_logo_light.png" as="image">
+        <link rel="prefetch" href="../../_static/apian_terrain_logo.png" as="image">
+
+    <link rel="shortcut icon" href="../../_static/apian_terrain.ico"><!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
+        <title>apian_terrain.config - Apian 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=5d073521" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  --color-brand-primary: #16181d;
+  --color-brand-content: #16181d;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #e9e9ec;
+  --color-brand-content: #c9ccd2;
+  --color-background-primary: #0b0b0c;
+  --color-background-secondary: #101012;
+  --color-background-hover: #16161a;
+  --color-api-background: #101012;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #e9e9ec;
+  --color-brand-content: #c9ccd2;
+  --color-background-primary: #0b0b0c;
+  --color-background-secondary: #101012;
+  --color-background-hover: #16161a;
+  --color-api-background: #101012;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Apian 1.0.0</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="../../_static/apian_terrain_logo_light.png" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="../../_static/apian_terrain_logo.png" alt="Dark Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Apian 1.0.0</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Values</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../values.html">Values</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Apian</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../companion_app.html">Companion app (desktop GUI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../blender_addon.html">Blender add-on</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cli.html">Command-line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../custom_data.html">Custom data</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How it works</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pipeline.html">How the pipeline works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data_format.html">The unified dataset format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design_decisions.html">Design decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../layers.html">Data Layers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../licenses.html">Data licensing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API reference</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <h1>Source code for apian_terrain.config</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">config.py</span>
+<span class="sd">---------</span>
+<span class="sd">Shared configuration constants for the apian_terrain pipeline.</span>
+<span class="sd">All values can be overridden by setting module attributes before calling process_area().</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># ── Terrain grid ──────────────────────────────────────────────────────────────</span>
+<span class="n">TERRAIN_EXTEND_KM</span>    <span class="o">=</span> <span class="mf">1.0</span>    <span class="c1"># extend area bbox by this many km in each direction</span>
+<span class="n">COASTLINE_EXTEND_KM</span>  <span class="o">=</span> <span class="mf">10.0</span>   <span class="c1"># extra bbox margin for coastline query</span>
+<span class="n">TERRAIN_RESOLUTION_M</span> <span class="o">=</span> <span class="mf">30.0</span>   <span class="c1"># elevation grid sample spacing in metres</span>
+<span class="c1"># ── Structures ────────────────────────────────────────────────────────────────</span>
+<span class="c1"># Capture building footprints out to (area bbox + this margin) so buildings that</span>
+<span class="c1"># straddle the boundary arrive WHOLE (no 2D truncation in the pipeline). The</span>
+<span class="c1"># Blender import then cuts them to the exact terrain bbox (footprint clip before</span>
+<span class="c1"># extrusion). The margin guarantees the border geometry exists to be cut.</span>
+<span class="n">STRUCTURE_CAPTURE_MARGIN_M</span> <span class="o">=</span> <span class="mf">100.0</span>
+
+<span class="c1"># ── Elevation sources ─────────────────────────────────────────────────────────</span>
+<span class="c1"># Primary: Copernicus DEM 30m (COP30) — AWS-hosted COGs, no key required.</span>
+<span class="c1"># Secondary: NASADEM via OpenTopography — requires free API key.</span>
+<span class="c1"># Fallback: OpenTopoData SRTM batch queries.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_load_opentopo_key</span><span class="p">():</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;OPENTOPOGRAPHY_API_KEY&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">env</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">env</span>
+    <span class="n">key_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;open_topo_api_key.txt&quot;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">key_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">_f</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+<span class="n">OPENTOPOGRAPHY_API_KEY</span> <span class="o">=</span> <span class="n">_load_opentopo_key</span><span class="p">()</span>
+
+<span class="c1"># ── Global raw-tile stores (region-folder layout) ────────────────────────────</span>
+<span class="c1"># The Manager&#39;s global &quot;Pipeline Cache&quot; dir (settings.json key &#39;data_dir&#39;):</span>
+<span class="c1"># GLOBAL raw tile stores shared across regions -- cop30/nasadem 1-degree tiles</span>
+<span class="c1"># and naturalearth. The pipeline runner wires this from the request (see</span>
+<span class="c1"># _apply_request_options); the tkinter manager and tools set it from</span>
+<span class="c1"># settings.json. Empty/unset = every store falls back to the region&#39;s own</span>
+<span class="c1"># cache/ dir (offline / zip-mode safety).</span>
+<span class="n">DATA_DIR</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_settings_path</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The Manager&#39;s settings.json path -- mirrors gui_settings.py exactly</span>
+<span class="sd">    (%APPDATA%/apian/settings.json, or $APIAN_CONFIG when set). gui_settings</span>
+<span class="sd">    lives at the repo root and is not importable from the packaged add-on, so</span>
+<span class="sd">    the small path logic is duplicated here rather than imported.&quot;&quot;&quot;</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;APIAN_CONFIG&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">env</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;nt&quot;</span><span class="p">:</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;APPDATA&quot;</span><span class="p">,</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()))</span>
+    <span class="k">elif</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;posix&quot;</span><span class="p">:</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;XDG_CONFIG_HOME&quot;</span><span class="p">,</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;.config&quot;</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">base</span> <span class="o">/</span> <span class="s2">&quot;apian&quot;</span> <span class="o">/</span> <span class="s2">&quot;settings.json&quot;</span>
+
+
+<div class="viewcode-block" id="load_settings">
+<a class="viewcode-back" href="../../api.html#apian_terrain.config.load_settings">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_settings</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The Manager&#39;s settings.json as a dict ({} when missing/corrupt).&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">_settings_path</span><span class="p">()</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">data</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="p">{}</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">OSError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{}</span></div>
+
+
+
+<div class="viewcode-block" id="resolve_store_dir">
+<a class="viewcode-back" href="../../api.html#apian_terrain.config.resolve_store_dir">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">resolve_store_dir</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">sub</span><span class="p">,</span> <span class="n">fallback</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Global raw-tile store dir for `key`: &lt;settings[key]&gt;/&lt;sub&gt; when the key</span>
+<span class="sd">    is set, else the per-region fallback dir. `settings` is a plain dict (the</span>
+<span class="sd">    Manager request or settings.json content); `sub` may be &quot;&quot; for the root.&quot;&quot;&quot;</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="nb">str</span><span class="p">((</span><span class="n">settings</span> <span class="ow">or</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">base</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">base</span><span class="p">)</span> <span class="o">/</span> <span class="n">sub</span> <span class="k">if</span> <span class="n">sub</span> <span class="k">else</span> <span class="n">Path</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">fallback</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="data_store_dir">
+<a class="viewcode-back" href="../../api.html#apian_terrain.config.data_store_dir">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">data_store_dir</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span> <span class="n">fallback</span><span class="p">,</span> <span class="n">settings</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;resolve_store_dir for the &#39;data_dir&#39; (Pipeline Cache) key: the global</span>
+<span class="sd">    store when data_dir is known (explicit settings arg, the wired DATA_DIR,</span>
+<span class="sd">    or settings.json), else the region-cache fallback.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">settings</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">settings</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;data_dir&quot;</span><span class="p">:</span> <span class="n">DATA_DIR</span><span class="p">}</span> <span class="k">if</span> <span class="n">DATA_DIR</span> <span class="k">else</span> <span class="n">load_settings</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">resolve_store_dir</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s2">&quot;data_dir&quot;</span><span class="p">,</span> <span class="n">sub</span><span class="p">,</span> <span class="n">fallback</span><span class="p">)</span></div>
+
+
+<span class="c1"># Geofabrik PBF downloads (local_pbf fallback). Geofabrik rate-limits anonymous</span>
+<span class="c1"># bulk downloads, so a valid email is sent as the contact in the request header</span>
+<span class="c1"># (User-Agent + From). Set in the app&#39;s global settings.</span>
+<span class="n">GEOFABRIK_EMAIL</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+<span class="c1"># Set True to force a fresh NASADEM download (e.g. after a bbox change).</span>
+<span class="c1"># Terrain elevation doesn&#39;t go stale — cache is always used when present.</span>
+<span class="n">OVERWRITE_NASADEM</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">OVERWRITE_GEBCO</span>   <span class="o">=</span> <span class="kc">False</span>
+<span class="n">OVERWRITE_GMRT</span>    <span class="o">=</span> <span class="kc">False</span>
+<span class="c1"># Manager pipeline runs set SOURCE_FRESH = True (the C# runner sets it for every</span>
+<span class="c1"># request): re-fetch everything the manager downloads itself — satellite tiles</span>
+<span class="c1"># and mosaic registrations, GMRT grids, OBM building tiles, per-area fetch</span>
+<span class="c1"># caches. A source run means the app or the source data changed, so cached</span>
+<span class="c1"># downloads would silently reproduce the old result. Data the user stages</span>
+<span class="c1"># locally (PBF extracts, GEBCO/NASADEM/COP30 tile dirs) is external and always</span>
+<span class="c1"># reused. CLI/default runs keep False (caching on).</span>
+<span class="n">SOURCE_FRESH</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># The Manager&#39;s Source Data &quot;clear imagery cache&quot; option sets this: the imagery</span>
+<span class="c1"># stage deletes the area&#39;s raw Sentinel-2 tile cache (s2_tiles/cache/*) and the</span>
+<span class="c1"># STAC search cache before sampling, so every tile re-downloads. Off = tiles</span>
+<span class="c1"># persist across runs (date-keyed filenames keep them honest).</span>
+<span class="n">CLEAR_IMAGERY_CACHE</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># Temporal compositing across passes (panel: Imagery -&gt; Compositing):</span>
+<span class="c1"># &quot;median&quot;        -- per-pixel middle value; clouds must be in the MINORITY of</span>
+<span class="c1">#                    passes, else the median is a cloud.</span>
+<span class="c1"># &quot;darkest&quot;       -- per-pixel single darkest sample (clouds are always bright);</span>
+<span class="c1">#                    strongest cloud rejection, but a shadowed sample can win a</span>
+<span class="c1">#                    pixel and the result is noisier (one pass wins each pixel).</span>
+<span class="c1"># &quot;dark-quartile&quot; -- the darkest ~25% of the stack per pixel; nearly the</span>
+<span class="c1">#                    rejection of darkest while resisting single-shadow outliers.</span>
+<span class="n">SATELLITE_COMPOSITE</span> <span class="o">=</span> <span class="s2">&quot;median&quot;</span>
+
+<span class="c1"># The &quot;Rebuild imagery from cache&quot; mode (Source Data button): tile fetches read</span>
+<span class="c1"># ONLY the on-disk cache -- nothing is downloaded, and candidate windows whose</span>
+<span class="c1"># tiles are not cached are skipped. Compositing options (passes/range/mode)</span>
+<span class="c1"># apply exactly as online; only the data source changes.</span>
+<span class="n">IMAGERY_OFFLINE</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># ── Water / depth model ───────────────────────────────────────────────────────</span>
+
+<span class="c1"># Pole-of-inaccessibility depth model:</span>
+<span class="c1">#   depth_m = min(tag_cap, WATER_DEPTH_PROPORTIONAL_K * max_inscribed_radius_m)</span>
+<span class="n">WATER_DEPTH_PROPORTIONAL_K</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">WATER_DEPTH_DEFAULT_M</span>      <span class="o">=</span> <span class="mf">5.0</span>
+
+<span class="c1"># Infinite-reservoir classification (hydro_sim.preprocess_water_params,</span>
+<span class="c1"># consumed by the flood PREVIEW): a standing-water body at or above this area</span>
+<span class="c1"># (km2) is treated as effectively infinite (sea-like contour flooding) even</span>
+<span class="c1"># when not ocean-connected -- the Great-Lakes case. None = off (the default:</span>
+<span class="c1"># tag + sea-level connectivity rules already cover the observed cases, and an</span>
+<span class="c1"># arbitrary area cutoff is a per-product judgement we have not had to make).</span>
+<span class="n">WATER_INFINITE_MIN_AREA_KM2</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">WATER_DEPTH_BY_TAG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;sea&quot;</span><span class="p">:</span>        <span class="mf">500.0</span><span class="p">,</span>
+    <span class="s2">&quot;ocean&quot;</span><span class="p">:</span>      <span class="mf">500.0</span><span class="p">,</span>
+    <span class="s2">&quot;lake&quot;</span><span class="p">:</span>       <span class="mf">500.0</span><span class="p">,</span>
+    <span class="s2">&quot;water&quot;</span><span class="p">:</span>        <span class="mf">5.0</span><span class="p">,</span>
+    <span class="s2">&quot;pond&quot;</span><span class="p">:</span>         <span class="mf">1.5</span><span class="p">,</span>
+    <span class="s2">&quot;oxbow&quot;</span><span class="p">:</span>        <span class="mf">2.0</span><span class="p">,</span>
+    <span class="s2">&quot;lagoon&quot;</span><span class="p">:</span>       <span class="mf">6.0</span><span class="p">,</span>
+    <span class="s2">&quot;moat&quot;</span><span class="p">:</span>         <span class="mf">1.5</span><span class="p">,</span>
+    <span class="s2">&quot;reservoir&quot;</span><span class="p">:</span>  <span class="mf">500.0</span><span class="p">,</span>
+    <span class="s2">&quot;basin&quot;</span><span class="p">:</span>        <span class="mf">2.0</span><span class="p">,</span>
+    <span class="s2">&quot;wetland&quot;</span><span class="p">:</span>      <span class="mf">0.0</span><span class="p">,</span>   <span class="c1"># marsh/swamp: surface water class, no terrain carve</span>
+    <span class="s2">&quot;river&quot;</span><span class="p">:</span>        <span class="mf">4.0</span><span class="p">,</span>
+    <span class="s2">&quot;riverbank&quot;</span><span class="p">:</span>    <span class="mf">3.0</span><span class="p">,</span>
+    <span class="s2">&quot;canal&quot;</span><span class="p">:</span>        <span class="mf">2.0</span><span class="p">,</span>
+    <span class="s2">&quot;dock&quot;</span><span class="p">:</span>        <span class="mf">12.0</span><span class="p">,</span>
+    <span class="s2">&quot;harbour&quot;</span><span class="p">:</span>     <span class="mf">25.0</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># Regolith colour palette used to tint water cell RGB values.</span>
+<span class="c1"># These replace satellite imagery (which shows the water surface, not the regolith).</span>
+<span class="n">WATER_REGOLITH_COLOR</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;sea&quot;</span><span class="p">:</span>        <span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span>
+    <span class="s2">&quot;ocean&quot;</span><span class="p">:</span>      <span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span>
+    <span class="s2">&quot;harbour&quot;</span><span class="p">:</span>    <span class="p">(</span> <span class="mi">90</span><span class="p">,</span>  <span class="mi">85</span><span class="p">,</span>  <span class="mi">80</span><span class="p">),</span>
+    <span class="s2">&quot;dock&quot;</span><span class="p">:</span>       <span class="p">(</span> <span class="mi">90</span><span class="p">,</span>  <span class="mi">85</span><span class="p">,</span>  <span class="mi">80</span><span class="p">),</span>
+    <span class="s2">&quot;river&quot;</span><span class="p">:</span>      <span class="p">(</span><span class="mi">110</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>  <span class="mi">80</span><span class="p">),</span>
+    <span class="s2">&quot;riverbank&quot;</span><span class="p">:</span>  <span class="p">(</span><span class="mi">110</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>  <span class="mi">80</span><span class="p">),</span>
+    <span class="s2">&quot;lake&quot;</span><span class="p">:</span>       <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span>  <span class="mi">90</span><span class="p">),</span>
+    <span class="s2">&quot;reservoir&quot;</span><span class="p">:</span>  <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span>  <span class="mi">90</span><span class="p">),</span>
+    <span class="s2">&quot;wetland&quot;</span><span class="p">:</span>    <span class="p">(</span> <span class="mi">70</span><span class="p">,</span>  <span class="mi">80</span><span class="p">,</span>  <span class="mi">60</span><span class="p">),</span>
+    <span class="s2">&quot;canal&quot;</span><span class="p">:</span>      <span class="p">(</span> <span class="mi">90</span><span class="p">,</span>  <span class="mi">85</span><span class="p">,</span>  <span class="mi">80</span><span class="p">),</span>
+    <span class="s2">&quot;pond&quot;</span><span class="p">:</span>       <span class="p">(</span> <span class="mi">80</span><span class="p">,</span>  <span class="mi">90</span><span class="p">,</span>  <span class="mi">70</span><span class="p">),</span>
+    <span class="s2">&quot;lagoon&quot;</span><span class="p">:</span>     <span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+    <span class="s2">&quot;moat&quot;</span><span class="p">:</span>       <span class="p">(</span> <span class="mi">80</span><span class="p">,</span>  <span class="mi">90</span><span class="p">,</span>  <span class="mi">70</span><span class="p">),</span>
+    <span class="s2">&quot;oxbow&quot;</span><span class="p">:</span>      <span class="p">(</span><span class="mi">100</span><span class="p">,</span>  <span class="mi">95</span><span class="p">,</span>  <span class="mi">75</span><span class="p">),</span>
+    <span class="s2">&quot;basin&quot;</span><span class="p">:</span>      <span class="p">(</span> <span class="mi">90</span><span class="p">,</span>  <span class="mi">85</span><span class="p">,</span>  <span class="mi">80</span><span class="p">),</span>
+    <span class="s2">&quot;water&quot;</span><span class="p">:</span>      <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span>  <span class="mi">90</span><span class="p">),</span>
+    <span class="s2">&quot;default&quot;</span><span class="p">:</span>    <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">115</span><span class="p">,</span>  <span class="mi">95</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="c1"># Cartographic land-cell colour keyed by OSM landcover tag (vegetation, then</span>
+<span class="c1"># natural, then landuse -- see unified.landcover_cell_map). Muted natural tones,</span>
+<span class="c1"># not OSM-carto neon. Replaces the old satellite median-RGB per cell.</span>
+<span class="n">LANDCOVER_COLOR</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># vegetation (veg_type wins first)</span>
+    <span class="s2">&quot;forest&quot;</span><span class="p">:</span>     <span class="p">(</span> <span class="mi">56</span><span class="p">,</span>  <span class="mi">84</span><span class="p">,</span>  <span class="mi">48</span><span class="p">),</span>
+    <span class="s2">&quot;wood&quot;</span><span class="p">:</span>       <span class="p">(</span> <span class="mi">56</span><span class="p">,</span>  <span class="mi">84</span><span class="p">,</span>  <span class="mi">48</span><span class="p">),</span>
+    <span class="s2">&quot;scrub&quot;</span><span class="p">:</span>      <span class="p">(</span><span class="mi">110</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span>  <span class="mi">70</span><span class="p">),</span>
+    <span class="s2">&quot;heath&quot;</span><span class="p">:</span>      <span class="p">(</span><span class="mi">130</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span>  <span class="mi">90</span><span class="p">),</span>
+    <span class="s2">&quot;park&quot;</span><span class="p">:</span>       <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span>  <span class="mi">90</span><span class="p">),</span>
+    <span class="s2">&quot;garden&quot;</span><span class="p">:</span>     <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span>  <span class="mi">90</span><span class="p">),</span>
+    <span class="s2">&quot;meadow&quot;</span><span class="p">:</span>     <span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+    <span class="s2">&quot;grass&quot;</span><span class="p">:</span>      <span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+    <span class="s2">&quot;grassland&quot;</span><span class="p">:</span>  <span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+    <span class="s2">&quot;vegetation&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span>  <span class="mi">90</span><span class="p">),</span>
+    <span class="c1"># natural surfaces</span>
+    <span class="s2">&quot;bare_rock&quot;</span><span class="p">:</span>  <span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">145</span><span class="p">,</span> <span class="mi">135</span><span class="p">),</span>
+    <span class="s2">&quot;scree&quot;</span><span class="p">:</span>      <span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">155</span><span class="p">,</span> <span class="mi">145</span><span class="p">),</span>
+    <span class="s2">&quot;shingle&quot;</span><span class="p">:</span>    <span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">155</span><span class="p">,</span> <span class="mi">145</span><span class="p">),</span>
+    <span class="s2">&quot;sand&quot;</span><span class="p">:</span>       <span class="p">(</span><span class="mi">222</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">170</span><span class="p">),</span>
+    <span class="s2">&quot;beach&quot;</span><span class="p">:</span>      <span class="p">(</span><span class="mi">222</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">170</span><span class="p">),</span>
+    <span class="s2">&quot;mud&quot;</span><span class="p">:</span>        <span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">110</span><span class="p">),</span>
+    <span class="s2">&quot;wetland&quot;</span><span class="p">:</span>    <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">110</span><span class="p">),</span>
+    <span class="s2">&quot;glacier&quot;</span><span class="p">:</span>    <span class="p">(</span><span class="mi">225</span><span class="p">,</span> <span class="mi">235</span><span class="p">,</span> <span class="mi">240</span><span class="p">),</span>
+    <span class="s2">&quot;fell&quot;</span><span class="p">:</span>       <span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">130</span><span class="p">),</span>
+    <span class="s2">&quot;bare_ground&quot;</span><span class="p">:(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span>
+    <span class="c1"># landuse</span>
+    <span class="s2">&quot;residential&quot;</span><span class="p">:</span>     <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">180</span><span class="p">),</span>
+    <span class="s2">&quot;commercial&quot;</span><span class="p">:</span>      <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">170</span><span class="p">),</span>
+    <span class="s2">&quot;retail&quot;</span><span class="p">:</span>          <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">170</span><span class="p">),</span>
+    <span class="s2">&quot;industrial&quot;</span><span class="p">:</span>      <span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">180</span><span class="p">),</span>
+    <span class="s2">&quot;railway&quot;</span><span class="p">:</span>         <span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">165</span><span class="p">),</span>
+    <span class="s2">&quot;farmland&quot;</span><span class="p">:</span>        <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">140</span><span class="p">),</span>
+    <span class="s2">&quot;farmyard&quot;</span><span class="p">:</span>        <span class="p">(</span><span class="mi">190</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">130</span><span class="p">),</span>
+    <span class="s2">&quot;orchard&quot;</span><span class="p">:</span>         <span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">110</span><span class="p">),</span>
+    <span class="s2">&quot;vineyard&quot;</span><span class="p">:</span>        <span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">110</span><span class="p">),</span>
+    <span class="s2">&quot;allotments&quot;</span><span class="p">:</span>      <span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span>
+    <span class="s2">&quot;cemetery&quot;</span><span class="p">:</span>        <span class="p">(</span><span class="mi">130</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span>
+    <span class="s2">&quot;recreation_ground&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+    <span class="s2">&quot;quarry&quot;</span><span class="p">:</span>          <span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">140</span><span class="p">),</span>
+    <span class="s2">&quot;construction&quot;</span><span class="p">:</span>    <span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">145</span><span class="p">),</span>
+    <span class="s2">&quot;brownfield&quot;</span><span class="p">:</span>      <span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">145</span><span class="p">),</span>
+    <span class="s2">&quot;greenfield&quot;</span><span class="p">:</span>      <span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="mi">110</span><span class="p">),</span>
+    <span class="s2">&quot;military&quot;</span><span class="p">:</span>        <span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span>
+    <span class="s2">&quot;landfill&quot;</span><span class="p">:</span>        <span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span>
+    <span class="s2">&quot;default&quot;</span><span class="p">:</span>         <span class="p">(</span><span class="mi">165</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">145</span><span class="p">),</span>   <span class="c1"># untagged / unmapped land</span>
+<span class="p">}</span>
+
+<span class="c1"># Fallback wall/roof colour for structures with no OSM building:colour / roof:colour</span>
+<span class="c1"># tag (directly or inherited). Used when the tag is absent or unparseable.</span>
+<span class="n">DEFAULT_WALL_COLOR</span> <span class="o">=</span> <span class="p">(</span><span class="mi">185</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="mi">160</span><span class="p">)</span>
+<span class="n">DEFAULT_ROOF_COLOR</span> <span class="o">=</span> <span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
+
+<span class="c1"># Stable string -&gt; index enums for the building:material / roof:material /</span>
+<span class="c1"># roof:shape tags. A Cycles material can&#39;t read strings, so these are passed to</span>
+<span class="c1"># Blender as INT face attributes (wall_material / roof_material / roof_shape) and</span>
+<span class="c1"># the Structures material switches textures on the index. -1 = unknown/untagged.</span>
+<span class="c1"># APPEND ONLY -- the indices are a contract the material relies on. Values are the</span>
+<span class="c1"># common OSM vocabularies (taginfo), lower-cased.</span>
+<span class="n">WALL_MATERIALS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;brick&quot;</span><span class="p">,</span> <span class="s2">&quot;stone&quot;</span><span class="p">,</span> <span class="s2">&quot;concrete&quot;</span><span class="p">,</span> <span class="s2">&quot;glass&quot;</span><span class="p">,</span> <span class="s2">&quot;plaster&quot;</span><span class="p">,</span> <span class="s2">&quot;wood&quot;</span><span class="p">,</span> <span class="s2">&quot;metal&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cement_block&quot;</span><span class="p">,</span> <span class="s2">&quot;cement&quot;</span><span class="p">,</span> <span class="s2">&quot;sandstone&quot;</span><span class="p">,</span> <span class="s2">&quot;marble&quot;</span><span class="p">,</span> <span class="s2">&quot;steel&quot;</span><span class="p">,</span> <span class="s2">&quot;mirror&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tiles&quot;</span><span class="p">,</span> <span class="s2">&quot;clay&quot;</span><span class="p">,</span> <span class="s2">&quot;limestone&quot;</span><span class="p">,</span> <span class="s2">&quot;granite&quot;</span><span class="p">,</span> <span class="s2">&quot;timber_framing&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ROOF_MATERIALS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;tile&quot;</span><span class="p">,</span> <span class="s2">&quot;roof_tiles&quot;</span><span class="p">,</span> <span class="s2">&quot;slate&quot;</span><span class="p">,</span> <span class="s2">&quot;metal&quot;</span><span class="p">,</span> <span class="s2">&quot;concrete&quot;</span><span class="p">,</span> <span class="s2">&quot;glass&quot;</span><span class="p">,</span> <span class="s2">&quot;thatch&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;gravel&quot;</span><span class="p">,</span> <span class="s2">&quot;tar_paper&quot;</span><span class="p">,</span> <span class="s2">&quot;copper&quot;</span><span class="p">,</span> <span class="s2">&quot;eternit&quot;</span><span class="p">,</span> <span class="s2">&quot;grass&quot;</span><span class="p">,</span> <span class="s2">&quot;shingle&quot;</span><span class="p">,</span> <span class="s2">&quot;asphalt&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;zinc&quot;</span><span class="p">,</span> <span class="s2">&quot;wood&quot;</span><span class="p">,</span> <span class="s2">&quot;plastic&quot;</span><span class="p">,</span> <span class="s2">&quot;bitumen&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ROOF_SHAPES</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;flat&quot;</span><span class="p">,</span> <span class="s2">&quot;gabled&quot;</span><span class="p">,</span> <span class="s2">&quot;hipped&quot;</span><span class="p">,</span> <span class="s2">&quot;pyramidal&quot;</span><span class="p">,</span> <span class="s2">&quot;skillion&quot;</span><span class="p">,</span> <span class="s2">&quot;half-hipped&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;gambrel&quot;</span><span class="p">,</span> <span class="s2">&quot;mansard&quot;</span><span class="p">,</span> <span class="s2">&quot;dome&quot;</span><span class="p">,</span> <span class="s2">&quot;round&quot;</span><span class="p">,</span> <span class="s2">&quot;onion&quot;</span><span class="p">,</span> <span class="s2">&quot;sawtooth&quot;</span><span class="p">,</span> <span class="s2">&quot;quadruple_saltbox&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Profile curves for generated roofs. Each value is a sequence of (u, h) points</span>
+<span class="c1"># where u is position across the roof direction (0..1) and h is relative height</span>
+<span class="c1"># (0..1). Used by roof_generators.py; shapes not listed here have specialised logic.</span>
+<span class="n">ROOF_SHAPE_PROFILES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;gabled&quot;</span><span class="p">:</span>   <span class="p">((</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)),</span>
+    <span class="s2">&quot;gambrel&quot;</span><span class="p">:</span>  <span class="p">((</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">),</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)),</span>
+    <span class="s2">&quot;mansard&quot;</span><span class="p">:</span>  <span class="p">((</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)),</span>
+    <span class="s2">&quot;skillion&quot;</span><span class="p">:</span> <span class="p">((</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)),</span>
+<span class="p">}</span>
+
+<span class="c1"># Shapes that get real 3D geometry from roof_generators.py. Everything else in</span>
+<span class="c1"># ROOF_SHAPES is rendered as a flat-roof extrusion.</span>
+<span class="n">GENERATED_ROOF_SHAPES</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;gabled&quot;</span><span class="p">,</span> <span class="s2">&quot;pyramidal&quot;</span><span class="p">,</span> <span class="s2">&quot;skillion&quot;</span><span class="p">,</span> <span class="s2">&quot;gambrel&quot;</span><span class="p">,</span> <span class="s2">&quot;mansard&quot;</span><span class="p">,</span> <span class="s2">&quot;hipped&quot;</span><span class="p">,</span> <span class="s2">&quot;half-hipped&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># OSM tags / conditions that mean a building already carries detailed 3D geometry</span>
+<span class="c1"># and should not be touched by the roof generator.</span>
+<span class="n">PRESERVE_ROOF_HINT_TAGS</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">((</span><span class="s2">&quot;building:part&quot;</span><span class="p">,</span> <span class="s2">&quot;3dmr&quot;</span><span class="p">))</span>
+
+<span class="c1"># Default roof height in metres when no roof:height / roof:levels tag is present.</span>
+<span class="n">DEFAULT_ROOF_HEIGHT_M</span> <span class="o">=</span> <span class="mf">3.0</span>
+
+<span class="c1"># OSM `building=` value -&gt; stable index, passed to Blender as the INT face</span>
+<span class="c1"># attribute `building_type` (-1 = unknown/generic). Same APPEND-ONLY contract as</span>
+<span class="c1"># the material enums. Common taginfo values, grouped for readability.</span>
+<span class="n">BUILDING_TYPES</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;house&quot;</span><span class="p">,</span> <span class="s2">&quot;residential&quot;</span><span class="p">,</span> <span class="s2">&quot;apartments&quot;</span><span class="p">,</span> <span class="s2">&quot;detached&quot;</span><span class="p">,</span> <span class="s2">&quot;terrace&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;semidetached_house&quot;</span><span class="p">,</span> <span class="s2">&quot;bungalow&quot;</span><span class="p">,</span> <span class="s2">&quot;dormitory&quot;</span><span class="p">,</span> <span class="s2">&quot;hut&quot;</span><span class="p">,</span> <span class="s2">&quot;cabin&quot;</span><span class="p">,</span> <span class="s2">&quot;farm&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;static_caravan&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;commercial&quot;</span><span class="p">,</span> <span class="s2">&quot;retail&quot;</span><span class="p">,</span> <span class="s2">&quot;office&quot;</span><span class="p">,</span> <span class="s2">&quot;supermarket&quot;</span><span class="p">,</span> <span class="s2">&quot;hotel&quot;</span><span class="p">,</span> <span class="s2">&quot;kiosk&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;industrial&quot;</span><span class="p">,</span> <span class="s2">&quot;warehouse&quot;</span><span class="p">,</span> <span class="s2">&quot;factory&quot;</span><span class="p">,</span> <span class="s2">&quot;manufacture&quot;</span><span class="p">,</span> <span class="s2">&quot;hangar&quot;</span><span class="p">,</span> <span class="s2">&quot;service&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;garage&quot;</span><span class="p">,</span> <span class="s2">&quot;garages&quot;</span><span class="p">,</span> <span class="s2">&quot;shed&quot;</span><span class="p">,</span> <span class="s2">&quot;greenhouse&quot;</span><span class="p">,</span> <span class="s2">&quot;barn&quot;</span><span class="p">,</span> <span class="s2">&quot;farm_auxiliary&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;construction&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;hospital&quot;</span><span class="p">,</span> <span class="s2">&quot;school&quot;</span><span class="p">,</span> <span class="s2">&quot;university&quot;</span><span class="p">,</span> <span class="s2">&quot;college&quot;</span><span class="p">,</span> <span class="s2">&quot;public&quot;</span><span class="p">,</span> <span class="s2">&quot;civic&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;government&quot;</span><span class="p">,</span> <span class="s2">&quot;train_station&quot;</span><span class="p">,</span> <span class="s2">&quot;transportation&quot;</span><span class="p">,</span> <span class="s2">&quot;stadium&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;church&quot;</span><span class="p">,</span> <span class="s2">&quot;cathedral&quot;</span><span class="p">,</span> <span class="s2">&quot;chapel&quot;</span><span class="p">,</span> <span class="s2">&quot;mosque&quot;</span><span class="p">,</span> <span class="s2">&quot;temple&quot;</span><span class="p">,</span> <span class="s2">&quot;synagogue&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;shrine&quot;</span><span class="p">,</span> <span class="s2">&quot;monastery&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;roof&quot;</span><span class="p">,</span> <span class="s2">&quot;tower&quot;</span><span class="p">,</span> <span class="s2">&quot;hall&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># ── Structure material conventions ──────────────────────────────────────────</span>
+<span class="c1"># Terminal fallback (after real tags + block/neighbour/radius inheritance) for</span>
+<span class="c1"># buildings that still have no wall/roof material: a deterministic guess from</span>
+<span class="c1"># height, region (climate) and building type, so the Blender material never sees</span>
+<span class="c1"># a bare -1. Set False to keep -1 and resolve everything in the material instead.</span>
+<span class="n">STRUCTURE_MATERIAL_CONVENTIONS</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="c1"># Region/climate class driving vernacular material. &quot;&quot; = auto from latitude</span>
+<span class="c1"># (coarse -- a latitude band is a weak climate proxy); set explicitly for a real</span>
+<span class="c1"># area (e.g. &quot;nordic&quot;, &quot;mediterranean&quot;, &quot;arid&quot;) for accuracy. Must be a key of</span>
+<span class="c1"># STRUCTURE_REGION_MATERIALS.</span>
+<span class="n">STRUCTURE_REGION</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="c1"># height_m thresholds: &gt;= HIGH -&gt; tower (glass/concrete); &gt;= MID -&gt; mid-rise</span>
+<span class="c1"># (concrete); below -&gt; low-rise, region/type driven.</span>
+<span class="n">STRUCTURE_HEIGHT_MID_M</span>  <span class="o">=</span> <span class="mf">12.0</span>
+<span class="n">STRUCTURE_HEIGHT_HIGH_M</span> <span class="o">=</span> <span class="mf">25.0</span>
+<span class="c1"># Vernacular (wall, roof) material for a low-rise residential/generic building,</span>
+<span class="c1"># by region. Every value must be in WALL_MATERIALS / ROOF_MATERIALS.</span>
+<span class="n">STRUCTURE_REGION_MATERIALS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;nordic&quot;</span><span class="p">:</span>        <span class="p">(</span><span class="s2">&quot;wood&quot;</span><span class="p">,</span>     <span class="s2">&quot;tile&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;temperate&quot;</span><span class="p">:</span>     <span class="p">(</span><span class="s2">&quot;brick&quot;</span><span class="p">,</span>    <span class="s2">&quot;tile&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;mediterranean&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;plaster&quot;</span><span class="p">,</span>  <span class="s2">&quot;roof_tiles&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;arid&quot;</span><span class="p">:</span>          <span class="p">(</span><span class="s2">&quot;concrete&quot;</span><span class="p">,</span> <span class="s2">&quot;concrete&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;tropical&quot;</span><span class="p">:</span>      <span class="p">(</span><span class="s2">&quot;concrete&quot;</span><span class="p">,</span> <span class="s2">&quot;metal&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;generic&quot;</span><span class="p">:</span>       <span class="p">(</span><span class="s2">&quot;brick&quot;</span><span class="p">,</span>    <span class="s2">&quot;tile&quot;</span><span class="p">),</span>
+<span class="p">}</span>
+<span class="c1"># (wall, roof) override by building-type group, independent of region. Applied</span>
+<span class="c1"># for religious/industrial always; commercial/civic only when low-rise.</span>
+<span class="n">STRUCTURE_TYPE_MATERIALS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;religious&quot;</span><span class="p">:</span>  <span class="p">(</span><span class="s2">&quot;stone&quot;</span><span class="p">,</span>    <span class="s2">&quot;slate&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;industrial&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;metal&quot;</span><span class="p">,</span>    <span class="s2">&quot;metal&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;commercial&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;concrete&quot;</span><span class="p">,</span> <span class="s2">&quot;concrete&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;civic&quot;</span><span class="p">:</span>      <span class="p">(</span><span class="s2">&quot;concrete&quot;</span><span class="p">,</span> <span class="s2">&quot;concrete&quot;</span><span class="p">),</span>
+<span class="p">}</span>
+<span class="c1"># OSM `building=` value -&gt; type group used above. Values not listed -&gt; &quot;generic&quot;.</span>
+<span class="n">STRUCTURE_TYPE_GROUPS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;church&quot;</span><span class="p">:</span> <span class="s2">&quot;religious&quot;</span><span class="p">,</span> <span class="s2">&quot;cathedral&quot;</span><span class="p">:</span> <span class="s2">&quot;religious&quot;</span><span class="p">,</span> <span class="s2">&quot;chapel&quot;</span><span class="p">:</span> <span class="s2">&quot;religious&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mosque&quot;</span><span class="p">:</span> <span class="s2">&quot;religious&quot;</span><span class="p">,</span> <span class="s2">&quot;temple&quot;</span><span class="p">:</span> <span class="s2">&quot;religious&quot;</span><span class="p">,</span> <span class="s2">&quot;synagogue&quot;</span><span class="p">:</span> <span class="s2">&quot;religious&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;shrine&quot;</span><span class="p">:</span> <span class="s2">&quot;religious&quot;</span><span class="p">,</span> <span class="s2">&quot;monastery&quot;</span><span class="p">:</span> <span class="s2">&quot;religious&quot;</span><span class="p">,</span> <span class="s2">&quot;religious&quot;</span><span class="p">:</span> <span class="s2">&quot;religious&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;industrial&quot;</span><span class="p">:</span> <span class="s2">&quot;industrial&quot;</span><span class="p">,</span> <span class="s2">&quot;warehouse&quot;</span><span class="p">:</span> <span class="s2">&quot;industrial&quot;</span><span class="p">,</span> <span class="s2">&quot;factory&quot;</span><span class="p">:</span> <span class="s2">&quot;industrial&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;manufacture&quot;</span><span class="p">:</span> <span class="s2">&quot;industrial&quot;</span><span class="p">,</span> <span class="s2">&quot;hangar&quot;</span><span class="p">:</span> <span class="s2">&quot;industrial&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;commercial&quot;</span><span class="p">:</span> <span class="s2">&quot;commercial&quot;</span><span class="p">,</span> <span class="s2">&quot;retail&quot;</span><span class="p">:</span> <span class="s2">&quot;commercial&quot;</span><span class="p">,</span> <span class="s2">&quot;office&quot;</span><span class="p">:</span> <span class="s2">&quot;commercial&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;supermarket&quot;</span><span class="p">:</span> <span class="s2">&quot;commercial&quot;</span><span class="p">,</span> <span class="s2">&quot;hotel&quot;</span><span class="p">:</span> <span class="s2">&quot;commercial&quot;</span><span class="p">,</span> <span class="s2">&quot;kiosk&quot;</span><span class="p">:</span> <span class="s2">&quot;commercial&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;hospital&quot;</span><span class="p">:</span> <span class="s2">&quot;civic&quot;</span><span class="p">,</span> <span class="s2">&quot;school&quot;</span><span class="p">:</span> <span class="s2">&quot;civic&quot;</span><span class="p">,</span> <span class="s2">&quot;university&quot;</span><span class="p">:</span> <span class="s2">&quot;civic&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;college&quot;</span><span class="p">:</span> <span class="s2">&quot;civic&quot;</span><span class="p">,</span> <span class="s2">&quot;public&quot;</span><span class="p">:</span> <span class="s2">&quot;civic&quot;</span><span class="p">,</span> <span class="s2">&quot;civic&quot;</span><span class="p">:</span> <span class="s2">&quot;civic&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;government&quot;</span><span class="p">:</span> <span class="s2">&quot;civic&quot;</span><span class="p">,</span> <span class="s2">&quot;train_station&quot;</span><span class="p">:</span> <span class="s2">&quot;civic&quot;</span><span class="p">,</span> <span class="s2">&quot;transportation&quot;</span><span class="p">:</span> <span class="s2">&quot;civic&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># ── Cell colour source ─────────────────────────────────────────────────────</span>
+<span class="c1"># &quot;satellite&quot; -&gt; median RGB per cell sampled from imagery (see satellite.py);</span>
+<span class="c1"># &quot;osm&quot; -&gt; the cartographic LANDCOVER_COLOR palette above. The companion app sets</span>
+<span class="c1"># both from the single Tileset dropdown.</span>
+<span class="c1"># &quot;texture&quot; -&gt; NO download: re-sample per-cell colours from the area&#39;s existing</span>
+<span class="c1"># on-disk Image Texture (manifest image_texture block). Cells the texture</span>
+<span class="c1"># misses fall back to white.</span>
+<span class="c1"># &quot;white&quot; -&gt; NO imagery at all: land cells default to plain white (water keeps</span>
+<span class="c1"># the regolith palette).</span>
+<span class="c1"># The pipeline runner sets &quot;texture&quot; when the user unticks the Imagery stage</span>
+<span class="c1"># but the area already has a texture, and &quot;white&quot; when it does not.</span>
+<span class="n">COLOR_SOURCE</span> <span class="o">=</span> <span class="s2">&quot;satellite&quot;</span>
+<span class="c1"># Set by the runner alongside COLOR_SOURCE = &quot;texture&quot;: the manifest&#39;s</span>
+<span class="c1"># image_texture block ({&quot;file&quot;, &quot;extent&quot;: {zoom, tx0, ty0, ...}}).</span>
+<span class="n">TEXTURE_SAMPLE</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="c1"># Which imagery tileset feeds the per-cell sampling when COLOR_SOURCE is</span>
+<span class="c1"># &quot;satellite&quot;: &quot;s2&quot; (Sentinel-2 via Planetary Computer) is the only satellite</span>
+<span class="c1"># source. The Image Texture follows the same choice (IMAGE_TEXTURE_SOURCE).</span>
+<span class="n">SATELLITE_SOURCE</span> <span class="o">=</span> <span class="s2">&quot;s2&quot;</span>
+<span class="c1"># Satellite passes: 1 = one mosaic (low-cloud over the last ~2 years); &gt;1 = one</span>
+<span class="c1"># mosaic per yearly time window, median-composited per pixel to reject clouds</span>
+<span class="c1"># and one-off transients.</span>
+<span class="n">SATELLITE_PASSES</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="c1"># Imagery date range the passes sample, ISO &quot;YYYY-MM-DD&quot; (&quot;&quot; = unset). When BOTH</span>
+<span class="c1"># are set, SATELLITE_PASSES equidistant windows split this range (e.g. 5 passes</span>
+<span class="c1"># over 2025-01-01..2026-01-01 -&gt; five ~73-day windows) instead of the default</span>
+<span class="c1"># yearly slices counting back from today.</span>
+<span class="n">IMAGERY_DATE_FROM</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="n">IMAGERY_DATE_TO</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="c1"># Upscale terrain colour: False = one colour per cell (sampled at the centre) written to</span>
+<span class="c1"># all 7 faces; True = sample the centre + 6 ring sectors separately (per-face detail).</span>
+<span class="c1"># Either way the output always carries 7 face colours -- this only controls whether they</span>
+<span class="c1"># differ. The companion app exposes it as the &#39;Upscale Terrain Colour&#39; checkbox.</span>
+<span class="n">UPSCALE_TERRAIN_COLOR</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="c1"># Image Texture: when True the pipeline stitches the raw tiles over the</span>
+<span class="c1"># area into &lt;area&gt;_image_texture.png and records its extent in the manifest, so</span>
+<span class="c1"># the add-on can UV-map it onto the Terrain Surface (in addition to the per-face</span>
+<span class="c1"># colours).</span>
+<span class="n">IMAGE_TEXTURE</span>        <span class="o">=</span> <span class="kc">False</span>
+<span class="c1"># Tile source for that texture: &quot;s2&quot; (Sentinel-2, composited per</span>
+<span class="c1"># SATELLITE_PASSES) or &quot;osm&quot; (rendered OpenStreetMap raster, single pass).</span>
+<span class="n">IMAGE_TEXTURE_SOURCE</span> <span class="o">=</span> <span class="s2">&quot;s2&quot;</span>
+<span class="c1"># Web-Mercator zoom for the texture: 0 = auto (the per-resolution sampling zoom);</span>
+<span class="c1"># higher = crisper but exponentially more tiles / larger PNG.</span>
+<span class="n">IMAGE_TEXTURE_ZOOM</span>   <span class="o">=</span> <span class="mi">0</span>
+<span class="c1"># Maximum number of tiles the pipeline will stitch into the Image Texture.</span>
+<span class="c1"># The UI can raise this up to 16384; higher values are clamped to prevent runaway</span>
+<span class="c1"># memory use during compositing (16384 tiles = a 32k x 32k px mosaic).</span>
+<span class="n">IMAGE_TEXTURE_MAX_TILES</span> <span class="o">=</span> <span class="mi">4096</span>
+<span class="c1"># Per-face colour: when upscaling, each cell samples the centre + 6 ring sectors.</span>
+<span class="c1"># FACE_COLOR_FACTOR is how far out the ring samples sit, as a fraction of the way from the</span>
+<span class="c1"># cell centre to each edge midpoint (0.5 = halfway; ~0.75 sits nearer the ring-face centroid).</span>
+<span class="n">FACE_COLOR_FACTOR</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="c1"># Equilibrium Beach Profile scale A (Dean): depth = A * dist_to_shore_m ** (2/3).</span>
+<span class="c1"># SEA ONLY -- inland water bodies keep raw terrain as their bed (no</span>
+<span class="c1"># auto-generated bathymetry; fix bad beds with the terrain editor). The sea</span>
+<span class="c1"># path blends EBP nearshore with the unmasked-GMRT grid (GEBCO fallback):</span>
+<span class="c1"># depth = min(EBP, grid).</span>
+<span class="n">EBP_PROFILE_A</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;sea&quot;</span><span class="p">:</span> <span class="mf">0.15</span><span class="p">,</span> <span class="s2">&quot;ocean&quot;</span><span class="p">:</span> <span class="mf">0.15</span><span class="p">,</span>                       <span class="c1"># open coast: sand</span>
+    <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="mf">0.15</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># Maximum sea depth; caps the resolved bathymetry (GMRT/GEBCO/EBP) for sea cells.</span>
+<span class="n">SEA_MAX_DEPTH_M</span> <span class="o">=</span> <span class="mf">500.0</span>
+
+<span class="c1"># Sea-level clamp: terrain vertices inside a sea polygon within this elevation of sea level</span>
+<span class="c1"># are forced to z=0 (handles COP30 DSM harbour walls recorded above sea level).</span>
+<span class="n">SEA_LEVEL_CLAMP_MAX_M</span> <span class="o">=</span> <span class="mf">8.0</span>
+
+<span class="c1"># ── Landmarks ─────────────────────────────────────────────────────────────────</span>
+<span class="c1"># Single language for landmark names. The pipeline reads OSM `name:&lt;lang&gt;` for</span>
+<span class="c1"># every landmark, falling back to the generic `name` tag when that language is</span>
+<span class="c1"># absent. &quot;&quot; or &quot;local&quot; = use the generic `name` tag (native language) for all.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_os_language</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Two-letter ISO 639-1 language code from the OS locale, e.g. &#39;en&#39;, &#39;fr&#39;.</span>
+
+<span class="sd">    Sources are tried in order and short-circuit: POSIX env vars, the Windows</span>
+<span class="sd">    user locale (BCP-47 like &#39;en-AU&#39;), then locale.getdefaultlocale() as a last</span>
+<span class="sd">    resort. Only a real 2-letter code is accepted -- this rejects the Windows</span>
+<span class="sd">    display name (&#39;English_Australia&#39;) and the &#39;C&#39; locale. Falls back to</span>
+<span class="sd">    `default` if nothing usable is found.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_winapi</span><span class="p">():</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">ctypes</span>
+        <span class="n">buf</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">create_unicode_buffer</span><span class="p">(</span><span class="mi">85</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">windll</span><span class="o">.</span><span class="n">kernel32</span><span class="o">.</span><span class="n">GetUserDefaultLocaleName</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="mi">85</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">buf</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_defaultlocale</span><span class="p">():</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">locale</span>
+        <span class="k">return</span> <span class="n">locale</span><span class="o">.</span><span class="n">getdefaultlocale</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">sources</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="k">lambda</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;LC_ALL&quot;</span><span class="p">),</span>
+        <span class="k">lambda</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;LC_MESSAGES&quot;</span><span class="p">),</span>
+        <span class="k">lambda</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;LANG&quot;</span><span class="p">),</span>
+        <span class="n">_winapi</span><span class="p">,</span>
+        <span class="n">_defaultlocale</span><span class="p">,</span>
+    <span class="p">]</span>
+    <span class="k">for</span> <span class="n">src</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">loc</span> <span class="o">=</span> <span class="n">src</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">loc</span><span class="p">:</span>
+            <span class="n">code</span> <span class="o">=</span> <span class="n">loc</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">code</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">code</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>
+                <span class="k">return</span> <span class="n">code</span>
+    <span class="k">return</span> <span class="n">default</span>
+
+<span class="n">LANDMARK_NAME_LANG</span> <span class="o">=</span> <span class="n">_os_language</span><span class="p">()</span>
+
+<span class="c1"># ── Overwrite flags ───────────────────────────────────────────────────────────</span>
+<span class="n">OVERWRITE_STRUCTURES</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">OVERWRITE_WATER</span>      <span class="o">=</span> <span class="kc">False</span>
+<span class="n">OVERWRITE_VEGETATION</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">OVERWRITE_STREETS</span>    <span class="o">=</span> <span class="kc">False</span>
+<span class="n">OVERWRITE_LANDCOVER</span>  <span class="o">=</span> <span class="kc">False</span>
+<span class="n">OVERWRITE_LANDMARKS</span>  <span class="o">=</span> <span class="kc">False</span>
+
+
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, Apian
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=46bd48cc"></script>
+    </body>
+</html>

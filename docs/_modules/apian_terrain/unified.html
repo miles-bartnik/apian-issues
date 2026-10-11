@@ -1,0 +1,1374 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html"><link rel="search" title="Search" href="../../search.html">
+        <link rel="prefetch" href="../../_static/apian_terrain_logo_light.png" as="image">
+        <link rel="prefetch" href="../../_static/apian_terrain_logo.png" as="image">
+
+    <link rel="shortcut icon" href="../../_static/apian_terrain.ico"><!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
+        <title>apian_terrain.unified - Apian 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=5d073521" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  --color-brand-primary: #16181d;
+  --color-brand-content: #16181d;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #e9e9ec;
+  --color-brand-content: #c9ccd2;
+  --color-background-primary: #0b0b0c;
+  --color-background-secondary: #101012;
+  --color-background-hover: #16161a;
+  --color-api-background: #101012;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #e9e9ec;
+  --color-brand-content: #c9ccd2;
+  --color-background-primary: #0b0b0c;
+  --color-background-secondary: #101012;
+  --color-background-hover: #16161a;
+  --color-api-background: #101012;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Apian 1.0.0</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="../../_static/apian_terrain_logo_light.png" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="../../_static/apian_terrain_logo.png" alt="Dark Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Apian 1.0.0</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Values</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../values.html">Values</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using Apian</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../companion_app.html">Companion app (desktop GUI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../blender_addon.html">Blender add-on</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cli.html">Command-line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../custom_data.html">Custom data</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How it works</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pipeline.html">How the pipeline works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data_format.html">The unified dataset format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design_decisions.html">Design decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../layers.html">Data Layers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../licenses.html">Data licensing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API reference</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <h1>Source code for apian_terrain.unified</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">unified.py</span>
+<span class="sd">----------</span>
+<span class="sd">The unified per-cell format: the stable contract between data sources and the</span>
+<span class="sd">import. The pipeline is Raw Data -&gt; Unified Format -&gt; Import; this module owns</span>
+<span class="sd">the right-hand seam of that arrow for per-cell attributes.</span>
+
+<span class="sd">One row per H3 cell, keyed by h3_id. Any data source (COP30, a custom DEM, GEBCO,</span>
+<span class="sd">custom water, ...) contributes columns; the import is a pure consumer that knows</span>
+<span class="sd">nothing about where the data came from.</span>
+
+<span class="sd">Water model (see the data dictionary):</span>
+<span class="sd">  ele_m         terrain/bed elevation, always real ground/seabed</span>
+<span class="sd">  water_depth_m positive water-column thickness (0 = dry). surface = ele_m + water_depth_m</span>
+<span class="sd">  water_type    classification only (&#39;&#39; = land), independent of geometry</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># Subset import (load_for_import) needs h3 + shapely to clip OSM features to the</span>
+<span class="c1"># exact selected-cell outline. The pipeline venv has them; Blender&#39;s bundled</span>
+<span class="c1"># Python does not, so the addon ships them under _vendor/ (cp313 win_amd64,</span>
+<span class="c1"># matching Blender 5.2&#39;s Python 3.13). PREPEND, so the shipped pinned versions</span>
+<span class="c1"># win over stale per-version leftovers (e.g. cp311 binaries from an older</span>
+<span class="c1"># install -- invisible to the new interpreter, they break the import outright</span>
+<span class="c1"># rather than shadowing it cleanly).</span>
+<span class="n">_VENDOR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;_vendor&quot;</span>
+<span class="k">if</span> <span class="n">_VENDOR</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">h3</span><span class="o">,</span><span class="w"> </span><span class="nn">shapely</span>  <span class="c1"># noqa: F401  -- a real (dev-venv) install always wins;</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>                 <span class="c1"># else Blender: ship our own, FIRST on the path</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">_VENDOR</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>    <span class="c1"># (stale per-version leftovers from an</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">_VENDOR</span><span class="p">))</span>  <span class="c1"># older install break the import outright</span>
+
+
+<span class="n">SCHEMA_VERSION</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># Attribution carried by every dataset (manifest key &quot;attribution&quot;), so a</span>
+<span class="c1"># produced dataset self-documents its sources -- the customer never has to</span>
+<span class="c1"># assemble credit lines by hand. Mirrors the NOTICE file; &quot;optional&quot; sources</span>
+<span class="c1"># are only used when configured (GEBCO tiles, fallback elevation keys).</span>
+<span class="n">ATTRIBUTION</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;OpenStreetMap (incl. Geofabrik extracts, Nominatim)&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;ODbL 1.0&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;credit&quot;</span><span class="p">:</span> <span class="s2">&quot;(c) OpenStreetMap contributors&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;OpenBuildingMap (GFZ Data Services, DOI 10.5880/GFZ.LKUT.2025.002)&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;ODbL 1.0&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;credit&quot;</span><span class="p">:</span> <span class="s2">&quot;Oostwegel, L.J.N. et al. (2025): OpenBuildingMap. GFZ Data Services.&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;Copernicus DEM GLO-30 (COP30)&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;COP-DEM license (free for any use)&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;credit&quot;</span><span class="p">:</span> <span class="s2">&quot;(c) DLR e.V. 2010-2014 and (c) Airbus Defence and Space GmbH &quot;</span>
+               <span class="s2">&quot;2014-2018 provided under COPERNICUS by the European Union and &quot;</span>
+               <span class="s2">&quot;ESA; all rights reserved&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;Sentinel-2 L2A (via Microsoft Planetary Computer)&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;Copernicus Sentinel data (free, full and open)&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;credit&quot;</span><span class="p">:</span> <span class="s2">&quot;Contains modified Copernicus Sentinel data&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;GMRT Global Multi-Resolution Topography&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;CC BY 4.0&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;credit&quot;</span><span class="p">:</span> <span class="s2">&quot;Ryan et al. (2009), Global Multi-Resolution Topography synthesis, &quot;</span>
+               <span class="s2">&quot;Geochem. Geophys. Geosyst., 10, Q03014, doi:10.1029/2008GC002332&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;Natural Earth 1:10m&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;public domain&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;credit&quot;</span><span class="p">:</span> <span class="s2">&quot;Made with Natural Earth&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;GEBCO_2026 Grid&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;public domain (citation requested)&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;credit&quot;</span><span class="p">:</span> <span class="s2">&quot;GEBCO Bathymetric Compilation Group 2026 (2026), &quot;</span>
+               <span class="s2">&quot;doi:10.5285/4f68d5c7-45eb-f999-e063-7086abc036fa&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;NASADEM via OpenTopography&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;public domain (NASA); OpenTopography API terms&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;credit&quot;</span><span class="p">:</span> <span class="s2">&quot;NASA JPL (2020). NASADEM Merged DEM Global 1 arc second&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;GSHHG (globe-picker coastline assets)&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;LGPL-3&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;credit&quot;</span><span class="p">:</span> <span class="s2">&quot;Wessel, P., and W. H. F. Smith (1996), J. Geophys. Res., 101(B4)&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+<span class="p">]</span>
+
+<span class="c1"># Column order is the contract. Append-only; do not reorder.</span>
+<span class="c1"># coast_dist_m / coast_dir_* are the static shoreline-wave fields (see coast.py);</span>
+<span class="c1"># the importer scales coast_dist_m to Blender units at import (coast_dist_bu).</span>
+<span class="c1"># slope_x / slope_y are the bed-slope vector (m/m, uphill; see coast.slope_fields) --</span>
+<span class="c1"># dimensionless, so the importer writes them unscaled as the terrain_slope vector.</span>
+<span class="n">CELL_COLUMNS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;h3_id&quot;</span><span class="p">,</span> <span class="s2">&quot;lon&quot;</span><span class="p">,</span> <span class="s2">&quot;lat&quot;</span><span class="p">,</span> <span class="s2">&quot;ele_m&quot;</span><span class="p">,</span> <span class="s2">&quot;water_depth_m&quot;</span><span class="p">,</span> <span class="s2">&quot;water_type&quot;</span><span class="p">,</span> <span class="s2">&quot;veg_type&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;rot_z&quot;</span><span class="p">,</span> <span class="s2">&quot;radius_eq&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;coast_dist_m&quot;</span><span class="p">,</span> <span class="s2">&quot;coast_dir_x&quot;</span><span class="p">,</span> <span class="s2">&quot;coast_dir_y&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;is_pentagon&quot;</span><span class="p">,</span>          <span class="c1"># 1 for the 12 H3 pentagons per resolution (5 edges, not 6);</span>
+                            <span class="c1"># only reachable at country/continent scale. Append-only.</span>
+    <span class="s2">&quot;slope_x&quot;</span><span class="p">,</span> <span class="s2">&quot;slope_y&quot;</span><span class="p">,</span>   <span class="c1"># bed-slope gradient, m/m uphill (coast.slope_fields)</span>
+    <span class="s2">&quot;water_source_flow_lps&quot;</span><span class="p">,</span>  <span class="c1"># effective per-cell source inflow rate (L/s; 0 = none).</span>
+                              <span class="c1"># Write-time derived, like water_depth_m. Append-only.</span>
+    <span class="s2">&quot;regolith_material&quot;</span><span class="p">,</span>       <span class="c1"># effective regolith material (bedrock default);</span>
+    <span class="s2">&quot;regolith_seepage_mm_day&quot;</span><span class="p">,</span> <span class="c1"># its seepage loss rate, mm/day (0 = bedrock);</span>
+    <span class="s2">&quot;regolith_depth_m&quot;</span><span class="p">,</span>        <span class="c1"># regolith thickness above bedrock, m (0 = none).</span>
+    <span class="s2">&quot;humidity_factor&quot;</span><span class="p">,</span>          <span class="c1"># annualized climate humidity multiplier</span>
+                                <span class="c1"># (dimensionless; 1.0 = neutral). Propagated onto</span>
+                                <span class="c1"># project.cells at pipeline time; write-time</span>
+                                <span class="c1"># pass-through. Append-only.</span>
+    <span class="s2">&quot;ice_thickness_m&quot;</span><span class="p">,</span>          <span class="c1"># perennial ice thickness, m (0 = none). Propagated</span>
+                                <span class="c1"># at pipeline time (degree-day rule on the mean</span>
+                                <span class="c1"># annual temperature). Append-only.</span>
+    <span class="s2">&quot;vegetation_type&quot;</span><span class="p">,</span>          <span class="c1"># effective vegetation type (&#39;&#39; = none) -- the</span>
+                                <span class="c1"># write-time water-wins overlay of the propagated</span>
+                                <span class="c1"># project.cells.vegetation_type (equals veg_type).</span>
+                                <span class="c1"># Append-only.</span>
+    <span class="s2">&quot;vegetation_density&quot;</span><span class="p">,</span>       <span class="c1"># relative density 0-1, looked up from</span>
+                                <span class="c1"># output.vegetation_params at pipeline time</span>
+                                <span class="c1"># (0.0 = no vegetation). Append-only.</span>
+    <span class="s2">&quot;provenance&quot;</span><span class="p">,</span>               <span class="c1"># compact JSON map: which source produced each</span>
+                                <span class="c1"># propagated value, per layer. Append-only.</span>
+<span class="p">]</span>
+
+<span class="c1"># Vegetation overlap precedence: when a cell falls under more than one veg</span>
+<span class="c1"># polygon, the denser type wins (lower number = denser = wins). water always</span>
+<span class="c1"># wins over vegetation regardless (handled in build_cell_rows).</span>
+<span class="n">_VEG_PRIORITY</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;forest&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;wood&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;scrub&quot;</span><span class="p">:</span>  <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;heath&quot;</span><span class="p">:</span>  <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;park&quot;</span><span class="p">:</span>   <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;garden&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s2">&quot;meadow&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;grass&quot;</span><span class="p">:</span>  <span class="mi">4</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">_VEG_DEFAULT_PRIORITY</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># unknown tag: least dense, loses to anything known</span>
+
+
+<div class="viewcode-block" id="veg_cell_map">
+<a class="viewcode-back" href="../../api.html#apian_terrain.unified.veg_cell_map">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">veg_cell_map</span><span class="p">(</span><span class="n">vegetation</span><span class="p">,</span> <span class="n">cell_id_set</span><span class="p">,</span> <span class="n">resolution</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Map h3_id -&gt; veg_type by polyfilling the OSM vegetation polygons.</span>
+
+<span class="sd">    Restricted to cells in the area grid. On overlap the denser tag wins</span>
+<span class="sd">    (_VEG_PRIORITY). Water exclusion is applied later in build_cell_rows.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">h3</span>
+    <span class="n">veg</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vegetation</span> <span class="ow">or</span> <span class="p">[]:</span>
+        <span class="n">tag</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;veg_tag&quot;</span><span class="p">,</span> <span class="s2">&quot;vegetation&quot;</span><span class="p">)</span>
+        <span class="n">prio</span> <span class="o">=</span> <span class="n">_VEG_PRIORITY</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">_VEG_DEFAULT_PRIORITY</span><span class="p">)</span>
+        <span class="n">fp</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;footprint&quot;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">ring</span> <span class="o">=</span> <span class="p">[(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">fp</span><span class="p">]</span>  <span class="c1"># h3 wants (lat, lng)</span>
+        <span class="k">if</span> <span class="n">ring</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">ring</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">ring</span> <span class="o">=</span> <span class="n">ring</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">cells</span> <span class="o">=</span> <span class="n">h3</span><span class="o">.</span><span class="n">h3shape_to_cells</span><span class="p">(</span><span class="n">h3</span><span class="o">.</span><span class="n">LatLngPoly</span><span class="p">(</span><span class="n">ring</span><span class="p">),</span> <span class="n">resolution</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">for</span> <span class="n">cid</span> <span class="ow">in</span> <span class="n">cells</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">cid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cell_id_set</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">veg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cid</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">cur</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">prio</span> <span class="o">&lt;</span> <span class="n">_VEG_PRIORITY</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cur</span><span class="p">,</span> <span class="n">_VEG_DEFAULT_PRIORITY</span><span class="p">):</span>
+                <span class="n">veg</span><span class="p">[</span><span class="n">cid</span><span class="p">]</span> <span class="o">=</span> <span class="n">tag</span>
+    <span class="k">return</span> <span class="n">veg</span></div>
+
+
+
+<div class="viewcode-block" id="landcover_cell_map">
+<a class="viewcode-back" href="../../api.html#apian_terrain.unified.landcover_cell_map">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">landcover_cell_map</span><span class="p">(</span><span class="n">landuse</span><span class="p">,</span> <span class="n">natural_areas</span><span class="p">,</span> <span class="n">cell_id_set</span><span class="p">,</span> <span class="n">resolution</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Map h3_id -&gt; landcover tag by polyfilling OSM landuse + natural polygons.</span>
+
+<span class="sd">    Restricted to cells in the area grid. natural (physical surface) overrides</span>
+<span class="sd">    landuse (zoning) on overlap, and within a source the later polygon wins --</span>
+<span class="sd">    good enough for cartographic cell colour. veg_type takes precedence over</span>
+<span class="sd">    this map (applied by the caller).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">h3</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">src</span> <span class="ow">in</span> <span class="p">(</span><span class="n">landuse</span><span class="p">,</span> <span class="n">natural_areas</span><span class="p">):</span>   <span class="c1"># natural second -&gt; wins on overlap</span>
+        <span class="k">for</span> <span class="n">poly</span> <span class="ow">in</span> <span class="n">src</span> <span class="ow">or</span> <span class="p">[]:</span>
+            <span class="n">tag</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tag&quot;</span><span class="p">)</span>
+            <span class="n">fp</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;footprint&quot;</span><span class="p">,</span> <span class="p">[])</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">tag</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">ring</span> <span class="o">=</span> <span class="p">[(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">fp</span><span class="p">]</span>  <span class="c1"># h3 wants (lat, lng)</span>
+            <span class="k">if</span> <span class="n">ring</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">ring</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">ring</span> <span class="o">=</span> <span class="n">ring</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">cells</span> <span class="o">=</span> <span class="n">h3</span><span class="o">.</span><span class="n">h3shape_to_cells</span><span class="p">(</span><span class="n">h3</span><span class="o">.</span><span class="n">LatLngPoly</span><span class="p">(</span><span class="n">ring</span><span class="p">),</span> <span class="n">resolution</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">for</span> <span class="n">cid</span> <span class="ow">in</span> <span class="n">cells</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">cid</span> <span class="ow">in</span> <span class="n">cell_id_set</span><span class="p">:</span>
+                    <span class="n">out</span><span class="p">[</span><span class="n">cid</span><span class="p">]</span> <span class="o">=</span> <span class="n">tag</span>
+    <span class="k">return</span> <span class="n">out</span></div>
+
+
+
+<div class="viewcode-block" id="build_cell_rows">
+<a class="viewcode-back" href="../../api.html#apian_terrain.unified.build_cell_rows">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">build_cell_rows</span><span class="p">(</span><span class="n">cell_centres</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">veg_map</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Assemble the BARE per-cell grid rows for the DB (pure; no I/O).</span>
+
+<span class="sd">    Only intrinsic cell facts are produced: h3_id, lon, lat, ele_m (RAW terrain</span>
+<span class="sd">    elevation -- the bed carve moved to the write-time derive), rot_z, radius_eq,</span>
+<span class="sd">    is_pentagon. The columns derived from OTHER tables (water_depth_m/water_type</span>
+<span class="sd">    from water_bodies, veg_type from vegetation, colours from face_colors, and the</span>
+<span class="sd">    coast/slope fields) are NOT set here -- they are computed at write time by</span>
+<span class="sd">    tyrbuild._derive_cells_from_output so table edits are reflected in the written</span>
+<span class="sd">    cells.csv. `features`/`veg_map` are accepted for call-site compatibility and</span>
+<span class="sd">    ignored.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">h3</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cell_centres</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">h3_id</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">is_pentagon</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">h3</span><span class="o">.</span><span class="n">is_pentagon</span><span class="p">(</span><span class="n">h3_id</span><span class="p">))</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>          <span class="c1"># malformed id -&gt; treat as an ordinary hexagon</span>
+            <span class="n">is_pentagon</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s2">&quot;h3_id&quot;</span><span class="p">:</span>         <span class="n">h3_id</span><span class="p">,</span>
+            <span class="s2">&quot;lon&quot;</span><span class="p">:</span>           <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="s2">&quot;lat&quot;</span><span class="p">:</span>           <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="s2">&quot;ele_m&quot;</span><span class="p">:</span>         <span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+            <span class="s2">&quot;rot_z&quot;</span><span class="p">:</span>         <span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+            <span class="s2">&quot;radius_eq&quot;</span><span class="p">:</span>     <span class="n">c</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
+            <span class="s2">&quot;is_pentagon&quot;</span><span class="p">:</span>   <span class="n">is_pentagon</span><span class="p">,</span>
+        <span class="p">})</span>
+    <span class="k">return</span> <span class="n">rows</span></div>
+
+
+
+<div class="viewcode-block" id="write_cell_csv">
+<a class="viewcode-back" href="../../api.html#apian_terrain.unified.write_cell_csv">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">write_cell_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">rows</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Write rows to a CSV keyed by h3_id, with a header row.</span>
+
+<span class="sd">    Atomic like _atomic_json_dump: a crash mid-export must not leave a</span>
+<span class="sd">    truncated CSV that the manifest still names — write a temp file next to</span>
+<span class="sd">    the target, then os.replace (atomic on Windows for same-volume).&quot;&quot;&quot;</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">suffix</span> <span class="o">+</span> <span class="s2">&quot;.tmp&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">CELL_COLUMNS</span><span class="p">)</span>
+        <span class="n">w</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span>
+        <span class="n">w</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">fsync</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_atomic_json_dump</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">separators</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Write JSON atomically: temp file in the same directory, then rename.</span>
+<span class="sd">    Rejects NaN/Infinity so invalid floats fail at write time instead of producing</span>
+<span class="sd">    malformed JSON. `separators` applies to the compact form only; with `indent`</span>
+<span class="sd">    set, json&#39;s default (&quot;,&quot;, &quot;: &quot;) separators are used.&quot;&quot;&quot;</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">suffix</span> <span class="o">+</span> <span class="s2">&quot;.tmp&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">indent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">separators</span><span class="o">=</span><span class="n">separators</span><span class="p">,</span> <span class="n">allow_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="n">indent</span><span class="p">,</span> <span class="n">allow_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">fp</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">fsync</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
+    <span class="n">tmp</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+
+<span class="c1"># ── Vector feature files (one FeatureCollection per type) ──────────────────────</span>
+<span class="c1"># These are the discrete objects (buildings, roads, ...). Each type gets its own</span>
+<span class="c1"># file so a source can be swapped per type. Vegetation is NOT here -- it is a</span>
+<span class="c1"># per-cell attribute (veg_type) now.</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_polygon</span><span class="p">(</span><span class="n">footprint</span><span class="p">,</span> <span class="n">holes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;GeoJSON Polygon from a [[lon,lat],...] ring (+ optional holes), closed.&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_close</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">r</span> <span class="k">if</span> <span class="n">r</span> <span class="ow">and</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">r</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">else</span> <span class="n">r</span> <span class="o">+</span> <span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+    <span class="n">rings</span> <span class="o">=</span> <span class="p">[</span><span class="n">_close</span><span class="p">([[</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">footprint</span><span class="p">])]</span>
+    <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">holes</span> <span class="ow">or</span> <span class="p">[]:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">rings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_close</span><span class="p">([[</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">h</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Polygon&quot;</span><span class="p">,</span> <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="n">rings</span><span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_feature</span><span class="p">(</span><span class="n">fid</span><span class="p">,</span> <span class="n">geometry</span><span class="p">,</span> <span class="n">props</span><span class="p">):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="n">geometry</span><span class="p">,</span> <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="n">props</span><span class="p">}</span>
+    <span class="k">if</span> <span class="n">fid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">f</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fid</span>
+    <span class="k">return</span> <span class="n">f</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_footprint_rings</span><span class="p">(</span><span class="n">fp</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Normalize a structure footprint to (outer_ring, holes).</span>
+
+<span class="sd">    Two shapes arrive: a bare ring [[lon,lat],...] (pipeline-native, from</span>
+<span class="sd">    in-memory features) or full Polygon coordinates [[[lon,lat],...],...]</span>
+<span class="sd">    (rebuilt from the DB, where footprint_json may hold a GeoJSON geometry</span>
+<span class="sd">    object). Rings shorter than 3 points are dropped; None outer means the</span>
+<span class="sd">    footprint is unusable.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">fp</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+            <span class="n">rings</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">fp</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">rings</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="n">rings</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">rings</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">fp</span><span class="p">,</span> <span class="kc">None</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+
+
+<div class="viewcode-block" id="build_feature_collections">
+<a class="viewcode-back" href="../../api.html#apian_terrain.unified.build_feature_collections">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">build_feature_collections</span><span class="p">(</span><span class="n">features</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Split the pipeline&#39;s feature list into per-type FeatureCollections.</span>
+
+<span class="sd">    Returns {type_name: [feature, ...]}. Explodes the list-in-properties shapes</span>
+<span class="sd">    (structures, landmarks) into one feature per object, splits bridges out of</span>
+<span class="sd">    structures, drops water_cells from sea/water bodies, and skips vegetation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;structures&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;bridges&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;streets&quot;</span><span class="p">:</span> <span class="p">[],</span>
+           <span class="s2">&quot;landmarks&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;water_bodies&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;sea&quot;</span><span class="p">:</span> <span class="p">[],</span>
+           <span class="c1"># Natural Earth &quot;major features&quot; (country-scale detail mode) -- already proper</span>
+           <span class="c1"># GeoJSON Features (naturalearth.build_features), so they pass straight through.</span>
+           <span class="s2">&quot;ne_urban_areas&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;ne_places&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;ne_major_roads&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;ne_landmarks&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+
+    <span class="n">_NE</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ne_urban_area&quot;</span><span class="p">:</span> <span class="s2">&quot;ne_urban_areas&quot;</span><span class="p">,</span> <span class="s2">&quot;ne_place&quot;</span><span class="p">:</span> <span class="s2">&quot;ne_places&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;ne_major_road&quot;</span><span class="p">:</span> <span class="s2">&quot;ne_major_roads&quot;</span><span class="p">,</span> <span class="s2">&quot;ne_landmark&quot;</span><span class="p">:</span> <span class="s2">&quot;ne_landmarks&quot;</span><span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+        <span class="n">props</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;properties&quot;</span><span class="p">,</span> <span class="p">{})</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="n">ftype</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;feature_type&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">ftype</span> <span class="ow">in</span> <span class="n">_NE</span><span class="p">:</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">_NE</span><span class="p">[</span><span class="n">ftype</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">ftype</span> <span class="o">==</span> <span class="s2">&quot;structures&quot;</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;structures&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+                <span class="n">outer</span><span class="p">,</span> <span class="n">holes</span> <span class="o">=</span> <span class="n">_footprint_rings</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;footprint&quot;</span><span class="p">,</span> <span class="p">[]))</span>
+                <span class="k">if</span> <span class="n">outer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="n">rest</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="s2">&quot;footprint&quot;</span><span class="p">}</span>
+                <span class="n">is_bridge</span> <span class="o">=</span> <span class="n">rest</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kind&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;bridge&quot;</span> <span class="ow">or</span> <span class="n">rest</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;deck&quot;</span><span class="p">)</span>
+                <span class="n">rest</span><span class="p">[</span><span class="s2">&quot;feature_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;bridge&quot;</span> <span class="k">if</span> <span class="n">is_bridge</span> <span class="k">else</span> <span class="s2">&quot;structure&quot;</span>
+                <span class="n">feat</span> <span class="o">=</span> <span class="n">_feature</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;structure_id&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;osm_id&quot;</span><span class="p">),</span>
+                                <span class="n">_polygon</span><span class="p">(</span><span class="n">outer</span><span class="p">,</span> <span class="n">holes</span><span class="p">),</span> <span class="n">rest</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;bridges&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="n">is_bridge</span> <span class="k">else</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;structures&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feat</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">ftype</span> <span class="o">==</span> <span class="s2">&quot;landmarks&quot;</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">lm</span> <span class="ow">in</span> <span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;landmarks&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+                <span class="k">if</span> <span class="n">lm</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;lat&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">lm</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;lon&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="n">rest</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">lm</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;lat&quot;</span><span class="p">,</span> <span class="s2">&quot;lon&quot;</span><span class="p">)}</span>
+                <span class="n">rest</span><span class="p">[</span><span class="s2">&quot;feature_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;landmark&quot;</span>
+                <span class="n">out</span><span class="p">[</span><span class="s2">&quot;landmarks&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_feature</span><span class="p">(</span>
+                    <span class="kc">None</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Point&quot;</span><span class="p">,</span> <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">lm</span><span class="p">[</span><span class="s2">&quot;lon&quot;</span><span class="p">],</span> <span class="n">lm</span><span class="p">[</span><span class="s2">&quot;lat&quot;</span><span class="p">]]},</span> <span class="n">rest</span><span class="p">))</span>
+
+        <span class="k">elif</span> <span class="n">ftype</span> <span class="o">==</span> <span class="s2">&quot;street&quot;</span><span class="p">:</span>
+            <span class="n">out</span><span class="p">[</span><span class="s2">&quot;streets&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">ftype</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;water_body&quot;</span><span class="p">,</span> <span class="s2">&quot;sea&quot;</span><span class="p">):</span>
+            <span class="n">slim</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">props</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="s2">&quot;water_cells&quot;</span><span class="p">}</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;sea&quot;</span> <span class="k">if</span> <span class="n">ftype</span> <span class="o">==</span> <span class="s2">&quot;sea&quot;</span> <span class="k">else</span> <span class="s2">&quot;water_bodies&quot;</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_feature</span><span class="p">(</span><span class="n">props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;osm_id&quot;</span><span class="p">),</span> <span class="n">f</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;geometry&quot;</span><span class="p">),</span> <span class="n">slim</span><span class="p">))</span>
+
+        <span class="c1"># vegetation: intentionally skipped -- now per-cell (veg_type)</span>
+
+    <span class="k">return</span> <span class="n">out</span></div>
+
+
+
+<div class="viewcode-block" id="write_feature_files">
+<a class="viewcode-back" href="../../api.html#apian_terrain.unified.write_feature_files">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">write_feature_files</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">area_id</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Write per-type GeoJSON files. Returns {type_name: (path, count)}.&quot;&quot;&quot;</span>
+    <span class="n">collections</span> <span class="o">=</span> <span class="n">build_feature_collections</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+    <span class="n">written</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">feats</span> <span class="ow">in</span> <span class="n">collections</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">output_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">area_id</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.geojson&quot;</span>
+        <span class="n">_atomic_json_dump</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span> <span class="s2">&quot;features&quot;</span><span class="p">:</span> <span class="n">feats</span><span class="p">})</span>
+        <span class="n">written</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">feats</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">written</span></div>
+
+
+
+<div class="viewcode-block" id="write_color_geojson">
+<a class="viewcode-back" href="../../api.html#apian_terrain.unified.write_color_geojson">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">write_color_geojson</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">face_points</span><span class="p">,</span> <span class="n">face_colors</span><span class="p">,</span> <span class="n">regolith_face_colors</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Per-face colour samples: one Point feature per (cell, face). face 0 = the cell</span>
+<span class="sd">    centre, 1..N = ring sectors in edge-midpoint order (see satellite.cell_face_points).</span>
+<span class="sd">    Geometry is the sample location (debuggable in QGIS); properties carry h3_id, face,</span>
+<span class="sd">    the image colour r/g/b (0-255) and — when regolith_face_colors is given — the</span>
+<span class="sd">    regolith colour sub_r/sub_g/sub_b (the canonical palette colour of the cell&#39;s</span>
+<span class="sd">    effective regolith material). The importer bakes both onto the Terrain Centres as</span>
+<span class="sd">    vectors (image_color_* / regolith_color_*), so geonodes can pick per surface.</span>
+<span class="sd">    Returns the feature count.&quot;&quot;&quot;</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">regolith_face_colors</span> <span class="o">=</span> <span class="n">regolith_face_colors</span> <span class="ow">or</span> <span class="p">{}</span>
+    <span class="n">feats</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">hid</span><span class="p">,</span> <span class="n">pts</span> <span class="ow">in</span> <span class="n">face_points</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="n">face_colors</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">hid</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[]</span>
+        <span class="n">sub_cols</span> <span class="o">=</span> <span class="n">regolith_face_colors</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">hid</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">fi</span><span class="p">,</span> <span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pts</span><span class="p">):</span>
+            <span class="n">rgb</span> <span class="o">=</span> <span class="n">cols</span><span class="p">[</span><span class="n">fi</span><span class="p">]</span> <span class="k">if</span> <span class="n">fi</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span> <span class="k">else</span> <span class="p">(</span><span class="n">cols</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">cols</span> <span class="k">else</span> <span class="p">[</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">])</span>
+            <span class="n">sub</span> <span class="o">=</span> <span class="n">sub_cols</span><span class="p">[</span><span class="n">fi</span><span class="p">]</span> <span class="k">if</span> <span class="n">fi</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">sub_cols</span><span class="p">)</span> <span class="k">else</span> <span class="n">rgb</span>
+            <span class="n">feats</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Point&quot;</span><span class="p">,</span> <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="mi">7</span><span class="p">)]},</span>
+                <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;h3_id&quot;</span><span class="p">:</span> <span class="n">hid</span><span class="p">,</span> <span class="s2">&quot;face&quot;</span><span class="p">:</span> <span class="n">fi</span><span class="p">,</span>
+                               <span class="s2">&quot;r&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">rgb</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s2">&quot;g&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">rgb</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">rgb</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+                               <span class="s2">&quot;sub_r&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">sub</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s2">&quot;sub_g&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">sub</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s2">&quot;sub_b&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">sub</span><span class="p">[</span><span class="mi">2</span><span class="p">])}})</span>
+    <span class="n">_atomic_json_dump</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span> <span class="s2">&quot;features&quot;</span><span class="p">:</span> <span class="n">feats</span><span class="p">})</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">feats</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="manifest_image_texture">
+<a class="viewcode-back" href="../../api.html#apian_terrain.unified.manifest_image_texture">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">manifest_image_texture</span><span class="p">(</span><span class="n">manifest</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The area&#39;s Image Texture block -- {file, extent, ...} -- read from either</span>
+<span class="sd">    the canonical `image_texture` manifest key or the legacy `surface_texture`</span>
+<span class="sd">    key (pre-rename manifests). Writers always use `image_texture`.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">manifest</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;image_texture&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">manifest</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;surface_texture&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="write_manifest">
+<a class="viewcode-back" href="../../api.html#apian_terrain.unified.write_manifest">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">write_manifest</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">area_id</span><span class="p">,</span> <span class="n">h3_resolution</span><span class="p">,</span> <span class="n">n_cells</span><span class="p">,</span> <span class="n">feature_counts</span><span class="p">,</span>
+                   <span class="n">area_meta</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">image_texture</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">provisional</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;One manifest listing every unified artifact + the schema version.</span>
+
+<span class="sd">    `area_meta` carries the area-level values the import needs but that are not</span>
+<span class="sd">    per-cell (origin, bbox, elevation floor) so the import can run from the</span>
+<span class="sd">    unified files alone. `image_texture` (optional) is {file, extent} for the</span>
+<span class="sd">    tile raster the add-on UV-maps onto the Terrain Surface.</span>
+<span class="sd">    `provisional=True` stamps the manifest as an area build that was cut short</span>
+<span class="sd">    before its full manifest write -- load_for_import refuses it, so a pipeline</span>
+<span class="sd">    killed mid-build can never be silently imported with (0, 0) area defaults.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">manifest</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;schema_version&quot;</span><span class="p">:</span> <span class="n">SCHEMA_VERSION</span><span class="p">,</span>
+        <span class="s2">&quot;area_id&quot;</span><span class="p">:</span>        <span class="n">area_id</span><span class="p">,</span>
+        <span class="s2">&quot;h3_resolution&quot;</span><span class="p">:</span>  <span class="n">h3_resolution</span><span class="p">,</span>
+        <span class="s2">&quot;area&quot;</span><span class="p">:</span>           <span class="n">area_meta</span> <span class="ow">or</span> <span class="p">{},</span>
+        <span class="s2">&quot;cells_csv&quot;</span><span class="p">:</span>      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">area_id</span><span class="si">}</span><span class="s2">_cells.csv&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;n_cells&quot;</span><span class="p">:</span>        <span class="n">n_cells</span><span class="p">,</span>
+        <span class="s2">&quot;feature_files&quot;</span><span class="p">:</span>  <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">area_id</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.json&quot;</span> <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;climate&quot;</span>
+                                  <span class="k">else</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">area_id</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.geojson&quot;</span><span class="p">)</span>
+                           <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">feature_counts</span><span class="p">},</span>
+        <span class="s2">&quot;feature_counts&quot;</span><span class="p">:</span> <span class="n">feature_counts</span><span class="p">,</span>
+        <span class="s2">&quot;attribution&quot;</span><span class="p">:</span>    <span class="n">ATTRIBUTION</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="n">provisional</span><span class="p">:</span>
+        <span class="n">manifest</span><span class="p">[</span><span class="s2">&quot;provisional&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">image_texture</span><span class="p">:</span>
+        <span class="n">manifest</span><span class="p">[</span><span class="s2">&quot;image_texture&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">image_texture</span>
+    <span class="n">_atomic_json_dump</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">manifest</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># ── Subset manifests: a trim over a region, owning no data of its own ──────────</span>
+<span class="c1"># A region manifest is the sole owner of the data files (cells CSV, feature GeoJSONs,</span>
+<span class="c1"># tyr config, DuckDB). A subset manifest is a slim descriptor -- it names its region</span>
+<span class="c1"># and the cells (+ trimmed bbox) to bring in, nothing more. The importer takes a</span>
+<span class="c1"># region manifest plus an OPTIONAL subset; a subset is never a standalone dataset.</span>
+
+<div class="viewcode-block" id="is_subset_manifest">
+<a class="viewcode-back" href="../../api.html#apian_terrain.unified.is_subset_manifest">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_subset_manifest</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;True if a parsed manifest dict is a slim subset manifest (kind == &#39;subset&#39;).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="n">m</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kind&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;subset&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="write_subset_manifest">
+<a class="viewcode-back" href="../../api.html#apian_terrain.unified.write_subset_manifest">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">write_subset_manifest</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">region_id</span><span class="p">,</span> <span class="n">cell_ids</span><span class="p">,</span> <span class="n">area</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Write a slim subset manifest: region name + cell_ids + trimmed bbox only. It</span>
+<span class="sd">    references its region&#39;s data files rather than copying or naming them.&quot;&quot;&quot;</span>
+    <span class="n">_atomic_json_dump</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s2">&quot;schema_version&quot;</span><span class="p">:</span> <span class="n">SCHEMA_VERSION</span><span class="p">,</span>
+        <span class="s2">&quot;kind&quot;</span><span class="p">:</span>           <span class="s2">&quot;subset&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;region&quot;</span><span class="p">:</span>         <span class="n">region_id</span><span class="p">,</span>
+        <span class="s2">&quot;cell_ids&quot;</span><span class="p">:</span>       <span class="nb">list</span><span class="p">(</span><span class="n">cell_ids</span><span class="p">),</span>
+        <span class="s2">&quot;area&quot;</span><span class="p">:</span>           <span class="n">area</span> <span class="ow">or</span> <span class="p">{},</span>
+        <span class="c1"># A subset owns no data, but anyone it is handed to without the region</span>
+        <span class="c1"># still needs the credit lines -- so the subset carries them too.</span>
+        <span class="s2">&quot;attribution&quot;</span><span class="p">:</span>    <span class="n">ATTRIBUTION</span><span class="p">,</span>
+    <span class="p">},</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="read_subset_manifest">
+<a class="viewcode-back" href="../../api.html#apian_terrain.unified.read_subset_manifest">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_subset_manifest</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read a slim subset manifest -&gt; (region_id, cell_ids: list, area: dict). Raises</span>
+<span class="sd">    ValueError if `path` is not a subset manifest (e.g. a region manifest).&quot;&quot;&quot;</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">read_manifest</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_subset_manifest</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> is not a subset manifest&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;region&quot;</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;cell_ids&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[]),</span> <span class="n">m</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;area&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{}</span></div>
+
+
+
+<div class="viewcode-block" id="add_data_fields">
+<a class="viewcode-back" href="../../api.html#apian_terrain.unified.add_data_fields">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_data_fields</span><span class="p">(</span><span class="n">manifest_path</span><span class="p">,</span> <span class="n">celldata_csv</span><span class="p">,</span> <span class="n">field_metas</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Merge a data-layer block into an existing manifest: the celldata csv name +</span>
+<span class="sd">    per-field metadata (name/key/aggregation/units/min/max/count). Additive, so</span>
+<span class="sd">    areas built without custom data simply have no `data_fields` key. Re-writing</span>
+<span class="sd">    replaces any prior block (a build is a full rebuild).&quot;&quot;&quot;</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">read_manifest</span><span class="p">(</span><span class="n">manifest_path</span><span class="p">)</span>
+    <span class="n">m</span><span class="p">[</span><span class="s2">&quot;celldata_csv&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">celldata_csv</span>
+    <span class="n">m</span><span class="p">[</span><span class="s2">&quot;data_fields&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">field_metas</span>
+    <span class="n">_atomic_json_dump</span><span class="p">(</span><span class="n">manifest_path</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="add_layer">
+<a class="viewcode-back" href="../../api.html#apian_terrain.unified.add_layer">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_layer</span><span class="p">(</span><span class="n">manifest_path</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add (or replace, by name+kind) one modular layer in the manifest&#39;s `layers[]`</span>
+<span class="sd">    block -- the append-only path any KIND uses (see layers.py). A reader that predates</span>
+<span class="sd">    the kind simply skips it. Returns the updated layer list.&quot;&quot;&quot;</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">read_manifest</span><span class="p">(</span><span class="n">manifest_path</span><span class="p">)</span>
+    <span class="n">existing</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;layers&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[]</span>
+    <span class="n">existing</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">existing</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">layer</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+                        <span class="ow">and</span> <span class="n">l</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kind&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">layer</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kind&quot;</span><span class="p">))]</span>
+    <span class="n">existing</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">layer</span><span class="p">))</span>
+    <span class="n">m</span><span class="p">[</span><span class="s2">&quot;layers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">existing</span>
+    <span class="n">_atomic_json_dump</span><span class="p">(</span><span class="n">manifest_path</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">existing</span></div>
+
+
+
+<div class="viewcode-block" id="set_source_pipelines">
+<a class="viewcode-back" href="../../api.html#apian_terrain.unified.set_source_pipelines">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_source_pipelines</span><span class="p">(</span><span class="n">manifest_path</span><span class="p">,</span> <span class="n">file_meta_path</span><span class="p">,</span> <span class="n">column_meta_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Store relative paths to the source file/column metadata TSVs under the</span>
+<span class="sd">    manifest&#39;s `source.pipelines` block.&quot;&quot;&quot;</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">read_manifest</span><span class="p">(</span><span class="n">manifest_path</span><span class="p">)</span>
+    <span class="n">mdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">manifest_path</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span>
+    <span class="n">m</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{}</span>
+    <span class="n">m</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">][</span><span class="s2">&quot;pipelines&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;file_metadata&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">file_meta_path</span><span class="p">)</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">mdir</span><span class="p">)),</span>
+        <span class="s2">&quot;column_metadata&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">column_meta_path</span><span class="p">)</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">mdir</span><span class="p">)),</span>
+    <span class="p">}</span>
+    <span class="n">_atomic_json_dump</span><span class="p">(</span><span class="n">manifest_path</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># ── Readers / import adapter (Unified Format -&gt; Import) ────────────────────────</span>
+<span class="c1"># The import is a pure consumer: it loads the unified files and reconstructs the</span>
+<span class="c1"># in-memory shapes the existing builders already accept. Per-cell water/veg are</span>
+<span class="c1"># carried as cell attributes (the import&#39;s geometry nodes instance them).</span>
+
+<div class="viewcode-block" id="read_manifest">
+<a class="viewcode-back" href="../../api.html#apian_terrain.unified.read_manifest">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_manifest</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="read_cells_csv">
+<a class="viewcode-back" href="../../api.html#apian_terrain.unified.read_cells_csv">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_cells_csv</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">f</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="read_feature_collection">
+<a class="viewcode-back" href="../../api.html#apian_terrain.unified.read_feature_collection">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_feature_collection</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;features&quot;</span><span class="p">,</span> <span class="p">[])</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_cells_to_arrays</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;CSV dict rows -&gt; positional cell arrays in the layout the import reads:</span>
+<span class="sd">    [lon, lat, ele_m, rot_z, radius_eq, h3_id, water_type, r, g, b,</span>
+<span class="sd">     veg_type, water_depth_m, coast_dist_m, coast_dir_x, coast_dir_y, is_pentagon,</span>
+<span class="sd">     slope_x, slope_y, regolith_material, regolith_seepage_mm_day,</span>
+<span class="sd">     regolith_depth_m].</span>
+<span class="sd">    Append-only: new fields go at the end so existing indices never shift.&quot;&quot;&quot;</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+    <span class="c1"># An EMPTY slope field in a current-schema CSV means an unknown bed (the</span>
+    <span class="c1"># writer stores NULL deliberately, coast.slope_fields: &quot;never silently</span>
+    <span class="c1"># flattened to 0&quot;). The Blender attribute is a dense float array, so 0</span>
+    <span class="c1"># (flat, no shoreline steering) is the only representable fallback -- but</span>
+    <span class="c1"># it must not be silent. A CSV that PREDATES the slope column has no such</span>
+    <span class="c1"># field at all; that case stays quiet (genuinely unknown -&gt; default).</span>
+    <span class="n">_n_null_slope</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">rows</span>
+                        <span class="k">if</span> <span class="s2">&quot;slope_x&quot;</span> <span class="ow">in</span> <span class="n">d</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;slope_x&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">_n_null_slope</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  [import] WARNING: </span><span class="si">{</span><span class="n">_n_null_slope</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> cells have NULL slope &quot;</span>
+              <span class="sa">f</span><span class="s2">&quot;(unknown bed); the Blender terrain_slope falls back to flat &quot;</span>
+              <span class="sa">f</span><span class="s2">&quot;(0, 0) for them -- no shoreline wave steering on those cells&quot;</span><span class="p">,</span>
+              <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[[</span>
+        <span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;lon&quot;</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;lat&quot;</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;ele_m&quot;</span><span class="p">]),</span>
+        <span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;rot_z&quot;</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;radius_eq&quot;</span><span class="p">]),</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;h3_id&quot;</span><span class="p">],</span>
+        <span class="n">d</span><span class="p">[</span><span class="s2">&quot;water_type&quot;</span><span class="p">],</span> <span class="nb">int</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;g&quot;</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]),</span>
+        <span class="n">d</span><span class="p">[</span><span class="s2">&quot;veg_type&quot;</span><span class="p">],</span> <span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;water_depth_m&quot;</span><span class="p">]),</span>
+        <span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;coast_dist_m&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="mf">0.0</span><span class="p">),</span>
+        <span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;coast_dir_x&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="mf">0.0</span><span class="p">),</span>
+        <span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;coast_dir_y&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="mf">0.0</span><span class="p">),</span>
+        <span class="nb">int</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;is_pentagon&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;slope_x&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="mf">0.0</span><span class="p">),</span>
+        <span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;slope_y&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="mf">0.0</span><span class="p">),</span>
+        <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;regolith_material&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;bedrock&quot;</span><span class="p">,</span>
+        <span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;regolith_seepage_mm_day&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="mf">0.0</span><span class="p">),</span>
+        <span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;regolith_depth_m&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="mf">0.0</span><span class="p">),</span>
+    <span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_signed_area2</span><span class="p">(</span><span class="n">ring</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Twice the signed area of a [[lon, lat], ...] ring (shoelace). Sign is all</span>
+<span class="sd">    the callers need: positive = CCW (interior on the left of each edge).&quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ring</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">ring</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+               <span class="o">-</span> <span class="n">ring</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">ring</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="outward_ring">
+<a class="viewcode-back" href="../../api.html#apian_terrain.unified.outward_ring">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">outward_ring</span><span class="p">(</span><span class="n">ring</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Normalise a footprint ring for extrusion: unclosed, no consecutive</span>
+<span class="sd">    duplicate points, CCW winding; [] for a degenerate ring (&lt; 3 pts or zero</span>
+<span class="sd">    area -- collinear rings cannot extrude).</span>
+
+<span class="sd">    CCW is the winding the Blender extrude assumes: for CCW input the wall</span>
+<span class="sd">    quads (base_i, base_i+1, top_i+1, top_i) face OUTWARD and the roof cap</span>
+<span class="sd">    faces UP. Source rings arrive in either winding (OSM ways are unordered;</span>
+<span class="sd">    WKB has no winding mandate) and ~45% of real footprints are CW, which</span>
+<span class="sd">    inverts every normal in the mesh -- and the Structures material maps its</span>
+<span class="sd">    wall/roof textures by face normal, so inverted normals corrupt the</span>
+<span class="sd">    texture. lon/lat vs projected XY does not matter here: the equirectangular</span>
+<span class="sd">    import projection scales both axes positively, preserving orientation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pts</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">p</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ring</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">pts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">pts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">pts</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>                                    <span class="c1"># unclose</span>
+    <span class="n">dedup</span> <span class="o">=</span> <span class="n">pts</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="o">!=</span> <span class="n">dedup</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">dedup</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dedup</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">dedup</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">dedup</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">dedup</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>                                  <span class="c1"># closure hidden by a dup run</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dedup</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="n">a2</span> <span class="o">=</span> <span class="n">_signed_area2</span><span class="p">(</span><span class="n">dedup</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-14</span><span class="p">:</span>                              <span class="c1"># zero-area / collinear</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">a2</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">dedup</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">dedup</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_ring_from_polygon</span><span class="p">(</span><span class="n">geometry</span><span class="p">):</span>
+    <span class="n">coords</span> <span class="o">=</span> <span class="p">(</span><span class="n">geometry</span> <span class="ow">or</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;coordinates&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[]</span>
+    <span class="k">return</span> <span class="n">outward_ring</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">coords</span> <span class="k">else</span> <span class="p">[])</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_leaf_lonlat</span><span class="p">(</span><span class="n">coords</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Yield every (lon, lat) leaf pair in a GeoJSON coordinates array, at any nesting</span>
+<span class="sd">    depth (Point / LineString / Polygon / Multi*).&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">coords</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> \
+            <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+        <span class="k">yield</span> <span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">coords</span><span class="p">:</span>
+        <span class="k">yield from</span> <span class="n">_leaf_lonlat</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">_Region</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The exact outline of the selected H3 cells as one shapely (multi)polygon, used</span>
+<span class="sd">    to clip OSM features to a subset. `h3.cells_to_geo` builds the union boundary of the</span>
+<span class="sd">    cells (concavities and holes and all -- the &#39;cutting plane&#39; the whole feature spans);</span>
+<span class="sd">    shapely does the actual geometry clipping. A prepared copy makes the inside tests</span>
+<span class="sd">    fast, and the region&#39;s bounding box cheaply rejects the far-away features (streamed</span>
+<span class="sd">    from the full-area source) before any shapely geometry is built.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cell_ids</span><span class="p">):</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">h3</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">shape</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">shapely.prepared</span><span class="w"> </span><span class="kn">import</span> <span class="n">prep</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">shapely.validation</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_valid</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_shape</span> <span class="o">=</span> <span class="n">shape</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_make_valid</span> <span class="o">=</span> <span class="n">make_valid</span>
+        <span class="n">geom</span> <span class="o">=</span> <span class="n">shape</span><span class="p">(</span><span class="n">h3</span><span class="o">.</span><span class="n">cells_to_geo</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">cell_ids</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">geom</span> <span class="o">=</span> <span class="n">geom</span> <span class="k">if</span> <span class="n">geom</span><span class="o">.</span><span class="n">is_valid</span> <span class="k">else</span> <span class="n">make_valid</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prep</span> <span class="o">=</span> <span class="n">prep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">bounds</span>              <span class="c1"># (lon_min, lat_min, lon_max, lat_max)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">near</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cheap streaming pre-reject: any vertex inside the region bbox. Prunes the</span>
+<span class="sd">        millions of far features before shapely touches them.&quot;&quot;&quot;</span>
+        <span class="n">lo0</span><span class="p">,</span> <span class="n">la0</span><span class="p">,</span> <span class="n">lo1</span><span class="p">,</span> <span class="n">la1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span>
+        <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">lo0</span> <span class="o">&lt;=</span> <span class="n">lo</span> <span class="o">&lt;=</span> <span class="n">lo1</span> <span class="ow">and</span> <span class="n">la0</span> <span class="o">&lt;=</span> <span class="n">la</span> <span class="o">&lt;=</span> <span class="n">la1</span>
+                   <span class="k">for</span> <span class="n">lo</span><span class="p">,</span> <span class="n">la</span> <span class="ow">in</span> <span class="n">_leaf_lonlat</span><span class="p">((</span><span class="n">feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;geometry&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;coordinates&quot;</span><span class="p">)))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">clip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">geometry</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Intersect a GeoJSON geometry dict with the region. A feature that is wholly</span>
+<span class="sd">        inside skips the (expensive) overlay; only border features are actually cut.</span>
+<span class="sd">        Returns a shapely geometry, empty when the feature falls outside.&quot;&quot;&quot;</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shape</span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">g</span><span class="o">.</span><span class="n">is_valid</span><span class="p">:</span>
+            <span class="n">g</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_valid</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prep</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">g</span>
+        <span class="k">return</span> <span class="n">g</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span>            <span class="c1"># empty geometry if disjoint</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">contains_point</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">):</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">prep</span><span class="o">.</span><span class="n">intersects</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_polys</span><span class="p">(</span><span class="n">geom</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Yield each non-empty shapely Polygon in geom (Polygon / MultiPolygon / mixed</span>
+<span class="sd">    GeometryCollection -- an intersection can drop to lines/points, which we skip).&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">geom</span><span class="o">.</span><span class="n">is_empty</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="k">if</span> <span class="n">geom</span><span class="o">.</span><span class="n">geom_type</span> <span class="o">==</span> <span class="s2">&quot;Polygon&quot;</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">geom</span>
+    <span class="k">elif</span> <span class="n">geom</span><span class="o">.</span><span class="n">geom_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;MultiPolygon&quot;</span><span class="p">,</span> <span class="s2">&quot;GeometryCollection&quot;</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">geom</span><span class="o">.</span><span class="n">geoms</span><span class="p">:</span>
+            <span class="k">yield from</span> <span class="n">_polys</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_lines</span><span class="p">(</span><span class="n">geom</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Yield each non-empty line in geom as a list of [lon, lat, (z)] points.</span>
+<span class="sd">    Z is preserved when the source carries it: shapely 2 keeps Z through the</span>
+<span class="sd">    intersection and interpolates it at cut vertices on the region boundary,</span>
+<span class="sd">    so subset-imported roads keep their pipeline-baked elevation (a 2D list</span>
+<span class="sd">    here meant every subset road imported flat at Z=0).&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">geom</span><span class="o">.</span><span class="n">is_empty</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="k">if</span> <span class="n">geom</span><span class="o">.</span><span class="n">geom_type</span> <span class="o">==</span> <span class="s2">&quot;LineString&quot;</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">geom</span><span class="o">.</span><span class="n">coords</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">geom</span><span class="o">.</span><span class="n">geom_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;MultiLineString&quot;</span><span class="p">,</span> <span class="s2">&quot;GeometryCollection&quot;</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">geom</span><span class="o">.</span><span class="n">geoms</span><span class="p">:</span>
+            <span class="k">yield from</span> <span class="n">_lines</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_footprints</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">region</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Exterior rings (unclosed, &gt;= 3 pts) of a polygon feature. With no region the</span>
+<span class="sd">    footprint is kept whole; with one it is clipped to the region outline first, so a</span>
+<span class="sd">    border building or a kilometres-long bridge deck becomes its in-region part(s) --</span>
+<span class="sd">    possibly several rings when the cut splits the polygon.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">region</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ring</span> <span class="o">=</span> <span class="n">_ring_from_polygon</span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">ring</span>
+        <span class="k">return</span>
+    <span class="k">for</span> <span class="n">poly</span> <span class="ow">in</span> <span class="n">_polys</span><span class="p">(</span><span class="n">region</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">geometry</span> <span class="ow">or</span> <span class="p">{})):</span>
+        <span class="n">ring</span> <span class="o">=</span> <span class="n">outward_ring</span><span class="p">(</span><span class="n">poly</span><span class="o">.</span><span class="n">exterior</span><span class="o">.</span><span class="n">coords</span><span class="p">)</span>    <span class="c1"># drops Z, uncloses, forces CCW</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">ring</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_clip_line_features</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">region</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Clip each line feature to the region outline, emitting one LineString Feature per</span>
+<span class="sd">    surviving segment (a road that leaves and re-enters the region is split, not bridged</span>
+<span class="sd">    across the gap). Properties are carried through.&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">ft</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+        <span class="n">props</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;properties&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">_lines</span><span class="p">(</span><span class="n">region</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;geometry&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{})):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span> <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="n">props</span><span class="p">,</span>
+                       <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;LineString&quot;</span><span class="p">,</span> <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="n">line</span><span class="p">}}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_ticker</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">report</span><span class="p">,</span> <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">throttle</span><span class="o">=</span><span class="mf">0.3</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Pass `iterable` through unchanged while driving `report(frac, msg)` at most once</span>
+<span class="sd">    per `throttle` seconds. Feature totals are unknown (the source layers are streamed,</span>
+<span class="sd">    and counting first would double the read), so the fraction creeps asymptotically from</span>
+<span class="sd">    `lo` toward `hi` as the count grows -- always visibly moving, never overshooting the</span>
+<span class="sd">    phase&#39;s band. `report` is a no-op when the caller passed no progress callback.&quot;&quot;&quot;</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+    <span class="n">last</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">item</span>
+        <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">now</span> <span class="o">-</span> <span class="n">last</span> <span class="o">&gt;=</span> <span class="n">throttle</span><span class="p">:</span>
+            <span class="n">report</span><span class="p">(</span><span class="n">lo</span> <span class="o">+</span> <span class="p">(</span><span class="n">hi</span> <span class="o">-</span> <span class="n">lo</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">n</span> <span class="o">/</span> <span class="mf">3000.0</span><span class="p">)),</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">last</span> <span class="o">=</span> <span class="n">now</span>
+    <span class="n">report</span><span class="p">(</span><span class="n">hi</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_iter_features</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">keep</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Yield features of a FeatureCollection where keep(feature) is truthy (keep=None -&gt;</span>
+<span class="sd">    all). Streams with ijson when a NATIVE (C) backend is present, so peak memory stays</span>
+<span class="sd">    low on the ~500MB source layers. Otherwise -- no ijson (Blender&#39;s bundled Python), or</span>
+<span class="sd">    only ijson&#39;s pure-Python backend, which is slower than a C json load -- fall back to a</span>
+<span class="sd">    full read. `pip install ijson` (with its yajl2 C backend) into Blender&#39;s Python to get</span>
+<span class="sd">    the streaming path there.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">ijson</span>
+        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">ijson</span><span class="p">,</span> <span class="s2">&quot;backend&quot;</span><span class="p">,</span> <span class="s2">&quot;python&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;python&quot;</span><span class="p">:</span>     <span class="c1"># C backend only</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">ijson</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">&quot;features.item&quot;</span><span class="p">,</span> <span class="n">use_float</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">keep</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">keep</span><span class="p">(</span><span class="n">feat</span><span class="p">):</span>
+                        <span class="k">yield</span> <span class="n">feat</span>
+            <span class="k">return</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">read_feature_collection</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">keep</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">keep</span><span class="p">(</span><span class="n">feat</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">feat</span>
+
+
+<div class="viewcode-block" id="load_for_import">
+<a class="viewcode-back" href="../../api.html#apian_terrain.unified.load_for_import">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_for_import</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">area_id</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reconstruct `features_by_type` for the import from the unified files.</span>
+
+<span class="sd">    Returns the same dict shape the import builds from the combined GeoJSON:</span>
+<span class="sd">    a synthesized `terrain` feature (area meta + cells), plus structures (with</span>
+<span class="sd">    bridges folded back in), streets and landmarks. No sea/water_body/vegetation</span>
+<span class="sd">    features -- those are per-cell attributes now.</span>
+
+<span class="sd">    `output_dir` / `area_id` name a REGION manifest -- the sole owner of the data</span>
+<span class="sd">    files. `subset`, if given, is a {cell_ids, area} trim (from `read_subset_manifest`):</span>
+<span class="sd">    only those cells become Terrain Centres and OSM features are clipped to their exact</span>
+<span class="sd">    outline (see `_Region`); its `area` bbox overrides the region&#39;s for OSM trimming.</span>
+<span class="sd">    A subset manifest passed as the region raises -- a subset is never a standalone</span>
+<span class="sd">    dataset (data is managed at the region level).</span>
+
+<span class="sd">    `data_dir` (optional) is where the layer DATA files (feature geojsons, celldata</span>
+<span class="sd">    csvs, color geojson) live; it defaults to `output_dir` (the legacy single-folder</span>
+<span class="sd">    layout). The region-folder layout keeps identity files in the region root and</span>
+<span class="sd">    derived files in the region&#39;s output/ subdir, so callers pass data_dir=region</span>
+<span class="sd">    output there. The manifest + cells csv are always read from `output_dir`.</span>
+
+<span class="sd">    `progress`, if given, is called as `progress(frac, message)` (frac in 0..1) as each</span>
+<span class="sd">    layer streams, so a caller can drive a progress bar during the (deliberately correct,</span>
+<span class="sd">    not fast) clip. Exceptions from it are swallowed -- progress never breaks an import.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">report</span><span class="p">(</span><span class="n">frac</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">progress</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">progress</span><span class="p">(</span><span class="n">frac</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="k">pass</span>
+    <span class="n">output_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+    <span class="n">manifest</span> <span class="o">=</span> <span class="n">read_manifest</span><span class="p">(</span><span class="n">output_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">area_id</span><span class="si">}</span><span class="s2">_manifest.json&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">manifest</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;provisional&quot;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">area_id</span><span class="si">}</span><span class="s2">_manifest.json is a provisional manifest -- area build &quot;</span>
+            <span class="s2">&quot;incomplete; re-run the pipeline&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">is_subset_manifest</span><span class="p">(</span><span class="n">manifest</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">area_id</span><span class="si">}</span><span class="s2">_manifest.json is a subset manifest; pass the &quot;</span>
+                         <span class="s2">&quot;REGION manifest as the dataset and the subset separately&quot;</span><span class="p">)</span>
+    <span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span> <span class="k">if</span> <span class="n">data_dir</span> <span class="k">else</span> <span class="n">output_dir</span>   <span class="c1"># region owns its data</span>
+    <span class="n">src_area</span> <span class="o">=</span> <span class="n">area_id</span>
+    <span class="n">cell_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;cell_ids&quot;</span><span class="p">])</span> <span class="k">if</span> <span class="n">subset</span> <span class="ow">and</span> <span class="n">subset</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;cell_ids&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="n">area</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;area&quot;</span><span class="p">,</span> <span class="p">{})</span>
+    <span class="k">if</span> <span class="n">subset</span> <span class="ow">and</span> <span class="n">subset</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;area&quot;</span><span class="p">):</span>        <span class="c1"># subset&#39;s trimmed bbox for OSM trimming/scale</span>
+        <span class="n">area</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">area</span><span class="p">,</span> <span class="o">**</span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;area&quot;</span><span class="p">]}</span>
+    <span class="n">all_rows</span> <span class="o">=</span> <span class="n">read_cells_csv</span><span class="p">(</span><span class="n">output_dir</span> <span class="o">/</span> <span class="n">manifest</span><span class="p">[</span><span class="s2">&quot;cells_csv&quot;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">cell_set</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Trim OSM features to the EXACT outline of the selected cells: the region is the</span>
+        <span class="c1"># h3 union polygon of cell_set, and every layer is clipped to it (polygons cut,</span>
+        <span class="c1"># lines split, points tested) -- no bbox, no Voronoi approximation. `keep` is a</span>
+        <span class="c1"># cheap bbox pre-reject that streams the big source layers feature-by-feature.</span>
+        <span class="n">region</span> <span class="o">=</span> <span class="n">_Region</span><span class="p">(</span><span class="n">cell_set</span><span class="p">)</span>
+        <span class="n">keep</span> <span class="o">=</span> <span class="n">region</span><span class="o">.</span><span class="n">near</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">all_rows</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;h3_id&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">cell_set</span><span class="p">]</span>
+        <span class="c1"># A subset is resolution-specific: rebuilding the region at a different res</span>
+        <span class="c1"># (or with a shifted selection) orphans every id in it. Zero overlap used to</span>
+        <span class="c1"># slide through as a terrain feature with no cells -- the import then</span>
+        <span class="c1"># silently produced no Terrain Centres/Surface while geometry-clipped</span>
+        <span class="c1"># layers (contour lines) still landed. Fail LOUD instead.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">rows</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;subset has 0 of </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cell_set</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> cells in common with the region&#39;s &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_rows</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> -- it was likely created against an older build &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;(resolution or selection changed). Re-create the subset.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">cell_set</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  [subset] warning: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> of </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cell_set</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> subset cells &quot;</span>
+                  <span class="sa">f</span><span class="s2">&quot;found in the region (</span><span class="si">{</span><span class="mi">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">cell_set</span><span class="p">)</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">%) -- &quot;</span>
+                  <span class="sa">f</span><span class="s2">&quot;the subset may be stale&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">region</span> <span class="o">=</span> <span class="n">keep</span> <span class="o">=</span> <span class="kc">None</span>                                   <span class="c1"># full area: no trimming</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="n">all_rows</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">_cells_to_arrays</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+
+    <span class="n">terrain_feat</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;feature_type&quot;</span><span class="p">:</span>    <span class="s2">&quot;terrain&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;area_id&quot;</span><span class="p">:</span>         <span class="n">area_id</span><span class="p">,</span>
+        <span class="s2">&quot;data_dir&quot;</span><span class="p">:</span>        <span class="nb">str</span><span class="p">(</span><span class="n">data_dir</span><span class="p">),</span>   <span class="c1"># so cell_series bakers can open the CSR handlers</span>
+        <span class="s2">&quot;lon_centre&quot;</span><span class="p">:</span>      <span class="n">area</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;lon_centre&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+        <span class="s2">&quot;lat_centre&quot;</span><span class="p">:</span>      <span class="n">area</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;lat_centre&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+        <span class="s2">&quot;lon_min&quot;</span><span class="p">:</span>         <span class="n">area</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;lon_min&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;lat_min&quot;</span><span class="p">:</span>         <span class="n">area</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;lat_min&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;lon_max&quot;</span><span class="p">:</span>         <span class="n">area</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;lon_max&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;lat_max&quot;</span><span class="p">:</span>         <span class="n">area</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;lat_max&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;ele_min_m&quot;</span><span class="p">:</span>       <span class="n">area</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ele_min_m&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+        <span class="s2">&quot;ele_max_m&quot;</span><span class="p">:</span>       <span class="n">area</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ele_max_m&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+        <span class="s2">&quot;ele_min_baked_m&quot;</span><span class="p">:</span> <span class="n">area</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ele_min_baked_m&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+        <span class="s2">&quot;h3_resolution&quot;</span><span class="p">:</span>   <span class="n">manifest</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;h3_resolution&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;n_lat&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;n_lon&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;cells&quot;</span><span class="p">:</span> <span class="n">cells</span><span class="p">,</span>
+    <span class="p">}}</span>
+
+    <span class="c1"># Data layer (optional): the manifest&#39;s per-field metadata + a</span>
+    <span class="c1"># {h3_id: {field: value}} map from &lt;area&gt;_celldata.csv, so the import can bake</span>
+    <span class="c1"># a Data object. Absent for areas built without custom data.</span>
+    <span class="n">data_fields</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;data_fields&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[]</span>
+    <span class="n">cd_name</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;celldata_csv&quot;</span><span class="p">)</span>
+    <span class="n">celldata</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">interpdata</span> <span class="o">=</span> <span class="p">{}</span>                        <span class="c1"># {h3_id: {field}} -- fields filled by interpolation</span>
+    <span class="k">if</span> <span class="n">data_fields</span> <span class="ow">and</span> <span class="n">cd_name</span> <span class="ow">and</span> <span class="p">(</span><span class="n">data_dir</span> <span class="o">/</span> <span class="n">cd_name</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">data_fields</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">read_cells_csv</span><span class="p">(</span><span class="n">data_dir</span> <span class="o">/</span> <span class="n">cd_name</span><span class="p">):</span>
+            <span class="n">hid</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;h3_id&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">hid</span> <span class="ow">or</span> <span class="p">(</span><span class="n">cell_set</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">hid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cell_set</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="n">vals</span><span class="p">,</span> <span class="n">interp</span> <span class="o">=</span> <span class="p">{},</span> <span class="nb">set</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+                <span class="n">raw</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">raw</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">vals</span><span class="p">[</span><span class="n">fn</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+                    <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+                        <span class="k">continue</span>
+                    <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">fn</span> <span class="o">+</span> <span class="s2">&quot;__i&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>   <span class="c1"># interpolated, not measured</span>
+                        <span class="n">interp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">vals</span><span class="p">:</span>
+                <span class="n">celldata</span><span class="p">[</span><span class="n">hid</span><span class="p">]</span> <span class="o">=</span> <span class="n">vals</span>
+            <span class="k">if</span> <span class="n">interp</span><span class="p">:</span>
+                <span class="n">interpdata</span><span class="p">[</span><span class="n">hid</span><span class="p">]</span> <span class="o">=</span> <span class="n">interp</span>
+    <span class="n">terrain_feat</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">][</span><span class="s2">&quot;data_fields&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_fields</span>
+    <span class="n">terrain_feat</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">][</span><span class="s2">&quot;celldata&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">celldata</span>
+    <span class="n">terrain_feat</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">][</span><span class="s2">&quot;interpdata&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">interpdata</span>
+    <span class="c1"># Normalised layer list (new `layers` block, or legacy data_fields/feature_files)</span>
+    <span class="c1"># so the importer bakes each declared layer dispatched by kind. See layers.py.</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">layers</span>
+    <span class="n">terrain_feat</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">][</span><span class="s2">&quot;layers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">manifest_layers</span><span class="p">(</span><span class="n">manifest</span><span class="p">)</span>
+
+    <span class="c1"># Per-face colours (optional): &lt;area&gt;_color.geojson -&gt; {h3_id: [[r,g,b], ...]} ordered</span>
+    <span class="c1"># by face (0 = centre, 1..6 = ring sectors). The import bakes these as vectors onto the</span>
+    <span class="c1"># Terrain Centres; the Terrain Surface&#39;s hex_face attr picks which per face. The file</span>
+    <span class="c1"># ALSO carries the regolith answer (sub_r/g/b — the palette colour of the cell&#39;s</span>
+    <span class="c1"># effective regolith material); older files without it fall back to the image colour</span>
+    <span class="c1"># per cell. Subset-</span>
+    <span class="c1"># filtered by cell_set. Point features keyed by (h3_id, face).</span>
+    <span class="n">face_colors</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">regolith_face_colors</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">colp</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">src_area</span><span class="si">}</span><span class="s2">_color.geojson&quot;</span>
+    <span class="k">if</span> <span class="n">colp</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">by_cell</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">sub_by_cell</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">_iter_features</span><span class="p">(</span><span class="n">colp</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">feat</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;properties&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{}</span>
+            <span class="n">hid</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;h3_id&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">hid</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="p">(</span><span class="n">cell_set</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">hid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cell_set</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="n">by_cell</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">hid</span><span class="p">,</span> <span class="p">{})[</span><span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;face&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))]</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="mi">128</span><span class="p">)),</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="mi">128</span><span class="p">)),</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="mi">128</span><span class="p">))]</span>
+            <span class="k">if</span> <span class="s2">&quot;sub_r&quot;</span> <span class="ow">in</span> <span class="n">p</span><span class="p">:</span>
+                <span class="n">sub_by_cell</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">hid</span><span class="p">,</span> <span class="p">{})[</span><span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;face&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))]</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sub_r&quot;</span><span class="p">,</span> <span class="mi">128</span><span class="p">)),</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sub_g&quot;</span><span class="p">,</span> <span class="mi">128</span><span class="p">)),</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sub_b&quot;</span><span class="p">,</span> <span class="mi">128</span><span class="p">))]</span>
+        <span class="k">for</span> <span class="n">hid</span><span class="p">,</span> <span class="n">fmap</span> <span class="ow">in</span> <span class="n">by_cell</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">face_colors</span><span class="p">[</span><span class="n">hid</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">fmap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">fmap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">]))</span>
+                                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">fmap</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+            <span class="n">smap</span> <span class="o">=</span> <span class="n">sub_by_cell</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">hid</span><span class="p">)</span>
+            <span class="n">regolith_face_colors</span><span class="p">[</span><span class="n">hid</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="p">[</span><span class="n">smap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">smap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">]))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">fmap</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+                <span class="k">if</span> <span class="n">smap</span> <span class="k">else</span>
+                <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">face_colors</span><span class="p">[</span><span class="n">hid</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">face_colors</span><span class="p">[</span><span class="n">hid</span><span class="p">]])</span>
+    <span class="n">terrain_feat</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">][</span><span class="s2">&quot;face_colors&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">face_colors</span>
+    <span class="n">terrain_feat</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">][</span><span class="s2">&quot;regolith_face_colors&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">regolith_face_colors</span>
+
+    <span class="c1"># Image Texture (optional): the tile raster + its Web-Mercator extent,</span>
+    <span class="c1"># for the add-on to UV-map onto the Terrain Surface. The path is resolved against</span>
+    <span class="c1"># data_dir here so the importer needs no path logic. Absent unless the pipeline</span>
+    <span class="c1"># built one; a missing PNG is dropped silently. Legacy manifests name the block</span>
+    <span class="c1"># `surface_texture` -- manifest_image_texture reads both.</span>
+    <span class="n">tex</span> <span class="o">=</span> <span class="n">manifest_image_texture</span><span class="p">(</span><span class="n">manifest</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">tex</span> <span class="ow">and</span> <span class="n">tex</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">data_dir</span> <span class="o">/</span> <span class="n">tex</span><span class="p">[</span><span class="s2">&quot;file&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">terrain_feat</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">][</span><span class="s2">&quot;image_texture&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;path&quot;</span><span class="p">:</span>   <span class="nb">str</span><span class="p">((</span><span class="n">data_dir</span> <span class="o">/</span> <span class="n">tex</span><span class="p">[</span><span class="s2">&quot;file&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">resolve</span><span class="p">()),</span>
+            <span class="s2">&quot;extent&quot;</span><span class="p">:</span> <span class="n">tex</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;extent&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{}}</span>
+
+    <span class="n">fbt</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;terrain&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">terrain_feat</span><span class="p">]}</span>
+
+    <span class="c1"># structures + bridges -&gt; one list-in-properties feature (decks fold back in</span>
+    <span class="c1"># so bridge=yes road projection still finds deck=True targets). Both are polygon</span>
+    <span class="c1"># layers clipped to the region outline the same way (`region=None` -&gt; kept whole).</span>
+    <span class="c1"># Phase bands for the progress bar (structures dominate the clip cost). Each layer&#39;s</span>
+    <span class="c1"># stream creeps its band toward the next while the source is read + clipped.</span>
+    <span class="n">structs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">),</span> <span class="n">layer</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(((</span><span class="mf">0.00</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.40</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">)),</span>
+                               <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">src_area</span><span class="si">}</span><span class="s2">_structures.geojson&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">src_area</span><span class="si">}</span><span class="s2">_bridges.geojson&quot;</span><span class="p">)):</span>
+        <span class="n">pf</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="n">layer</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">pf</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="k">continue</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;bridges&quot;</span> <span class="k">if</span> <span class="n">lo</span> <span class="k">else</span> <span class="s2">&quot;structures&quot;</span>
+        <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">_ticker</span><span class="p">(</span><span class="n">_iter_features</span><span class="p">(</span><span class="n">pf</span><span class="p">,</span> <span class="n">keep</span><span class="p">),</span> <span class="n">report</span><span class="p">,</span> <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+            <span class="n">props</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">feat</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;properties&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{})</span>
+            <span class="n">props</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;feature_type&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">ring</span> <span class="ow">in</span> <span class="n">_footprints</span><span class="p">(</span><span class="n">feat</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;geometry&quot;</span><span class="p">),</span> <span class="n">region</span><span class="p">):</span>
+                <span class="n">s</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">props</span><span class="p">)</span>
+                <span class="n">s</span><span class="p">[</span><span class="s2">&quot;footprint&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ring</span>
+                <span class="n">structs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">structs</span><span class="p">:</span>
+        <span class="n">fbt</span><span class="p">[</span><span class="s2">&quot;structures&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;feature_type&quot;</span><span class="p">:</span> <span class="s2">&quot;structures&quot;</span><span class="p">,</span> <span class="s2">&quot;area_id&quot;</span><span class="p">:</span> <span class="n">area_id</span><span class="p">,</span> <span class="s2">&quot;structures&quot;</span><span class="p">:</span> <span class="n">structs</span><span class="p">}}]</span>
+
+    <span class="n">sp</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">src_area</span><span class="si">}</span><span class="s2">_streets.geojson&quot;</span>
+    <span class="k">if</span> <span class="n">sp</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">stream</span> <span class="o">=</span> <span class="n">_ticker</span><span class="p">(</span><span class="n">_iter_features</span><span class="p">(</span><span class="n">sp</span><span class="p">,</span> <span class="n">keep</span><span class="p">),</span> <span class="n">report</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="s2">&quot;streets&quot;</span><span class="p">)</span>
+        <span class="n">fbt</span><span class="p">[</span><span class="s2">&quot;street&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">_clip_line_features</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">region</span><span class="p">))</span>
+                         <span class="k">if</span> <span class="n">region</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">list</span><span class="p">(</span><span class="n">stream</span><span class="p">))</span>
+
+    <span class="n">lp</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">src_area</span><span class="si">}</span><span class="s2">_landmarks.geojson&quot;</span>
+    <span class="k">if</span> <span class="n">lp</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">lms</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">_ticker</span><span class="p">(</span><span class="n">_iter_features</span><span class="p">(</span><span class="n">lp</span><span class="p">,</span> <span class="n">keep</span><span class="p">),</span> <span class="n">report</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.80</span><span class="p">,</span> <span class="s2">&quot;landmarks&quot;</span><span class="p">):</span>
+            <span class="n">coords</span> <span class="o">=</span> <span class="p">(</span><span class="n">feat</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;geometry&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;coordinates&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+            <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">region</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="n">lon</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">region</span><span class="o">.</span><span class="n">contains_point</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)):</span>
+                <span class="k">continue</span>                        <span class="c1"># point outside the selected-cell outline</span>
+            <span class="n">props</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">feat</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;properties&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{})</span>
+            <span class="n">props</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;feature_type&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">props</span><span class="p">[</span><span class="s2">&quot;lon&quot;</span><span class="p">],</span> <span class="n">props</span><span class="p">[</span><span class="s2">&quot;lat&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span>
+            <span class="n">lms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">props</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lms</span><span class="p">:</span>
+            <span class="n">fbt</span><span class="p">[</span><span class="s2">&quot;landmarks&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;feature_type&quot;</span><span class="p">:</span> <span class="s2">&quot;landmarks&quot;</span><span class="p">,</span> <span class="s2">&quot;area_id&quot;</span><span class="p">:</span> <span class="n">area_id</span><span class="p">,</span> <span class="s2">&quot;landmarks&quot;</span><span class="p">:</span> <span class="n">lms</span><span class="p">}}]</span>
+
+    <span class="n">cp</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">src_area</span><span class="si">}</span><span class="s2">_contour_lines.geojson&quot;</span>
+    <span class="k">if</span> <span class="n">cp</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">stream</span> <span class="o">=</span> <span class="n">_ticker</span><span class="p">(</span><span class="n">_iter_features</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">keep</span><span class="p">),</span> <span class="n">report</span><span class="p">,</span> <span class="mf">0.80</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">,</span> <span class="s2">&quot;contours&quot;</span><span class="p">)</span>
+        <span class="n">clines</span> <span class="o">=</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">_clip_line_features</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">region</span><span class="p">))</span>
+                  <span class="k">if</span> <span class="n">region</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">list</span><span class="p">(</span><span class="n">stream</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">clines</span><span class="p">:</span>
+            <span class="n">fbt</span><span class="p">[</span><span class="s2">&quot;contour_lines&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clines</span>
+
+    <span class="n">report</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="s2">&quot;done&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fbt</span></div>
+
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, Apian
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=46bd48cc"></script>
+    </body>
+</html>
